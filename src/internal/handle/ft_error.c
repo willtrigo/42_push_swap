@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 02:21:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/17 00:57:22 by dande-je         ###   ########.fr       */
+/*   Created: 2024/06/17 03:29:51 by dande-je          #+#    #+#             */
+/*   Updated: 2024/06/17 03:40:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "internal/ft_parse.h"
+#include <unistd.h>
+#include "ft_non_standard/ft_non_standard.h"
+#include "internal/handle/ft_error.h"
 
-int	main(int argc, char **argv)
+void	ft_error(void)
 {
-	ft_parse_arguments(argc, argv);
-	exit(EXIT_SUCCESS);
+	ft_putendl_fd("Error", STDERR_FILENO);
+	exit(EXIT_FAILURE);
 }
