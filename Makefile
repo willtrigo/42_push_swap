@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/06/04 19:01:24 by dande-je         ###   ########.fr        #
+#    Updated: 2024/06/17 02:16:47 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #                                REQUIREMENTS                                  #
 #******************************************************************************#
 
-LIBFT_VERSION                   := 3.1.3
+LIBFT_VERSION                   := 3.2.0
 
 #******************************************************************************#
 #                                   COLOR                                      #
@@ -32,6 +32,7 @@ RESET                           := \033[0m
 #******************************************************************************#
 
 SRCS_DIR                        := src/
+SRCS_INTERNAL_DIR               := src/internal/
 INCS                            := src/ lib/42_libft/include/
 BUILD_DIR                       := build/
 LIBFT_DIR                       := lib/42_libft/
@@ -55,6 +56,7 @@ LIBS                            := ./lib/42_libft/libft.a
 NAME                            = push_swap
 
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
+SRCS_FILES                      += $(addprefix $(SRCS_INTERNAL_DIR), ft_parse.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 
