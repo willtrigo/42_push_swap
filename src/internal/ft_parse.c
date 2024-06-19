@@ -6,70 +6,90 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/18 03:53:16 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/19 04:45:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
 #include "ft_non_standard/ft_non_standard.h"
 #include "ft_default.h"
 #include "internal/ft_parse.h"
 #include "internal/handle/ft_error.h"
 
-static void	ft_parse_single_argument(char **argv);
-static void	ft_parse_list_arguments(char **list);
+static int	ft_parse_single_argument(char **argv);
+static int	ft_parse_list_arguments(char **list);
+static int	ft_parse_arguments_with_space(char *arg);
 
 void	ft_parse_arguments(int argc, char **argv)
 {
+	int	valid_parse;
+
 	if (argc == ZERO)
 		ft_error();
 	if (argc == SINGLE_ARGURMENT)
-		ft_parse_single_argument(argv);
+		valid_parse = ft_parse_single_argument(argv);
 	else
-		ft_parse_list_arguments(argv);
-}
-
-static void	ft_parse_single_argument(char **argv)
-{
-	int		nb_result;
-	char	*endptr;
-	char	**list_arguments;
-
-	nb_result = ft_strtod(argv[DEFAULT], &endptr);
-	if (*endptr == ' ')
-	{
-		list_arguments = ft_split(argv[DEFAULT], ' ');
-		ft_parse_list_arguments(list_arguments);
-	}
-	else if (!*endptr)
-		ft_putnbr_fd(nb_result, STDIN_FILENO);
-	else
-	{
-		free(endptr);
+		valid_parse = ft_parse_list_arguments(argv);
+	if (valid_parse == FAIL)
 		ft_error();
-	}
 }
 
-static void	ft_parse_list_arguments(char **list)
+static int	ft_parse_single_argument(char **argv)
 {
 	int		nb_result;
 	char	*endptr;
-	char	**list_temp;
 
-	list_temp = list;
-	while (*list)
+	nb_result = ft_strtoi(argv[DEFAULT], &endptr);
+	if (!*endptr)
+		ft_putnbr_fd(nb_result, STDIN_FILENO);
+	else if (*endptr == ' ')
+		return (ft_parse_arguments_with_space(argv[DEFAULT]));
+	else
+		return (FAIL);
+	return (true);
+}
+
+static int	ft_parse_list_arguments(char **list)
+{
+	int		nb_result;
+	int		valid_parse;
+	char	*endptr;
+
+	valid_parse = true;
+	while (*list && valid_parse)
 	{
-		nb_result = ft_strtod(*list, &endptr);
+		nb_result = ft_strtoi(*list, &endptr);
 		if (!*endptr)
 			ft_putnbr_fd(nb_result, STDIN_FILENO);
+		else if (*endptr == ' ')
+		{
+			if (ft_parse_arguments_with_space(*list) == FAIL)
+				valid_parse = FAIL;
+		}
 		else
-			break ;
-		free(*list++);
+			valid_parse = FAIL;
+		list++;
 	}
-	while (*list)
-		free(*list++);
-	free(list_temp);
-	if (endptr)
-		ft_error();
+	if (valid_parse == FAIL)
+		return (FAIL);
+	return (true);
+}
+
+static int	ft_parse_arguments_with_space(char *arg)
+{
+	int		valid_parse;
+	char	**list_arguments;
+	char	**list_arguments_temp;
+
+	list_arguments = ft_split(arg, ' ');
+	list_arguments_temp = list_arguments;
+	valid_parse = ft_parse_list_arguments(list_arguments);
+	while (*list_arguments)
+		free(*list_arguments++);
+	free(list_arguments_temp);
+	if (valid_parse == FAIL)
+		return (FAIL);
+	return (true);
 }
