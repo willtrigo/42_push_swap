@@ -6,12 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 02:21:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/18 01:43:19 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/20 01:54:21 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "internal/ft_parse.h"
+#include "internal/parse/ft_parse_arguments.h"
 
 int	main(int argc, char **argv)
 {

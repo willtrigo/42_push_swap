@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_parse_arguments.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 03:29:51 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/17 03:40:27 by dande-je         ###   ########.fr       */
+/*   Created: 2024/06/17 00:47:58 by dande-je          #+#    #+#             */
+/*   Updated: 2024/06/20 01:54:14 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "ft_non_standard/ft_non_standard.h"
-#include "internal/handle/ft_error.h"
+#ifndef FT_PARSE_ARGUMENTS_H
+# define FT_PARSE_ARGUMENTS_H
 
-void	ft_error(void)
+enum e_arguments
 {
-	ft_putendl_fd("Error", STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
+	SINGLE_ARGURMENT = 1,
+};
+
+void	ft_parse_arguments(int argc, char **argv);
+
+#endif

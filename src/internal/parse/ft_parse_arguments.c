@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*   ft_parse_arguments.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/20 02:04:47 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/20 02:08:06 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static int	ft_parse_single_argument(char **argv)
 	int		nb_result;
 	char	*endptr;
 
-	nb_result = ft_strtoi(argv[DEFAULT], &endptr);
+	nb_result = ft_strtoi(*argv, &endptr);
 	if (!*endptr)
 		ft_putnbr_fd(nb_result, STDIN_FILENO);
 	else if (*endptr == ' ')
-		ft_parse_arguments_with_space(argv[DEFAULT]);
+		ft_parse_arguments_with_space(*argv);
 	else
 		return (FAIL);
 	return (true);
