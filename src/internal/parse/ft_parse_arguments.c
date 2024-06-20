@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/20 02:08:06 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/20 04:36:49 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "ft_non_standard/ft_non_standard.h"
 #include "ft_default.h"
 #include "internal/parse/ft_parse_arguments.h"
+#include "internal/parse/ft_parse_nbr.h"
 #include "internal/handle/output/ft_error.h"
 
 static int	ft_parse_single_argument(char **argv);
@@ -24,10 +25,8 @@ static void	ft_parse_arguments_with_space(char *arg);
 
 void	ft_parse_arguments(int argc, char **argv)
 {
-	int	valid_parse;
+	int			valid_parse;
 
-	if (argc == ZERO)
-		ft_error();
 	if (argc == SINGLE_ARGURMENT)
 		valid_parse = ft_parse_single_argument(argv);
 	else
@@ -38,13 +37,13 @@ void	ft_parse_arguments(int argc, char **argv)
 
 static int	ft_parse_single_argument(char **argv)
 {
-	int		nb_result;
-	char	*endptr;
+	int		nbr;
+	char	*nbr_endptr;
 
-	nb_result = ft_strtoi(*argv, &endptr);
-	if (!*endptr)
-		ft_putnbr_fd(nb_result, STDIN_FILENO);
-	else if (*endptr == ' ')
+	nbr = ft_strtoi(*argv, &nbr_endptr);
+	if (!*nbr_endptr)
+		ft_putnbr_fd(nbr, STDIN_FILENO);
+	else if (*nbr_endptr == ' ')
 		ft_parse_arguments_with_space(*argv);
 	else
 		return (FAIL);
@@ -53,17 +52,17 @@ static int	ft_parse_single_argument(char **argv)
 
 static int	ft_parse_list_arguments(char **list)
 {
-	int		nb_result;
+	int		nbr;
 	int		valid_parse;
-	char	*endptr;
+	char	*nbr_endptr;
 
 	valid_parse = true;
 	while (*list)
 	{
-		nb_result = ft_strtoi(*list, &endptr);
-		if (!*endptr)
-			ft_putnbr_fd(nb_result, STDIN_FILENO);
-		else if (*endptr == ' ')
+		nbr = ft_strtoi(*list, &nbr_endptr);
+		if (!*nbr_endptr)
+			ft_parse_nbr(*list, nbr);
+		else if (*nbr_endptr == ' ')
 			ft_parse_arguments_with_space(*list);
 		else
 		{

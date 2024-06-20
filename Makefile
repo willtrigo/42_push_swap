@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/06/20 02:02:08 by dande-je         ###   ########.fr        #
+#    Updated: 2024/06/20 04:37:29 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ LIBS                            := ./lib/42_libft/libft.a
 NAME                            = push_swap
 
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
-SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_arguments.c)
+SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_arguments.c \
+								   ft_parse_nbr.c)
 SRCS_FILES                      += $(addprefix $(SRCS_OUTPUT_DIR), ft_error.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
