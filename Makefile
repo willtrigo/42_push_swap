@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/06/20 04:37:29 by dande-je         ###   ########.fr        #
+#    Updated: 2024/06/25 08:35:29 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,8 +111,8 @@ endef
 
 define submodule_update_libft
 	printf "$(PURPLE)Building library Libft\n$(RESET)"
-	git submodule update --init --recursive >/dev/null 2>&1 || true
-	git submodule foreach -q --recursive \
+	git submodule update --init --remote >/dev/null 2>&1 || true
+	git submodule foreach -q \
 		'branch="$(git config -f $toplevel/.gitmodules submodule.42_libft)"; \
 		git pull origin main; \
 		git fetch; \
