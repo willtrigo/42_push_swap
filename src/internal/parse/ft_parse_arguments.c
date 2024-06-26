@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/26 05:00:09 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/26 05:26:14 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,43 @@
 #include "ft_non_standard/ft_non_standard.h"
 #include "ft_stdlib.h"
 #include "ft_default.h"
+#include "internal/stack/ft_stack.h"
 #include "internal/parse/ft_parse_arguments.h"
 #include "internal/handle/ft_output_error.h"
 
-static int	ft_parse_single_argument(char **argv);
-static int	ft_parse_list_arguments(char **list);
-static void	ft_parse_arguments_with_space(char *arg);
-static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack);
+static int	ft_parse_single_argument(char **argv, t_stack *stack);
+static int	ft_parse_list_arguments(char **list, t_stack *stack);
+static void	ft_parse_arguments_with_space(char *arg, t_stack *stack);
+static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack, t_stack *stack);
 
-void	ft_parse_arguments(int argc, char **argv)
+void	ft_parse_arguments(int argc, char **argv, t_stack *stack)
 {
 	int	valid_parse;
 
 	if (argc == SINGLE_ARGURMENT)
-		valid_parse = ft_parse_single_argument(argv);
+		valid_parse = ft_parse_single_argument(argv, stack);
 	else
-		valid_parse = ft_parse_list_arguments(argv);
+		valid_parse = ft_parse_list_arguments(argv, stack);
 	if (valid_parse == FAIL)
 		ft_output_error();
 }
 
-static int	ft_parse_single_argument(char **argv)
+static int	ft_parse_single_argument(char **argv, t_stack *stack)
 {
 	int		nbr;
 	char	*nbr_endptr;
 
 	nbr = ft_strtoi(*argv, &nbr_endptr);
 	if (!*nbr_endptr)
-		return (ft_parse_nbr(*argv, nbr, false));
+		return (ft_parse_nbr(*argv, nbr, false, stack));
 	else if (*nbr_endptr == ' ')
-		ft_parse_arguments_with_space(*argv);
+		ft_parse_arguments_with_space(*argv, stack);
 	else
 		return (FAIL);
 	return (true);
 }
 
-static int	ft_parse_list_arguments(char **list)
+static int	ft_parse_list_arguments(char **list, t_stack *stack)
 {
 	int		nbr;
 	int		valid_parse;
@@ -62,9 +63,9 @@ static int	ft_parse_list_arguments(char **list)
 	{
 		nbr = ft_strtoi(*list, &nbr_endptr);
 		if (!*nbr_endptr)
-			valid_parse = ft_parse_nbr(*list, nbr, true);
+			valid_parse = ft_parse_nbr(*list, nbr, true, stack);
 		else if (*nbr_endptr == ' ')
-			ft_parse_arguments_with_space(*list);
+			ft_parse_arguments_with_space(*list, stack);
 		else
 			valid_parse = FAIL;
 		if (valid_parse == FAIL)
@@ -76,7 +77,7 @@ static int	ft_parse_list_arguments(char **list)
 	return (true);
 }
 
-static void	ft_parse_arguments_with_space(char *arg)
+static void	ft_parse_arguments_with_space(char *arg, t_stack *stack)
 {
 	int		valid_parse;
 	char	**list_arguments;
@@ -84,7 +85,7 @@ static void	ft_parse_arguments_with_space(char *arg)
 
 	list_arguments = ft_split(arg, ' ');
 	list_arguments_temp = list_arguments;
-	valid_parse = ft_parse_list_arguments(list_arguments);
+	valid_parse = ft_parse_list_arguments(list_arguments, stack);
 	while (*list_arguments)
 		free(*list_arguments++);
 	free(list_arguments_temp);
@@ -92,8 +93,9 @@ static void	ft_parse_arguments_with_space(char *arg)
 		ft_output_error();
 }
 
-static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack)
+static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack, t_stack *stack)
 {
+	(void)stack;
 	if ((nbr * 1.0) == ft_atof(str_nbr) && add_stack)
 		ft_putnbr_fd(nbr, STDIN_FILENO);
 	else if ((nbr * 1.0) != ft_atof(str_nbr))

@@ -6,7 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:58:29 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/20 03:58:30 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/26 06:23:48 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_BUILD_STACK_H
+# define FT_BUILD_STACK_H
+
+#endif
