@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/26 03:56:08 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/26 05:00:09 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 static int	ft_parse_single_argument(char **argv);
 static int	ft_parse_list_arguments(char **list);
 static void	ft_parse_arguments_with_space(char *arg);
-static void	ft_parse_nbr(char *str_nbr, int nbr);
+static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack);
 
 void	ft_parse_arguments(int argc, char **argv)
 {
-	int			valid_parse;
+	int	valid_parse;
 
 	if (argc == SINGLE_ARGURMENT)
 		valid_parse = ft_parse_single_argument(argv);
@@ -43,7 +43,7 @@ static int	ft_parse_single_argument(char **argv)
 
 	nbr = ft_strtoi(*argv, &nbr_endptr);
 	if (!*nbr_endptr)
-		ft_putnbr_fd(nbr, STDIN_FILENO);
+		return (ft_parse_nbr(*argv, nbr, false));
 	else if (*nbr_endptr == ' ')
 		ft_parse_arguments_with_space(*argv);
 	else
@@ -62,14 +62,13 @@ static int	ft_parse_list_arguments(char **list)
 	{
 		nbr = ft_strtoi(*list, &nbr_endptr);
 		if (!*nbr_endptr)
-			ft_parse_nbr(*list, nbr);
+			valid_parse = ft_parse_nbr(*list, nbr, true);
 		else if (*nbr_endptr == ' ')
 			ft_parse_arguments_with_space(*list);
 		else
-		{
 			valid_parse = FAIL;
+		if (valid_parse == FAIL)
 			break ;
-		}
 		list++;
 	}
 	if (valid_parse == FAIL)
@@ -93,8 +92,11 @@ static void	ft_parse_arguments_with_space(char *arg)
 		ft_output_error();
 }
 
-static void	ft_parse_nbr(char *str_nbr, int nbr)
+static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack)
 {
-	if ((nbr * 1.0) == ft_atof(str_nbr))
+	if ((nbr * 1.0) == ft_atof(str_nbr) && add_stack)
 		ft_putnbr_fd(nbr, STDIN_FILENO);
+	else if ((nbr * 1.0) != ft_atof(str_nbr))
+		return (FAIL);
+	return (true);
 }

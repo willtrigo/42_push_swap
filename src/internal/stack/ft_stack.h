@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/20 01:47:08 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/26 04:02:43 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct s_stack	t_stack;
 struct s_stack
 {
-	int	nb;
+	int		nb;
 	t_stack	*next;
 	t_stack	*prev;
 };
