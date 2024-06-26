@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_nbr.h                                     :+:      :+:    :+:   */
+/*   ft_output_error.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 03:49:34 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/20 04:36:21 by dande-je         ###   ########.fr       */
+/*   Created: 2024/06/17 03:30:07 by dande-je          #+#    #+#             */
+/*   Updated: 2024/06/26 03:55:43 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PARSE_NBR_H
-# define FT_PARSE_NBR_H
+#ifndef FT_OUTPUT_ERROR_H
+# define FT_OUTPUT_ERROR_H
 
-void	ft_parse_nbr(char *str_nbr, int nbr);
+void	ft_output_error(void);
 
 #endif

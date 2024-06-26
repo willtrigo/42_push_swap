@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/20 04:36:49 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/06/26 03:56:08 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include "ft_non_standard/ft_non_standard.h"
+#include "ft_stdlib.h"
 #include "ft_default.h"
 #include "internal/parse/ft_parse_arguments.h"
-#include "internal/parse/ft_parse_nbr.h"
-#include "internal/handle/output/ft_error.h"
+#include "internal/handle/ft_output_error.h"
 
 static int	ft_parse_single_argument(char **argv);
 static int	ft_parse_list_arguments(char **list);
 static void	ft_parse_arguments_with_space(char *arg);
+static void	ft_parse_nbr(char *str_nbr, int nbr);
 
 void	ft_parse_arguments(int argc, char **argv)
 {
@@ -32,7 +33,7 @@ void	ft_parse_arguments(int argc, char **argv)
 	else
 		valid_parse = ft_parse_list_arguments(argv);
 	if (valid_parse == FAIL)
-		ft_error();
+		ft_output_error();
 }
 
 static int	ft_parse_single_argument(char **argv)
@@ -89,5 +90,11 @@ static void	ft_parse_arguments_with_space(char *arg)
 		free(*list_arguments++);
 	free(list_arguments_temp);
 	if (valid_parse == FAIL)
-		ft_error();
+		ft_output_error();
+}
+
+static void	ft_parse_nbr(char *str_nbr, int nbr)
+{
+	if ((nbr * 1.0) == ft_atof(str_nbr))
+		ft_putnbr_fd(nbr, STDIN_FILENO);
 }
