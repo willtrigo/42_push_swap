@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/06/26 03:54:32 by dande-je         ###   ########.fr        #
+#    Updated: 2024/06/30 05:10:25 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS_DIR                        := src/
 SRCS_INTERNAL_DIR               := src/internal/
 SRCS_PARSE_DIR                  := $(SRCS_INTERNAL_DIR)parse/
 SRCS_HANDLE_DIR                 := $(SRCS_INTERNAL_DIR)handle/
+SRCS_STACK_DIR                  := $(SRCS_INTERNAL_DIR)stack/
 INCS                            := src/ lib/42_libft/include/
 BUILD_DIR                       := build/
 LIBFT_DIR                       := lib/42_libft/
@@ -58,6 +59,8 @@ LIBS                            := ./lib/42_libft/libft.a
 NAME                            = push_swap
 
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
+SRCS_FILES                      += $(addprefix $(SRCS_STACK_DIR), ft_build_stack.c \
+								   ft_stack.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_arguments.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output_error.c)
 
