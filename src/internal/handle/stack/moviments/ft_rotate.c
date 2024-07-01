@@ -6,38 +6,38 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:23:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/01 04:17:56 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/01 05:18:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_non_standard/ft_non_standard.h"
 #include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/ft_output.h"
 
-void	ft_rotate(t_stacks stack, int mov)
+void	ft_rotate(t_stacks *stack, int operation)
 {
 	(void)stack;
-	if (mov == RA)
+	if (operation == RA)
 	{
-		ft_putendl_fd("ra", STDIN_FILENO);
+		ft_output_moviment(RA);
 	}
-	else if (mov == RB)
+	else if (operation == RB)
 	{
-		ft_putendl_fd("rb", STDIN_FILENO);
+		ft_output_moviment(RB);
 	}
-	else if (mov == RR)
+	else if (operation == RR)
 	{
-		ft_putendl_fd("rr", STDIN_FILENO);
+		ft_output_moviment(RR);
 	}
-	else if (mov == RRA)
+	else if (operation == RRA)
 	{
-		ft_putendl_fd("rra", STDIN_FILENO);
+		ft_output_moviment(RRA);
 	}
-	else if (mov == RRB)
+	else if (operation == RRB)
 	{
-		ft_putendl_fd("rrb", STDIN_FILENO);
+		ft_output_moviment(RRB);
 	}
 	else
 	{
-		ft_putendl_fd("rrr", STDIN_FILENO);
+		ft_output_moviment(RRR);
 	}
 }
