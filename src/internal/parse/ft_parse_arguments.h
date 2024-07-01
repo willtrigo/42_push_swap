@@ -6,14 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:47:58 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/30 01:33:12 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/01 04:16:37 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PARSE_ARGUMENTS_H
 # define FT_PARSE_ARGUMENTS_H
 
-# include "internal/stack/ft_stack.h"
+# include "internal/handle/stack/ft_stack.h"
 
 enum e_arguments
 {

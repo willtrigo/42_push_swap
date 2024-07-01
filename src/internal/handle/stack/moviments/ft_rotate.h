@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_rotate.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 02:21:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/01 04:26:33 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/01 02:23:34 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/01 04:17:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "internal/parse/ft_parse_arguments.h"
-#include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/management/ft_stack_destroy.h"
+#ifndef FT_ROTATE_H
+# define FT_ROTATE_H
 
-int	main(int argc, char **argv)
-{
-	t_stacks	stack;
+# include "internal/handle/stack/ft_stack.h"
 
-	ft_parse_arguments(--argc, ++argv, &stack);
-	ft_print_stack(&stack);
-	ft_stacks_destroy(&stack);
-	exit(EXIT_SUCCESS);
-}
+void	ft_rotate(t_stacks stack, int mov);
+
+#endif

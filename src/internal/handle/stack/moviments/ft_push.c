@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_output_error.h                                  :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 03:30:07 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/30 04:34:17 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/01 02:22:23 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/01 04:18:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_OUTPUT_ERROR_H
-# define FT_OUTPUT_ERROR_H
+#include "ft_non_standard/ft_non_standard.h"
+#include "internal/handle/stack/ft_stack.h"
 
-# include "internal/stack/ft_stack.h"
-
-void	ft_output_error(t_stacks *stack);
-void	ft_stacks_destroy(t_stacks *stack);
-
-#endif
+void	ft_push(t_stacks stack, int mov)
+{
+	(void)stack;
+	if (mov == PA)
+	{
+		ft_putendl_fd("pa", STDIN_FILENO);
+	}
+	else
+	{
+		ft_putendl_fd("pb", STDIN_FILENO);
+	}
+}

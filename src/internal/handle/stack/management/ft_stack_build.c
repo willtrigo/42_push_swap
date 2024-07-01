@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_build_stack.c                                   :+:      :+:    :+:   */
+/*   ft_stack_build.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:58:35 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/30 05:08:55 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/01 04:30:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdbool.h>
 #include "ft_stdlib.h"
 #include "ft_default.h"
-#include "internal/stack/ft_stack.h"
+#include "internal/handle/stack/management/ft_stack_build.h"
 
 t_stack	*ft_stacknew(int nbr)
 {
@@ -49,7 +49,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *node_new)
 	}
 }
 
-_Bool	ft_is_duplicate(t_stack *stack, int nbr)
+bool	ft_is_duplicate(t_stack *stack, int nbr)
 {
 	if (!stack)
 		return (false);

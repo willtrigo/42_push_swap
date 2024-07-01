@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack.c                                         :+:      :+:    :+:   */
+/*   ft_output.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/30 05:00:28 by dande-je         ###   ########.fr       */
+/*   Created: 2024/06/17 03:30:07 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/01 04:16:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_non_standard/ft_non_standard.h"
-#include "internal/stack/ft_stack.h"
+#ifndef FT_OUTPUT_H
+# define FT_OUTPUT_H
 
-void	ft_print_stack(t_stacks *stack)
-{
-	t_stack	*temp_stack;
+# include "internal/handle/stack/ft_stack.h"
 
-	temp_stack = stack->a;
-	while (temp_stack)
-	{
-		ft_putnbr_fd(temp_stack->nbr, STDIN_FILENO);
-		ft_putendl_fd(" -> stack a", STDIN_FILENO);
-		temp_stack = temp_stack->next;
-	}
-}
+void	ft_output_error(t_stacks *stack);
+
+#endif

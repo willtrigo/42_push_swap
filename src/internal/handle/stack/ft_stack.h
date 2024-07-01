@@ -1,26 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_stack.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 02:21:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/01 04:26:33 by dande-je         ###   ########.fr       */
+/*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/01 02:34:54 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "internal/parse/ft_parse_arguments.h"
-#include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/management/ft_stack_destroy.h"
+#ifndef FT_STACK_H
+# define FT_STACK_H
 
-int	main(int argc, char **argv)
+enum e_moviments
 {
-	t_stacks	stack;
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+};
 
-	ft_parse_arguments(--argc, ++argv, &stack);
-	ft_print_stack(&stack);
-	ft_stacks_destroy(&stack);
-	exit(EXIT_SUCCESS);
-}
+typedef struct s_stack	t_stack;
+struct s_stack
+{
+	int		nbr;
+	t_stack	*next;
+	t_stack	*prev;
+};
+
+typedef struct s_stacks	t_stacks;
+struct s_stacks
+{
+	t_stack	*a;
+	t_stack	*b;
+};
+
+void	ft_print_stack(t_stacks *stack);
+
+#endif

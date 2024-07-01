@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_output_error.c                                  :+:      :+:    :+:   */
+/*   ft_stack_destroy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 03:29:51 by dande-je          #+#    #+#             */
-/*   Updated: 2024/06/30 05:01:17 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/01 03:55:30 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/01 04:28:07 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
-#include "ft_non_standard/ft_non_standard.h"
-#include "internal/handle/ft_output_error.h"
-#include "internal/stack/ft_stack.h"
+#include "internal/handle/stack/management/ft_stack_destroy.h"
 
 static void	ft_stack_destroy(t_stack *stack);
-
-void	ft_output_error(t_stacks *stack)
-{
-	ft_stacks_destroy(stack);
-	ft_putendl_fd("Error", STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
 
 void	ft_stacks_destroy(t_stacks *stack)
 {
