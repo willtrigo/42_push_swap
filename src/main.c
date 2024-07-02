@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 02:21:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/01 06:12:14 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/02 17:34:58 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/management/ft_stack_destroy.h"
 
-# include "internal/handle/stack/moviments/ft_swap.h"
-// # include "internal/handle/stack/moviments/ft_rotate.h"
-// # include "internal/handle/stack/moviments/ft_push.h"
+# include "internal/handle/stack/operation/ft_swap.h"
+// # include "internal/handle/stack/operation/ft_rotate.h"
+// # include "internal/handle/stack/operation/ft_push.h"
 
 int	main(int argc, char **argv)
 {
