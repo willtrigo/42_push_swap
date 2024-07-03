@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:58:35 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/01 04:30:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/03 02:12:00 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,15 @@ t_stack	*ft_stacklast(t_stack *stack)
 
 void	ft_stackadd_back(t_stack **stack, t_stack *node_new)
 {
+	t_stack	*temp_stack;
+
 	if (!*stack)
 		*stack = node_new;
 	else
 	{
-		ft_stacklast(*stack)->next = node_new;
-		node_new->prev = ft_stacklast(*stack);
+		temp_stack = ft_stacklast(*stack);
+		temp_stack->next = node_new;
+		node_new->prev = temp_stack;
 	}
 }
 
