@@ -6,13 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/01 05:17:30 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/03 04:44:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STACK_H
 # define FT_STACK_H
 
+typedef enum e_operations	t_operations;
 enum e_operations
 {
 	SA,
@@ -34,7 +35,7 @@ enum e_stacks
 	STACK_B,
 };
 
-typedef struct s_stack	t_stack;
+typedef struct s_stack		t_stack;
 struct s_stack
 {
 	int		nbr;
@@ -42,7 +43,7 @@ struct s_stack
 	t_stack	*prev;
 };
 
-typedef struct s_stacks	t_stacks;
+typedef struct s_stacks		t_stacks;
 struct s_stacks
 {
 	t_stack	*a;

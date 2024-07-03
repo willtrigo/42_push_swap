@@ -6,12 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:29:51 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/01 04:48:11 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/03 04:42:38 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_non_standard/ft_non_standard.h"
+#include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/management/ft_stack_destroy.h"
 #include "internal/handle/ft_output.h"
 
@@ -22,28 +23,21 @@ void	ft_output_error(t_stacks *stack)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_output_moviment(int mov)
+void	ft_output_operation(t_operations operation)
 {
-	if (mov == SA)
-		ft_putendl_fd("sa", STDERR_FILENO);
-	if (mov == SB)
-		ft_putendl_fd("sb", STDERR_FILENO);
-	if (mov == SS)
-		ft_putendl_fd("ss", STDERR_FILENO);
-	if (mov == PA)
-		ft_putendl_fd("pa", STDERR_FILENO);
-	if (mov == PB)
-		ft_putendl_fd("pb", STDERR_FILENO);
-	if (mov == RA)
-		ft_putendl_fd("ra", STDERR_FILENO);
-	if (mov == RB)
-		ft_putendl_fd("rb", STDERR_FILENO);
-	if (mov == RR)
-		ft_putendl_fd("rr", STDERR_FILENO);
-	if (mov == RRA)
-		ft_putendl_fd("rra", STDERR_FILENO);
-	if (mov == RRB)
-		ft_putendl_fd("rrb", STDERR_FILENO);
-	if (mov == RRR)
-		ft_putendl_fd("rrr", STDERR_FILENO);
+	static const char	*operations_output[] = {
+	[SA] = "sa",
+	[SB] = "sb",
+	[SS] = "ss",
+	[RA] = "ra",
+	[RB] = "rb",
+	[RR] = "rr",
+	[RRA] = "rra",
+	[RRB] = "rrb",
+	[RRR] = "rrr",
+	[PA] = "pa",
+	[PB] = "pb",
+	};
+
+	ft_putendl_fd((char *)operations_output[operation], STDERR_FILENO);
 }
