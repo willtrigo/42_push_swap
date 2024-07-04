@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/02 11:46:06 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/04 05:25:04 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRCS_PARSE_DIR                  := $(SRCS_INTERNAL_DIR)parse/
 SRCS_HANDLE_DIR                 := $(SRCS_INTERNAL_DIR)handle/
 SRCS_STACK_DIR                  := $(SRCS_HANDLE_DIR)stack/
 SRCS_MANAGEMENT_DIR             := $(SRCS_STACK_DIR)management/
-SRCS_OPERATION_DIR              := $(SRCS_STACK_DIR)operation/
+SRCS_OPERATION_DIR              := $(SRCS_MANAGEMENT_DIR)operation/
 INCS                            := src/ lib/42_libft/include/
 BUILD_DIR                       := build/
 LIBFT_DIR                       := lib/42_libft/
@@ -63,7 +63,8 @@ NAME                            = push_swap
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_STACK_DIR), ft_stack.c)
 SRCS_FILES                      += $(addprefix $(SRCS_MANAGEMENT_DIR), ft_stack_build.c \
-								   ft_stack_destroy.c)
+								   ft_stack_destroy.c \
+								   ft_stack_info.c)
 SRCS_FILES                      += $(addprefix $(SRCS_OPERATION_DIR), ft_push.c \
 								   ft_rotate.c \
 								   ft_swap.c)

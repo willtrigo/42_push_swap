@@ -6,12 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:58:35 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/03 02:12:00 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/04 04:42:16 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
 #include "ft_stdlib.h"
 #include "ft_default.h"
 #include "internal/handle/stack/management/ft_stack_build.h"
@@ -52,18 +51,3 @@ void	ft_stackadd_back(t_stack **stack, t_stack *node_new)
 	}
 }
 
-bool	ft_is_duplicate(t_stack *stack, int nbr)
-{
-	if (!stack)
-		return (false);
-	else
-	{
-		while (stack)
-		{
-			if (stack->nbr == nbr)
-				return (false);
-			stack = stack->next;
-		}
-	}
-	return (true);
-}

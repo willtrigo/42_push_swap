@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/01 04:26:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/04 04:52:54 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "ft_stdlib.h"
 #include "ft_default.h"
 #include "internal/handle/stack/management/ft_stack_build.h"
+#include "internal/handle/stack/management/ft_stack_info.h"
 #include "internal/parse/ft_parse_arguments.h"
 #include "internal/handle/ft_output.h"
 
