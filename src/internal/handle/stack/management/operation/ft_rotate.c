@@ -6,14 +6,15 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:23:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/03 05:01:01 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/04 08:20:10 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "internal/handle/ft_output.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/management/ft_stack_build.h"
-#include "internal/handle/ft_output.h"
+#include "internal/handle/stack/management/ft_stack_build.h"
+#include "internal/handle/stack/management/operation/ft_pop.h"
 
 static void	ft_rotate_stack(t_stack **stack);
 static void	ft_reverse_rotate_stack(t_stack **stack);
@@ -34,28 +35,23 @@ void	ft_rotate(t_stacks *stack, t_operations operation)
 static void	ft_rotate_stack(t_stack **stack)
 {
 	t_stack	*temp_stack;
+	int		temp_nbr;
 
 	temp_stack = ft_stacklast(*stack);
 	if (!temp_stack || !temp_stack->prev)
 		return ;
-	temp_stack->next = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	temp_stack->next->prev = temp_stack;
-	temp_stack->next->next = NULL;
+	temp_nbr = ft_pop(&temp_stack);
+	ft_stackadd_front(stack, ft_stacknew(temp_nbr));
 }
 
 static void	ft_reverse_rotate_stack(t_stack **stack)
 {
 	t_stack	*temp_stack;
+	int		temp_nbr;
 
 	temp_stack = ft_stacklast(*stack);
-	if (!temp_stack || !temp_stack->prev)
+	if (!temp_stack || !temp_stack->next)
 		return ;
-	temp_stack->prev->next = NULL;
-	temp_stack->prev = NULL;
-	(*stack)->prev = temp_stack;
-	temp_stack->next = *stack;
-	*stack = temp_stack;
-	(*stack)->prev = NULL;
+	temp_nbr = ft_pop(&temp_stack);
+	ft_stackadd_back(stack, ft_stacknew(temp_nbr));
 }

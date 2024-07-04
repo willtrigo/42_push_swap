@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.h                                          :+:      :+:    :+:   */
+/*   ft_pop.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 02:22:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/04 08:06:54 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/04 05:38:22 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/04 08:15:37 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_H
-# define FT_PUSH_H
+#ifndef FT_POP_H
+# define FT_POP_H
 
 # include "internal/handle/stack/ft_stack.h"
 
-void	ft_push(t_stacks *stack, t_operations operation);
+int	ft_pop(t_stack **stack);
 
 #endif

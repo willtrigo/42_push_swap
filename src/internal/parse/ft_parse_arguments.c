@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/04 04:52:54 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/04 07:33:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_parse_arguments(int argc, char **argv, t_stacks *stack)
 
 	stack->a = NULL;
 	stack->b = NULL;
+	stack->a_len = DEFAULT;
+	stack->b_len = DEFAULT;
 	if (argc == SINGLE_ARGURMENT)
 		valid_parse = ft_parse_single_argument(argv, stack);
 	else
@@ -100,6 +102,7 @@ static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack, t_stacks *stack)
 {
 	if ((nbr * 1.0) == ft_atof(str_nbr) && add_stack)
 	{
+		stack->a_len++;
 		if (!stack->a)
 			ft_stackadd_back(&stack->a, ft_stacknew(nbr));
 		else

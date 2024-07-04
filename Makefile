@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/04 05:25:04 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/04 09:00:59 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ SRCS_FILES                      += $(addprefix $(SRCS_STACK_DIR), ft_stack.c)
 SRCS_FILES                      += $(addprefix $(SRCS_MANAGEMENT_DIR), ft_stack_build.c \
 								   ft_stack_destroy.c \
 								   ft_stack_info.c)
-SRCS_FILES                      += $(addprefix $(SRCS_OPERATION_DIR), ft_push.c \
+SRCS_FILES                      += $(addprefix $(SRCS_OPERATION_DIR), ft_pop.c \
+								   ft_push.c \
 								   ft_rotate.c \
 								   ft_swap.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_arguments.c)
