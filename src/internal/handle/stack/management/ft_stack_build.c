@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:58:35 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/04 04:42:16 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/04 05:31:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,13 @@ void	ft_stackadd_back(t_stack **stack, t_stack *node_new)
 	}
 }
 
+void	ft_stackadd_front(t_stack **stack, t_stack *node_new)
+{
+	if (!*stack)
+		*stack = node_new;
+	else
+	{
+		node_new->next = *stack;
+		*stack = node_new;
+	}
+}
