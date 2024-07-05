@@ -6,19 +6,19 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:29:51 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/03 04:42:38 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/05 04:33:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_non_standard/ft_non_standard.h"
+#include "internal/handle/ft_output.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/management/ft_stack_destroy.h"
-#include "internal/handle/ft_output.h"
 
-void	ft_output_error(t_stacks *stack)
+void	ft_output_error(void)
 {
-	ft_stacks_destroy(stack);
+	ft_stacks_destroy();
 	ft_putendl_fd("Error", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

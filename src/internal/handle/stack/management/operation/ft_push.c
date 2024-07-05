@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:22:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/04 08:18:51 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/05 05:16:50 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 
 static void	ft_push_stack(t_stack **stack, int nbr);
 
-void	ft_push(t_stacks *stack, t_operations operation)
+void	ft_push(t_operations operation)
 {
+	t_stacks	*stack;
+
+	stack = ft_stack();
 	if (operation == PA && stack->a_len)
 	{
 		ft_push_stack(&stack->b, ft_pop(&stack->a));

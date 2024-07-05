@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:20:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 04:37:51 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/05 05:17:17 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_swap_stack(t_stack **stack);
 
 void	ft_swap(t_operations operation)
 {
-	t_stacks *stack;
+	t_stacks	*stack;
 
 	stack = ft_stack();
 	if (operation == SA || operation == SS)

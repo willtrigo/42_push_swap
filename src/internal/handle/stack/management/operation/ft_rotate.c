@@ -6,21 +6,23 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:23:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/04 08:20:10 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/05 05:17:04 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/ft_output.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/management/ft_stack_build.h"
-#include "internal/handle/stack/management/ft_stack_build.h"
 #include "internal/handle/stack/management/operation/ft_pop.h"
 
 static void	ft_rotate_stack(t_stack **stack);
 static void	ft_reverse_rotate_stack(t_stack **stack);
 
-void	ft_rotate(t_stacks *stack, t_operations operation)
+void	ft_rotate(t_operations operation)
 {
+	t_stacks	*stack;
+
+	stack = ft_stack();
 	if (operation == RA || operation == RR)
 		ft_rotate_stack(&stack->a);
 	if (operation == RB || operation == RR)

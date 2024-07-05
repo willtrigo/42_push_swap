@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/04 07:33:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/05 05:17:28 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,45 @@
 #include "ft_non_standard/ft_non_standard.h"
 #include "ft_stdlib.h"
 #include "ft_default.h"
+#include "internal/handle/ft_output.h"
+#include "internal/parse/ft_parse_arguments.h"
+#include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/management/ft_stack_build.h"
 #include "internal/handle/stack/management/ft_stack_info.h"
-#include "internal/parse/ft_parse_arguments.h"
-#include "internal/handle/ft_output.h"
 
-static int	ft_parse_single_argument(char **argv, t_stacks *stack);
-static int	ft_parse_list_arguments(char **list, t_stacks *stack);
-static void	ft_parse_arguments_with_space(char *arg, t_stacks *stack);
-static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack, \
-				t_stacks *stack);
+static int	ft_parse_single_argument(char **argv);
+static int	ft_parse_list_arguments(char **list);
+static void	ft_parse_arguments_with_space(char *arg);
+static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack);
 
-void	ft_parse_arguments(int argc, char **argv, t_stacks *stack)
+void	ft_parse_arguments(int argc, char **argv)
 {
 	int	valid_parse;
 
-	stack->a = NULL;
-	stack->b = NULL;
-	stack->a_len = DEFAULT;
-	stack->b_len = DEFAULT;
 	if (argc == SINGLE_ARGURMENT)
-		valid_parse = ft_parse_single_argument(argv, stack);
+		valid_parse = ft_parse_single_argument(argv);
 	else
-		valid_parse = ft_parse_list_arguments(argv, stack);
+		valid_parse = ft_parse_list_arguments(argv);
 	if (valid_parse == FAIL)
-		ft_output_error(stack);
+		ft_output_error();
 }
 
-static int	ft_parse_single_argument(char **argv, t_stacks *stack)
+static int	ft_parse_single_argument(char **argv)
 {
 	int		nbr;
 	char	*nbr_endptr;
 
 	nbr = ft_strtoi(*argv, &nbr_endptr);
 	if (!*nbr_endptr)
-		return (ft_parse_nbr(*argv, nbr, false, stack));
+		return (ft_parse_nbr(*argv, nbr, false));
 	else if (*nbr_endptr == ' ')
-		ft_parse_arguments_with_space(*argv, stack);
+		ft_parse_arguments_with_space(*argv);
 	else
 		return (FAIL);
 	return (true);
 }
 
-static int	ft_parse_list_arguments(char **list, t_stacks *stack)
+static int	ft_parse_list_arguments(char **list)
 {
 	int		nbr;
 	int		valid_parse;
@@ -68,9 +64,9 @@ static int	ft_parse_list_arguments(char **list, t_stacks *stack)
 	{
 		nbr = ft_strtoi(*list, &nbr_endptr);
 		if (!*nbr_endptr)
-			valid_parse = ft_parse_nbr(*list, nbr, true, stack);
+			valid_parse = ft_parse_nbr(*list, nbr, true);
 		else if (*nbr_endptr == ' ')
-			ft_parse_arguments_with_space(*list, stack);
+			ft_parse_arguments_with_space(*list);
 		else
 			valid_parse = FAIL;
 		if (valid_parse == FAIL)
@@ -82,7 +78,7 @@ static int	ft_parse_list_arguments(char **list, t_stacks *stack)
 	return (true);
 }
 
-static void	ft_parse_arguments_with_space(char *arg, t_stacks *stack)
+static void	ft_parse_arguments_with_space(char *arg)
 {
 	int		valid_parse;
 	char	**list_arguments;
@@ -90,16 +86,19 @@ static void	ft_parse_arguments_with_space(char *arg, t_stacks *stack)
 
 	list_arguments = ft_split(arg, ' ');
 	list_arguments_temp = list_arguments;
-	valid_parse = ft_parse_list_arguments(list_arguments, stack);
+	valid_parse = ft_parse_list_arguments(list_arguments);
 	while (*list_arguments)
 		free(*list_arguments++);
 	free(list_arguments_temp);
 	if (valid_parse == FAIL)
-		ft_output_error(stack);
+		ft_output_error();
 }
 
-static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack, t_stacks *stack)
+static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack)
 {
+	t_stacks	*stack;
+
+	stack = ft_stack();
 	if ((nbr * 1.0) == ft_atof(str_nbr) && add_stack)
 	{
 		stack->a_len++;

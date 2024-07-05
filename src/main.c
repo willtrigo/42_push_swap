@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 02:21:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/04 09:00:13 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/05 05:17:50 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,26 @@
 
 int	main(int argc, char **argv)
 {
-	t_stacks	stack;
-
-	ft_parse_arguments(--argc, ++argv, &stack);
-	ft_print_stack(&stack, STACK_A);
-	ft_print_stack(&stack, STACK_B);
-	ft_swap(&stack, SA);
-	ft_swap(&stack, SB);
-	ft_swap(&stack, SS);
-	ft_rotate(&stack, RA);
-	ft_rotate(&stack, RB);
-	ft_rotate(&stack, RR);
-	ft_rotate(&stack, RRA);
-	ft_rotate(&stack, RRB);
-	ft_rotate(&stack, RRR);
-	ft_push(&stack, PA);
-	ft_push(&stack, PA);
-	ft_push(&stack, PA);
-	ft_push(&stack, PA);
-	ft_push(&stack, PA);
-	ft_push(&stack, PB);
-	ft_print_stack(&stack, STACK_A);
-	ft_print_stack(&stack, STACK_B);
-	ft_stacks_destroy(&stack);
+	ft_parse_arguments(--argc, ++argv);
+	ft_print_stack(STACK_A);
+	ft_print_stack(STACK_B);
+	ft_swap(SA);
+	ft_swap(SB);
+	ft_swap(SS);
+	ft_rotate(RA);
+	ft_rotate(RB);
+	ft_rotate(RR);
+	ft_rotate(RRA);
+	ft_rotate(RRB);
+	ft_rotate(RRR);
+	ft_push(PA);
+	ft_push(PA);
+	ft_push(PA);
+	ft_push(PA);
+	ft_push(PA);
+	ft_push(PB);
+	ft_print_stack(STACK_A);
+	ft_print_stack(STACK_B);
+	ft_stacks_destroy();
 	exit(EXIT_SUCCESS);
 }
