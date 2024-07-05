@@ -6,14 +6,44 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 04:41:22 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:28:46 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STACK_H
 # define FT_STACK_H
 
-# include <stdlib.h>
+typedef struct s_pivots			t_pivots;
+struct s_pivots
+{
+	int	bigger;
+	int	smaller;
+};
+
+typedef struct s_stacks_info	t_stacks_info;
+struct s_stacks_info
+{
+	int	a_len;
+	int	b_len;
+	int	max_nbr;
+	int	min_nbr;
+};
+
+typedef struct s_stack			t_stack;
+struct s_stack
+{
+	int		nbr;
+	t_stack	*next;
+	t_stack	*prev;
+};
+
+typedef struct s_stacks			t_stacks;
+struct s_stacks
+{
+	t_stack			*a;
+	t_stack			*b;
+	t_stacks_info	info;
+};
 
 typedef enum e_operations		t_operations;
 enum e_operations
@@ -36,23 +66,6 @@ enum e_stack_targets
 {
 	STACK_A,
 	STACK_B,
-};
-
-typedef struct s_stack			t_stack;
-struct s_stack
-{
-	int		nbr;
-	t_stack	*next;
-	t_stack	*prev;
-};
-
-typedef struct s_stacks			t_stacks;
-struct s_stacks
-{
-	t_stack	*a;
-	t_stack	*b;
-	size_t	a_len;
-	size_t	b_len;
 };
 
 t_stacks	*ft_stack(void);

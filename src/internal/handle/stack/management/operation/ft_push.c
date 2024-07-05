@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:22:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 05:16:50 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:29:53 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	ft_push(t_operations operation)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (operation == PA && stack->a_len)
+	if (operation == PA && stack->info.a_len)
 	{
 		ft_push_stack(&stack->b, ft_pop(&stack->a));
-		stack->b_len++;
-		stack->a_len--;
+		stack->info.b_len++;
+		stack->info.a_len--;
 	}
-	if (operation == PB && stack->b_len)
+	if (operation == PB && stack->info.b_len)
 	{
 		ft_push_stack(&stack->a, ft_pop(&stack->b));
-		stack->a_len++;
-		stack->b_len--;
+		stack->info.a_len++;
+		stack->info.b_len--;
 	}
 	ft_output_operation(operation);
 }
