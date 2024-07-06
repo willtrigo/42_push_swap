@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/05 13:30:57 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/06 04:51:53 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ SRCS_FILES                      += $(addprefix $(SRCS_OPERATION_DIR), ft_pop.c \
 								   ft_rotate.c \
 								   ft_swap.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_arguments.c)
-SRCS_FILES                      += $(addprefix $(SRCS_SORT_DIR), ft_sort.c)
+SRCS_FILES                      += $(addprefix $(SRCS_SORT_DIR), ft_sort.c \
+								   ft_sort_three.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)

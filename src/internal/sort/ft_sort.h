@@ -6,12 +6,17 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 13:25:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/06 03:31:57 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SORT_H
 # define FT_SORT_H
+
+enum e_sort_size
+{
+	SORT_THREE = 3,
+};
 
 void	ft_sort(void);
 
