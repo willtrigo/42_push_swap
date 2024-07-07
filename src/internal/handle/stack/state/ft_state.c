@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 04:41:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 06:38:33 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 07:12:23 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ bool	ft_is_duplicate(t_stack *stack, int nbr)
 	return (true);
 }
 
-
 bool	ft_is_sorted(t_stack *stack)
 {
 	t_stack	*temp_stack;
@@ -41,6 +40,22 @@ bool	ft_is_sorted(t_stack *stack)
 	{
 		is_sorted = ft_peek(temp_stack);
 		if (is_sorted > ft_peek(temp_stack->next))
+			return (false);
+		temp_stack = temp_stack->next;
+	}
+	return (true);
+}
+
+bool	ft_is_reverse_sorted(t_stack *stack)
+{
+	t_stack	*temp_stack;
+	int		is_sorted;
+
+	temp_stack = stack;
+	while (temp_stack->next)
+	{
+		is_sorted = ft_peek(temp_stack);
+		if (is_sorted < ft_peek(temp_stack->next))
 			return (false);
 		temp_stack = temp_stack->next;
 	}
