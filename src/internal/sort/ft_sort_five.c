@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_destroy.c                                 :+:      :+:    :+:   */
+/*   ft_sort_five.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 03:55:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 04:34:16 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/07 06:41:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "internal/handle/stack/management/ft_stack_destroy.h"
 #include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/operation/ft_swap.h"
+#include "internal/handle/stack/operation/ft_rotate.h"
 
-static void	ft_stack_destroy(t_stack *stack);
-
-void	ft_stacks_destroy(void)
+void	ft_sort_five(int target_stack)
 {
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (stack->a)
-		ft_stack_destroy(stack->a);
-	if (stack->b)
-		ft_stack_destroy(stack->b);
-}
-
-static void	ft_stack_destroy(t_stack *stack)
-{
-	t_stack	*temp_stack;
-
-	while (stack)
+	if (target_stack == STACK_A)
 	{
-		temp_stack = stack;
-		stack = stack->next;
-		free(temp_stack);
+		if (stack->a->nbr == stack->info.max_nbr)
+		{
+			if (stack->a->next->nbr == stack->info.min_nbr)
+				ft_rotate(RA);
+			else
+			{
+				ft_rotate(RA);
+				ft_swap(SA);
+			}
+		}
+		else
+			ft_swap(SA);
 	}
 }

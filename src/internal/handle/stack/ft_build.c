@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_build.c                                   :+:      :+:    :+:   */
+/*   ft_build.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:58:35 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/04 05:31:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 06:38:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_stdlib.h"
 #include "ft_default.h"
-#include "internal/handle/stack/management/ft_stack_build.h"
+#include "internal/handle/stack/ft_stack.h"
 
 t_stack	*ft_stacknew(int nbr)
 {

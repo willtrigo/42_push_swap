@@ -6,14 +6,16 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/06 04:01:17 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 06:40:37 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/ft_sort_three.h"
+#include "internal/sort/ft_sort_five.h"
 #include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/management/ft_stack_info.h"
+#include "internal/handle/stack/state/ft_peek.h"
+#include "internal/handle/stack/state/ft_state.h"
 
 #include <stdio.h>
 void	ft_sort(void)
@@ -29,6 +31,8 @@ void	ft_sort(void)
 		ft_print_stack(STACK_B);
 		if (stack->info.a_len <= SORT_THREE)
 			ft_sort_three(STACK_A);
+		else if (stack->info.a_len <- SORT_FIVE)
+			ft_sort_five(STACK_A);
 		ft_print_stack(STACK_A);
 		ft_print_stack(STACK_B);
 		if (ft_is_sorted(stack->a))

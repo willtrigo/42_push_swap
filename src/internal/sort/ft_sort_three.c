@@ -6,13 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 05:07:43 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 06:41:29 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/management/operation/ft_swap.h"
-#include "internal/handle/stack/management/operation/ft_rotate.h"
+#include "internal/handle/stack/operation/ft_swap.h"
+#include "internal/handle/stack/operation/ft_rotate.h"
 
 void	ft_sort_three(int target_stack)
 {

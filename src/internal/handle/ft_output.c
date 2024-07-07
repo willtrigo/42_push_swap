@@ -6,15 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:29:51 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 04:33:40 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 06:39:38 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_non_standard/ft_non_standard.h"
 #include "internal/handle/ft_output.h"
-#include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/management/ft_stack_destroy.h"
 
 void	ft_output_error(void)
 {

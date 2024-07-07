@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_info.c                                    :+:      :+:    :+:   */
+/*   ft_peek.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 04:41:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 04:26:56 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/07 05:48:31 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/07 06:37:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal/handle/stack/management/ft_stack_info.h"
-#include "internal/handle/stack/ft_stack.h"
-#include <stdbool.h>
-
-bool	ft_is_duplicate(t_stack *stack, int nbr)
-{
-	if (!stack)
-		return (false);
-	else
-	{
-		while (stack)
-		{
-			if (stack->nbr == nbr)
-				return (false);
-			stack = stack->next;
-		}
-	}
-	return (true);
-}
+#include "internal/handle/stack/state/ft_peek.h"
 
 int	ft_peek(t_stack *stack)
 {
@@ -69,20 +51,4 @@ int	ft_peek_smaller(t_stack *stack)
 		temp_stack = temp_stack->next;
 	}
 	return (smaller);
-}
-
-bool	ft_is_sorted(t_stack *stack)
-{
-	t_stack	*temp_stack;
-	int		is_sorted;
-
-	temp_stack = stack;
-	while (temp_stack->next)
-	{
-		is_sorted = ft_peek(temp_stack);
-		if (is_sorted > ft_peek(temp_stack->next))
-			return (false);
-		temp_stack = temp_stack->next;
-	}
-	return (true);
 }

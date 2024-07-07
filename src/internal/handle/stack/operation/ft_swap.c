@@ -6,13 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:20:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 04:54:38 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 06:37:36 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/ft_output.h"
-#include "internal/handle/stack/management/ft_stack_build.h"
-#include "internal/handle/stack/management/operation/ft_pop.h"
+#include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/operation/ft_pop.h"
 
 static void	ft_swap_stack(t_stack **stack);
 

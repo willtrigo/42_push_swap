@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_destroy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 02:21:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 06:30:33 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/01 03:55:30 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/07 06:39:02 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "internal/parse/ft_parse_arguments.h"
-#include "internal/sort/ft_sort.h"
 #include "internal/handle/stack/ft_stack.h"
 
+static void	ft_stack_destroy(t_stack *stack);
 
-int	main(int argc, char **argv)
+void	ft_stacks_destroy(void)
 {
-	ft_parse_arguments(--argc, ++argv);
-	ft_sort();
-	ft_stacks_destroy();
-	exit(EXIT_SUCCESS);
+	t_stacks	*stack;
+
+	stack = ft_stack();
+	if (stack->a)
+		ft_stack_destroy(stack->a);
+	if (stack->b)
+		ft_stack_destroy(stack->b);
+}
+
+static void	ft_stack_destroy(t_stack *stack)
+{
+	t_stack	*temp_stack;
+
+	while (stack)
+	{
+		temp_stack = stack;
+		stack = stack->next;
+		free(temp_stack);
+	}
 }

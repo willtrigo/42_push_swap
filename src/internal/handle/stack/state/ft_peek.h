@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_destroy.h                                 :+:      :+:    :+:   */
+/*   ft_peek.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 03:55:48 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 04:33:03 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/07 05:48:40 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/07 05:50:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STACK_DESTROY_H
-# define FT_STACK_DESTROY_H
+#ifndef FT_PEEK_H
+# define FT_PEEK_H
 
-void	ft_stacks_destroy(void);
+# include "internal/handle/stack/ft_stack.h"
+
+int	ft_peek(t_stack *stack);
+int	ft_peek_bigger(t_stack *stack);
+int	ft_peek_smaller(t_stack *stack);
 
 #endif

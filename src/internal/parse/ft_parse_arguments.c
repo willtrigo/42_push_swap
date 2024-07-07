@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 12:30:06 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 06:39:53 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 #include "internal/handle/ft_output.h"
 #include "internal/parse/ft_parse_arguments.h"
 #include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/management/ft_stack_build.h"
-#include "internal/handle/stack/management/ft_stack_info.h"
+#include "internal/handle/stack/state/ft_state.h"
 
 static int	ft_parse_single_argument(char **argv);
 static int	ft_parse_list_arguments(char **list);
