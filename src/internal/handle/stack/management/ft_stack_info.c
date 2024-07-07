@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 04:41:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/06 02:43:00 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 04:26:56 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ bool	ft_is_sorted(t_stack *stack)
 	int		is_sorted;
 
 	temp_stack = stack;
-	is_sorted = ft_peek(temp_stack);
 	while (temp_stack->next)
 	{
+		is_sorted = ft_peek(temp_stack);
 		if (is_sorted > ft_peek(temp_stack->next))
 			return (false);
 		temp_stack = temp_stack->next;

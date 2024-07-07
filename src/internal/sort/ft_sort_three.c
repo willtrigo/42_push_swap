@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_sort_three.c                                    :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/06 04:18:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 04:16:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ void	ft_sort_three(int target_stack)
 		if (stack->a->nbr == stack->info.max_nbr)
 		{
 			if (stack->a->next->nbr == stack->info.min_nbr)
-				ft_swap(SA);
+				ft_rotate(RA);
 			else
 			{
-				// ft_swap(SA);
-				// ft_rotate(RRA);
 				ft_rotate(RA);
+				ft_swap(SA);
 			}
 		}
+		else
+			ft_swap(SA);
 	}
 }

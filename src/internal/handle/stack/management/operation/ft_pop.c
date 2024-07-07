@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 05:38:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 04:40:11 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 05:03:28 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_pop(t_stack **stack)
 		*stack = temp_stack;
 		(*stack)->prev = NULL;
 	}
-	else if ((*stack)->prev &&!(*stack)->next)
+	else if ((*stack)->prev && !(*stack)->next)
 	{
 		(*stack)->prev->next = NULL;
 		free(*stack);

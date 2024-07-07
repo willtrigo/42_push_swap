@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:23:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/06 04:19:01 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/07 05:02:11 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	ft_rotate_stack(t_stack **stack)
 	temp_stack = ft_stacklast(*stack);
 	if (!temp_stack || !temp_stack->prev)
 		return ;
-	temp_nbr = ft_pop(&temp_stack);
-	ft_stackadd_back(stack, ft_stacknew(temp_nbr));
+	temp_nbr = ft_pop(stack);
+	ft_stackadd_back(&temp_stack, ft_stacknew(temp_nbr));
 }
 
 static void	ft_reverse_rotate_stack(t_stack **stack)
