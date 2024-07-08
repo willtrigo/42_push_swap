@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 06:39:53 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/08 05:27:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	ft_parse_arguments(int argc, char **argv)
 {
 	int	valid_parse;
 
-	if (argc == SINGLE_ARGURMENT)
+	if (argc == DEFAULT)
+		exit(EXIT_SUCCESS);
+	else if (argc == SINGLE_ARGURMENT)
 		valid_parse = ft_parse_single_argument(argv);
 	else
 		valid_parse = ft_parse_list_arguments(argv);
