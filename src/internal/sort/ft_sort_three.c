@@ -6,11 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/08 05:30:35 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:40:09 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/state/ft_peek.h"
 #include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
@@ -23,13 +24,13 @@ void	ft_sort_three(void)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (!ft_sort_target_top(stack))
+	if (!ft_is_sorted(stack->a) && !ft_sort_target_top(stack))
 		ft_sort_target_mid(stack);
 }
 
 static bool	ft_sort_target_top(t_stacks *stack)
 {
-	if (stack->a->nbr == stack->info.max_nbr)
+	if (stack->a->nbr == ft_peek_bigger(stack->a))
 	{
 		if (ft_is_sorted(stack->a->next))
 			ft_rotate(RA);
@@ -45,9 +46,9 @@ static bool	ft_sort_target_top(t_stacks *stack)
 
 static void	ft_sort_target_mid(t_stacks *stack)
 {
-	if (stack->a->next->nbr == stack->info.max_nbr)
+	if (stack->a->next->nbr == ft_peek_bigger(stack->a))
 	{
-		if (ft_stacklast(stack->a)->nbr == stack->info.min_nbr)
+		if (ft_stacklast(stack->a)->nbr == ft_peek_smaller(stack->a))
 			ft_rotate(RRA);
 		else
 		{
