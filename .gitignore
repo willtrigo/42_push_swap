@@ -5,6 +5,6 @@
 tovog/
 .vscode
 push_swap
-valgrind-out.txt
 *commands.json
 .cache/
+*out.txt

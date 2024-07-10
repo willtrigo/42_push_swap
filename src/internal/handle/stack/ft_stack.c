@@ -6,11 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 04:41:14 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/10 07:02:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_non_standard/ft_non_standard.h"
+#include <unistd.h>
 #include "internal/handle/stack/ft_stack.h"
 
 void	ft_print_stack(int target_stack)
@@ -23,11 +24,11 @@ void	ft_print_stack(int target_stack)
 		temp_stack = ft_stack()->b;
 	while (temp_stack)
 	{
-		ft_putnbr_fd(temp_stack->nbr, STDIN_FILENO);
+		ft_putnbr_fd(temp_stack->nbr, STDOUT_FILENO);
 		if (target_stack == STACK_A)
-			ft_putendl_fd(" -> stack a", STDIN_FILENO);
+			ft_putendl_fd(" -> stack a", STDOUT_FILENO);
 		else
-			ft_putendl_fd(" -> stack b", STDIN_FILENO);
+			ft_putendl_fd(" -> stack b", STDOUT_FILENO);
 		temp_stack = temp_stack->next;
 	}
 }
