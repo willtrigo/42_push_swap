@@ -6,13 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 04:41:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 07:12:23 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/11 12:33:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "internal/handle/stack/state/ft_state.h"
-#include "internal/handle/stack/state/ft_peek.h"
 
 bool	ft_is_duplicate(t_stack *stack, int nbr)
 {
@@ -38,8 +37,8 @@ bool	ft_is_sorted(t_stack *stack)
 	temp_stack = stack;
 	while (temp_stack->next)
 	{
-		is_sorted = ft_peek(temp_stack);
-		if (is_sorted > ft_peek(temp_stack->next))
+		is_sorted = temp_stack->index;
+		if (is_sorted > temp_stack->next->index)
 			return (false);
 		temp_stack = temp_stack->next;
 	}
@@ -54,8 +53,8 @@ bool	ft_is_reverse_sorted(t_stack *stack)
 	temp_stack = stack;
 	while (temp_stack->next)
 	{
-		is_sorted = ft_peek(temp_stack);
-		if (is_sorted < ft_peek(temp_stack->next))
+		is_sorted = temp_stack->index;
+		if (is_sorted < temp_stack->next->index)
 			return (false);
 		temp_stack = temp_stack->next;
 	}
