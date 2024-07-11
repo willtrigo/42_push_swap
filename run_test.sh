@@ -16,6 +16,9 @@ test_cases=(
 	"3 2 1"
 	"3 1 2"
 	"88 23 53 3 2 1"
+	"100 88 23 53 3 2 1"
+	"101 88 23 53 3 2 1"
+	"104 88 23 53 3 2 1"
 )
 
 declare -i i=0
@@ -26,6 +29,6 @@ for test_case in "${test_cases[@]}"; do
 	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --log-fd=9 9>>valgrind-out.txt ./push_swap ${test_case} > /dev/null 2>&1
 	checker=$(./push_swap $test_case | ./checker_linux $test_case)
 	operations=$(./push_swap $test_case | wc -l)
-	echo -n "TEST ${i}: command(./push_swap $test_case) / checker: ${checker} / number of operations: ${operations}" >> test-out.txt
+	echo "\\tTEST ${i}: command(./push_swap $test_case) / checker: ${checker} / number of operations: ${operations}\\n" >> test-out.txt
 	echo -e "\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n" | tee -a test-out.txt valgrind-out.txt
 done
