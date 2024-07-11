@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/08 05:36:26 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/11 00:55:07 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,8 @@ SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 
 DEPS                            += $(OBJS:.o=.d)
+
+NAME_TEST                       := run_test.sh
 
 #******************************************************************************#
 #                               OUTPUTS MESSAGES                               #
@@ -174,6 +176,10 @@ define reset_count
 	$(eval OBJS_COUNT=$(words $(SRCS_FILES)))
 endef
 
+define test
+	./$(NAME_TEST)
+endef
+
 #******************************************************************************#
 #                                   TARGETS                                    #
 #******************************************************************************#
@@ -201,7 +207,10 @@ re: fclean all
 debug:
 	$(call debug)
 
-.PHONY: all clean fclean re debug
+test: fclean all
+	$(call test)
+
+.PHONY: all clean fclean re debug test
 .DEFAULT_GOAL := all
 .SILENT:
 
