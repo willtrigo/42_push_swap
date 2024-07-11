@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:29:51 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/10 05:54:18 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/11 01:14:04 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	ft_output_operation(t_operations operation)
 	[PB] = "pb",
 	};
 
-	ft_putendl_fd((char *)operations_output[operation], STDIN_FILENO);
+	ft_putendl_fd((char *)operations_output[operation], STDOUT_FILENO);
 }
