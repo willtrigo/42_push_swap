@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/11 01:21:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/11 06:27:03 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_sort(void)
 	t_stacks	*stack;
 
 	stack = ft_stack();
+	ft_stack_normalize(stack->a, stack->info.a_size);
 	if (!ft_is_sorted(stack->a))
 	{
 		stack->info.max_nbr = ft_peek_bigger(stack->a);
@@ -31,9 +32,9 @@ void	ft_sort(void)
 		ft_print_stack(STACK_A);
 		ft_print_stack(STACK_B);
 		ft_putendl_fd("\nOperations:", STDERR_FILENO);
-		if (stack->info.a_len <= SORT_THREE)
+		if (stack->info.a_size <= SORT_THREE)
 			ft_sort_three();
-		else if (stack->info.a_len > SORT_THREE)
+		else if (stack->info.a_size > SORT_THREE)
 			ft_sort_five();
 	}
 	ft_putendl_fd("\nEnd stack A", STDERR_FILENO);

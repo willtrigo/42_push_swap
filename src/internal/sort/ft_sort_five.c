@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/10 11:47:47 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/11 05:45:38 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_sort_five(void)
 	// int			last_max_nbr;
 
 	stack = ft_stack();
-	// if (stack->info.a_len == SORT_THREE)
+	// if (stack->info.a_size == SORT_THREE)
 	// 	ft_sort_three();
 	// last_max_nbr = ft_peek_bigger(stack->a);
 	if (!ft_sort_target_max_nbr(stack))
@@ -67,7 +67,7 @@ static bool	ft_sort_target_max_nbr(t_stacks *stack)
 	{
 		if (ft_is_sorted(stack->a->next))
 			ft_rotate(RA);
-		else if (SORT_FOUR == stack->info.a_len)
+		else if (SORT_FOUR == stack->info.a_size)
 		{
 			ft_push(PA);
 			ft_push_nbr_back(stack);
@@ -82,7 +82,7 @@ static bool	ft_sort_target_max_nbr(t_stacks *stack)
 		}
 		return (true);
 	}
-	// else if (ft_stacklast(stack->a)->nbr == stack->info.max_nbr && SORT_FOUR == stack->info.a_len)
+	// else if (ft_stacklast(stack->a)->nbr == stack->info.max_nbr && SORT_FOUR == stack->info.a_size)
 	// {
 	// 	ft_rotate(RRA);
 	// 	ft_push(PA);
@@ -93,7 +93,7 @@ static bool	ft_sort_target_max_nbr(t_stacks *stack)
 	{
 		ft_rotate(RRA);
 		ft_push(PA);
-		if (SORT_FOUR == stack->info.a_len)
+		if (SORT_FOUR == stack->info.a_size)
 		{
 			penult_max_nbr = ft_peek_bigger(stack->a);
 			if (ft_stacklast(stack->a)->nbr == penult_max_nbr)
@@ -130,7 +130,7 @@ static bool	ft_sort_target_max_nbr(t_stacks *stack)
 static void	ft_push_nbr_back(t_stacks *stack)
 {
 	ft_sort_three();
-	while (stack->info.b_len)
+	while (stack->info.b_size)
 	{
 		ft_push(PB);
 		ft_rotate(RA);

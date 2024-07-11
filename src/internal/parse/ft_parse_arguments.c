@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/08 05:27:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/11 05:44:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack)
 	stack = ft_stack();
 	if ((nbr * 1.0) == ft_atof(str_nbr) && add_stack)
 	{
-		stack->info.a_len++;
+		stack->info.a_size++;
 		if (!stack->a)
 			ft_stackadd_back(&stack->a, ft_stacknew(nbr));
 		else

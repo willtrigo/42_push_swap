@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 06:27:37 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/11 06:11:19 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ struct s_pivots
 typedef struct s_stacks_info	t_stacks_info;
 struct s_stacks_info
 {
-	int	a_len;
-	int	b_len;
+	int	a_size;
+	int	b_size;
 	int	max_nbr;
 	int	min_nbr;
 };
@@ -33,6 +33,7 @@ typedef struct s_stack			t_stack;
 struct s_stack
 {
 	int		nbr;
+	int		index;
 	t_stack	*next;
 	t_stack	*prev;
 };
@@ -69,6 +70,7 @@ enum e_stack_targets
 };
 
 t_stacks	*ft_stack(void);
+void		ft_stack_normalize(t_stack *stack, int stack_size);
 void		ft_stacks_destroy(void);
 t_stack		*ft_stacklast(t_stack *stack);
 void		ft_stackadd_back(t_stack **stack, t_stack *node_new);
