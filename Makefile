@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/11 05:31:34 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/11 12:15:37 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,8 +96,8 @@ EXE_MESSAGE                     = $(RESET)[100%%] $(GREEN)Built target push_swap
 COMP_MESSAGE                    = Building C object
 TEST_INIT_MESSAGE               = Running tests
 TEST_FINISHED_MESSAGE           = Completed tests
-SUCESS_MESSAGE                  = $(GREEN)	Success: $(RESET)
-FAIL_MESSAGE                    = $(RED)	Fail: $(RESET)
+SUCESS_MESSAGE                  = $(GREEN)Success: $(RESET)
+FAIL_MESSAGE                    = $(RED)Fail: $(RESET)
 
 #******************************************************************************#
 #                               COMPILATION                                    #
@@ -185,10 +185,13 @@ define test
 	./$(NAME_TEST) >/dev/null 2>&1 || true 
 	printf "$(CYAN)$(TEST_FINISHED_MESSAGE)$(RESET)\n"
 	printf "$(SUCESS_MESSAGE)"
-	printf "$(shell cat test-out.txt| grep "OK" | wc -l) / $(shell cat test-out.txt | grep "command" | wc -l)\n"
+	$(eval FAIL=$(shell cat test-out.txt| grep "KO" | wc -l))
+	$(eval TOTAL_TEST=$(shell cat test-out.txt | grep "command" | wc -l))
+	$(eval MATH=$(shell expr "$(TOTAL_TEST)" \- "$(FAIL)"))
+	printf "$(MATH) / $(shell cat test-out.txt | grep "command" | wc -l)\n"
 	printf "$(FAIL_MESSAGE)"
-	printf "$(shell cat test-out.txt| grep "KO" | wc -l) / $(shell cat test-out.txt | grep "command" | wc -l)\n"
-	printf "$(RED)		$(shell cat test-out.txt | grep "KO")\n"
+	printf "$(FAIL) / $(TOTAL_TEST)\n"
+	printf "$(RED)$(shell cat test-out.txt | grep "KO")"
 endef
 
 #******************************************************************************#
