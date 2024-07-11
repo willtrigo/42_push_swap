@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/11 00:55:07 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/11 05:31:34 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,10 @@ CLEAN_MESSAGE                   := Push swap objects deleted
 FCLEAN_MESSAGE                  := Push swap deleted
 EXE_MESSAGE                     = $(RESET)[100%%] $(GREEN)Built target push_swap
 COMP_MESSAGE                    = Building C object
+TEST_INIT_MESSAGE               = Running tests
+TEST_FINISHED_MESSAGE           = Completed tests
+SUCESS_MESSAGE                  = $(GREEN)	Success: $(RESET)
+FAIL_MESSAGE                    = $(RED)	Fail: $(RESET)
 
 #******************************************************************************#
 #                               COMPILATION                                    #
@@ -177,7 +181,14 @@ define reset_count
 endef
 
 define test
-	./$(NAME_TEST)
+	printf "$(YELLOW)$(TEST_INIT_MESSAGE)$(RESET)\n"
+	./$(NAME_TEST) >/dev/null 2>&1 || true 
+	printf "$(CYAN)$(TEST_FINISHED_MESSAGE)$(RESET)\n"
+	printf "$(SUCESS_MESSAGE)"
+	printf "$(shell cat test-out.txt| grep "OK" | wc -l) / $(shell cat test-out.txt | grep "command" | wc -l)\n"
+	printf "$(FAIL_MESSAGE)"
+	printf "$(shell cat test-out.txt| grep "KO" | wc -l) / $(shell cat test-out.txt | grep "command" | wc -l)\n"
+	printf "$(RED)		$(shell cat test-out.txt | grep "KO")\n"
 endef
 
 #******************************************************************************#
@@ -207,7 +218,7 @@ re: fclean all
 debug:
 	$(call debug)
 
-test: fclean all
+test: debug
 	$(call test)
 
 .PHONY: all clean fclean re debug test
