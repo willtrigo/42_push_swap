@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:58:35 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/11 06:23:35 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/11 09:47:31 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*ft_stacknew(int nbr)
 	if (!node_new)
 		return (NULL);
 	node_new->nbr = nbr;
-	node_new->index = INIT;
+	node_new->index = nbr;
 	return (node_new);
 }
 
