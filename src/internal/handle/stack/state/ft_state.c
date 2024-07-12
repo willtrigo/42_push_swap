@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 04:41:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/11 12:33:15 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/12 05:24:22 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	ft_is_duplicate(t_stack *stack, int nbr)
 	return (true);
 }
 
-bool	ft_is_sorted(t_stack *stack)
+bool	ft_is_sorted(t_stack *stack, int type)
 {
 	t_stack	*temp_stack;
 	int		is_sorted;
@@ -37,25 +37,15 @@ bool	ft_is_sorted(t_stack *stack)
 	temp_stack = stack;
 	while (temp_stack->next)
 	{
-		is_sorted = temp_stack->index;
-		if (is_sorted > temp_stack->next->index)
-			return (false);
-		temp_stack = temp_stack->next;
-	}
-	return (true);
-}
-
-bool	ft_is_reverse_sorted(t_stack *stack)
-{
-	t_stack	*temp_stack;
-	int		is_sorted;
-
-	temp_stack = stack;
-	while (temp_stack->next)
-	{
-		is_sorted = temp_stack->index;
-		if (is_sorted < temp_stack->next->index)
-			return (false);
+		is_sorted = temp_stack->nbr;
+		if (type != REVERSE)
+		{
+			if (is_sorted > temp_stack->next->index)
+				return (false);
+		}
+		else
+			if (is_sorted < temp_stack->next->index)
+				return (false);
 		temp_stack = temp_stack->next;
 	}
 	return (true);

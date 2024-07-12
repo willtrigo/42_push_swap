@@ -6,11 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/11 05:45:38 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/12 05:25:11 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+#include "ft_default.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/ft_sort_three.h"
 #include "internal/handle/stack/ft_stack.h"
@@ -65,7 +66,7 @@ static bool	ft_sort_target_max_nbr(t_stacks *stack)
 	penult_max_nbr = ft_peek_bigger(stack->a->next);
 	if (stack->a->nbr == stack->info.max_nbr)
 	{
-		if (ft_is_sorted(stack->a->next))
+		if (ft_is_sorted(stack->a->next, DEFAULT))
 			ft_rotate(RA);
 		else if (SORT_FOUR == stack->info.a_size)
 		{

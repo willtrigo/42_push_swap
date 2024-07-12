@@ -6,10 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/09 17:40:09 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/12 05:25:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_default.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_peek.h"
 #include "internal/handle/stack/state/ft_state.h"
@@ -24,7 +25,7 @@ void	ft_sort_three(void)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (!ft_is_sorted(stack->a) && !ft_sort_target_top(stack))
+	if (!ft_is_sorted(stack->a, DEFAULT) && !ft_sort_target_top(stack))
 		ft_sort_target_mid(stack);
 }
 
@@ -32,7 +33,7 @@ static bool	ft_sort_target_top(t_stacks *stack)
 {
 	if (stack->a->nbr == ft_peek_bigger(stack->a))
 	{
-		if (ft_is_sorted(stack->a->next))
+		if (ft_is_sorted(stack->a->next, DEFAULT))
 			ft_rotate(RA);
 		else
 		{
