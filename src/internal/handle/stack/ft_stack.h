@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/11 06:11:19 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/12 04:47:44 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ enum e_stack_targets
 };
 
 t_stacks	*ft_stack(void);
-void		ft_stack_normalize(t_stack *stack, int stack_size);
 void		ft_stacks_destroy(void);
 t_stack		*ft_stacklast(t_stack *stack);
 void		ft_stackadd_back(t_stack **stack, t_stack *node_new);

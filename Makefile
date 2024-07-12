@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/11 12:15:37 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/12 05:26:41 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ NAME                            = push_swap
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_STACK_DIR), ft_build.c \
 								   ft_destroy.c \
+								   ft_normalize.c \
 								   ft_stack.c)
 SRCS_FILES                      += $(addprefix $(SRCS_STATE_DIR), ft_peek.c \
 								   ft_state.c)
