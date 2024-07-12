@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:23:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/07 06:37:12 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/12 10:40:41 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,23 @@
 static void	ft_rotate_stack(t_stack **stack);
 static void	ft_reverse_rotate_stack(t_stack **stack);
 
-void	ft_rotate(t_operations operation)
+void	ft_rotate(t_operations operation, int times)
 {
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (operation == RA || operation == RR)
-		ft_rotate_stack(&stack->a);
-	if (operation == RB || operation == RR)
-		ft_rotate_stack(&stack->b);
-	if (operation == RRA || operation == RRR)
-		ft_reverse_rotate_stack(&stack->a);
-	if (operation == RRB || operation == RRR)
-		ft_reverse_rotate_stack(&stack->b);
-	ft_output_operation(operation);
+	while (times--)
+	{
+		if (operation == RA || operation == RR)
+			ft_rotate_stack(&stack->a);
+		if (operation == RB || operation == RR)
+			ft_rotate_stack(&stack->b);
+		if (operation == RRA || operation == RRR)
+			ft_reverse_rotate_stack(&stack->a);
+		if (operation == RRB || operation == RRR)
+			ft_reverse_rotate_stack(&stack->b);
+		ft_output_operation(operation);
+	}
 }
 
 static void	ft_rotate_stack(t_stack **stack)

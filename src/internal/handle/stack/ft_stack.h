@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/12 04:47:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:09:55 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct s_pivots			t_pivots;
 struct s_pivots
 {
 	int	bigger;
+	int	mid;
 	int	smaller;
 };
 
@@ -67,6 +68,12 @@ enum e_stack_targets
 {
 	STACK_A,
 	STACK_B,
+};
+
+enum e_times
+{
+	ONE_TIME = 1,
+	TWO_TIMES,
 };
 
 t_stacks	*ft_stack(void);
