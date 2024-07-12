@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/12 05:26:41 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/12 12:09:07 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,8 +74,9 @@ SRCS_FILES                      += $(addprefix $(SRCS_OPERATION_DIR), ft_pop.c \
 								   ft_swap.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_arguments.c)
 SRCS_FILES                      += $(addprefix $(SRCS_SORT_DIR), ft_sort.c \
-								   ft_sort_three.c \
-								   ft_sort_five.c)
+								   ft_sort_all.c \
+								   ft_sort_four.c \
+								   ft_sort_three.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
@@ -185,11 +186,15 @@ define test
 	printf "$(YELLOW)$(TEST_INIT_MESSAGE)$(RESET)\n"
 	./$(NAME_TEST) >/dev/null 2>&1 || true 
 	printf "$(CYAN)$(TEST_FINISHED_MESSAGE)$(RESET)\n"
+endef
+
+define test_output
 	printf "$(SUCESS_MESSAGE)"
 	$(eval FAIL=$(shell cat test-out.txt| grep "KO" | wc -l))
 	$(eval TOTAL_TEST=$(shell cat test-out.txt | grep "command" | wc -l))
 	$(eval MATH=$(shell expr "$(TOTAL_TEST)" \- "$(FAIL)"))
 	printf "$(MATH) / $(shell cat test-out.txt | grep "command" | wc -l)\n"
+	printf "$(GREEN)$(shell cat test-out.txt | grep -E 'OK|er:  /')"
 	printf "$(FAIL_MESSAGE)"
 	printf "$(FAIL) / $(TOTAL_TEST)\n"
 	printf "$(RED)$(shell cat test-out.txt | grep "KO")"
@@ -222,10 +227,15 @@ re: fclean all
 debug:
 	$(call debug)
 
-test: debug
+test: debug test_run | test_output
+
+test_run:
 	$(call test)
 
-.PHONY: all clean fclean re debug test
+test_output:
+	$(call test_output)
+
+.PHONY: all clean fclean re debug test test_run test_output
 .DEFAULT_GOAL := all
 .SILENT:
 

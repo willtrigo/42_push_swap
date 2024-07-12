@@ -1,9 +1,9 @@
 #!/bin/bash
 
 rm -rf test-out.txt
->> test-out.txt
+> test-out.txt
 rm -rf valgrind-out.txt
->> valgrind-out.txt
+> valgrind-out.txt
 
 test_cases=(
 	""
@@ -15,10 +15,16 @@ test_cases=(
 	"2 3 1"
 	"3 2 1"
 	"3 1 2"
-	"88 23 53 3 2 1"
-	"100 88 23 53 3 2 1"
-	"101 88 23 53 3 2 1"
-	"104 88 23 53 3 2 1"
+	"5 7 8 9"
+	"9 1 2 6"
+	"9 2 1 6"
+	"9 1 6 2"
+	"9 2 6 1"
+	"9 6 1 2"
+	"9 6 2 1"
+	"2 1 6 9"
+	"2 1 9 6"
+	"9 1 6 23 2"
 )
 
 declare -i i=0
