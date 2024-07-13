@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/13 07:25:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/13 09:03:36 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ static void	ft_sort_target_mid(t_stacks *stack)
 		ft_sort_target_mid_bigger_nbr(stack);
 	else
 	{
-		if (stack->a->nbr == (ft_peek_smaller(stack->a) + STACK_NODE))
+		if (stack->a->nbr == (ft_peek_smaller(stack->a) + STACK_NODE) && stack->a->next->nbr == ft_peek_smaller(stack->a) && ft_is_sorted(stack->a->next->next, DEFAULT))
+			ft_swap(SA);
+		else if (stack->a->nbr == (ft_peek_smaller(stack->a) + STACK_NODE))
 		{
 			ft_push(PB, TWO_TIMES);
 			if (ft_is_sorted(stack->a, DEFAULT))
