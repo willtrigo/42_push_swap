@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/12 12:09:07 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/13 04:12:47 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -195,9 +195,13 @@ define test_output
 	$(eval MATH=$(shell expr "$(TOTAL_TEST)" \- "$(FAIL)"))
 	printf "$(MATH) / $(shell cat test-out.txt | grep "command" | wc -l)\n"
 	printf "$(GREEN)$(shell cat test-out.txt | grep -E 'OK|er:  /')"
-	printf "$(FAIL_MESSAGE)"
-	printf "$(FAIL) / $(TOTAL_TEST)\n"
-	printf "$(RED)$(shell cat test-out.txt | grep "KO")"
+	if [ "$(FAIL)" -gt 0 ]; then \
+		printf "$(FAIL_MESSAGE)"; \
+		printf "$(FAIL) / $(TOTAL_TEST)\n"; \
+		printf "$(RED)$(shell cat test-out.txt | grep "KO")"; \
+	else \
+		printf "All tests passed!\n"; \
+	fi
 endef
 
 #******************************************************************************#
