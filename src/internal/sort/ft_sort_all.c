@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/12 11:11:34 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/13 07:31:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ void	ft_sort_all(void)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (stack->info.a_size <= SORT_FIVE && !ft_sort_target_max_nbr(stack))
-		 return ;
+	if (!ft_is_ready_to_sorted_reverse())
+		if (stack->info.a_size <= SORT_FIVE && !ft_sort_target_max_nbr(stack))
+			return ;
 }
 
 static bool	ft_sort_target_max_nbr(t_stacks *stack)
