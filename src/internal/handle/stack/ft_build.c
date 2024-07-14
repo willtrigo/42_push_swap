@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:58:35 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/11 09:47:31 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/14 09:01:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_stackadd_front(t_stack **stack, t_stack *node_new)
 		*stack = node_new;
 	else
 	{
+		(*stack)->prev = node_new;
 		node_new->next = *stack;
 		*stack = node_new;
 	}

@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_state.h                                         :+:      :+:    :+:   */
+/*   ft_sort_three_reverse.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 04:41:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/14 13:24:54 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/14 01:09:06 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/14 01:10:14 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STATE_H
-# define FT_STATE_H
+#ifndef FT_SORT_THREE_REVERSE_H
+# define FT_SORT_THREE_REVERSE_H
 
-# include <stdbool.h>
-# include "internal/handle/stack/ft_stack.h"
-
-enum e_sorted
-{
-	REVERSE = 1,
-};
-
-bool	ft_is_duplicate(t_stack *stack, int nbr);
-bool	ft_is_sorted(t_stack *stack, int type, int times);
+void	ft_sort_three_reverse(void);
 
 #endif

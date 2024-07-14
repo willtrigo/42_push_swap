@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/13 07:30:47 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/14 19:58:08 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 #include "internal/handle/stack/operation/ft_push.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
 
+#include "internal/handle/stack/operation/ft_push.h"
+#include "internal/handle/stack/operation/ft_swap.h"
+#include "internal/handle/stack/operation/ft_rotate.h"
 #include "ft_non_standard/ft_non_standard.h"
 void	ft_sort(void)
 {
@@ -29,7 +32,7 @@ void	ft_sort(void)
 
 	stack = ft_stack();
 	ft_stack_normalize();
-	if (!ft_is_sorted(stack->a, DEFAULT))
+	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 	{
 		stack->info.max_nbr = ft_peek_bigger(stack->a);
 		stack->info.min_nbr = ft_peek_smaller(stack->a);
@@ -47,7 +50,7 @@ void	ft_sort(void)
 	ft_putendl_fd("\nEnd stack A", STDERR_FILENO);
 	ft_print_stack(STACK_A);
 	ft_print_stack(STACK_B);
-	if (ft_is_sorted(stack->a, DEFAULT))
+	if (ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 		ft_putendl_fd("\nsorted.", STDERR_FILENO);
 	else
 		ft_putendl_fd("\nnot sorted.", STDERR_FILENO);
@@ -55,7 +58,10 @@ void	ft_sort(void)
 
 bool	ft_is_ready_to_sorted_reverse(void)
 {
-	if (ft_is_sorted(ft_stack()->a, REVERSE))
+	t_stacks	*stack;
+
+	stack = ft_stack();
+	if (ft_is_sorted(stack->a, REVERSE, stack->info.a_size))
 	{
 		while (ft_stack()->info.a_size - STACK_SIZE_FOUR)
 		{

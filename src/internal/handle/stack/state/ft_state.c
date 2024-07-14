@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 04:41:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/13 03:38:14 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/14 13:25:11 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,25 @@ bool	ft_is_duplicate(t_stack *stack, int nbr)
 	return (true);
 }
 
-bool	ft_is_sorted(t_stack *stack, int type)
+bool	ft_is_sorted(t_stack *stack, int type, int times)
 {
 	t_stack	*temp_stack;
 	int		is_sorted;
 
 	temp_stack = stack;
-	while (temp_stack->next)
+	while (temp_stack->next && times--)
 	{
 		is_sorted = temp_stack->nbr;
 		if (type != REVERSE)
 		{
-			if (is_sorted != (temp_stack->next->index - STACK_NODE))
+			if (!((is_sorted + STACK_NODE) == temp_stack->next->nbr))
 				return (false);
 		}
 		else
-			if (is_sorted != (temp_stack->next->index + STACK_NODE))
+		{
+			if (!((is_sorted - STACK_NODE) == temp_stack->next->nbr))
 				return (false);
+		}
 		temp_stack = temp_stack->next;
 	}
 	return (true);

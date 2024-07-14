@@ -6,11 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:23:55 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/12 05:16:57 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/14 12:16:49 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <limits.h>
 #include "ft_default.h"
 #include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/ft_stack.h"
@@ -74,7 +75,7 @@ static void	ft_normalize_others_nbrs(int temp_bigger_nbr, int stack_size)
 	t_stack	*temp_stack_bigger;
 	int		temp_check_bigger_nbr;
 
-	temp_check_bigger_nbr = DEFAULT;
+	temp_check_bigger_nbr = INT_MIN;
 	temp_stack_bigger = NULL;
 	while (--stack_size)
 	{
@@ -91,6 +92,6 @@ static void	ft_normalize_others_nbrs(int temp_bigger_nbr, int stack_size)
 		}
 		temp_stack_bigger->index = stack_size - 1;
 		temp_bigger_nbr = temp_stack_bigger->nbr;
-		temp_check_bigger_nbr = DEFAULT;
+		temp_check_bigger_nbr = INT_MIN;
 	}
 }

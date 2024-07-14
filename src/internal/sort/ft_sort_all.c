@@ -6,14 +6,16 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/13 07:31:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/14 13:27:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+#include <stdlib.h>
 #include "ft_default.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/ft_sort_three.h"
+#include "internal/sort/ft_sort_three_reverse.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/operation/ft_push.h"
 #include "internal/handle/stack/operation/ft_swap.h"
@@ -30,8 +32,15 @@ void	ft_sort_all(void)
 
 	stack = ft_stack();
 	if (!ft_is_ready_to_sorted_reverse())
-		if (stack->info.a_size <= SORT_FIVE && !ft_sort_target_max_nbr(stack))
+	{
+		if (stack->info.a_size >= SORT_FIVE)
+		{
+			ft_push(PB, 3);
+			ft_sort_three_reverse();
+		}
+		else if (stack->info.a_size <= SORT_FIVE && !ft_sort_target_max_nbr(stack))
 			return ;
+	}
 }
 
 static bool	ft_sort_target_max_nbr(t_stacks *stack)
@@ -41,7 +50,7 @@ static bool	ft_sort_target_max_nbr(t_stacks *stack)
 	penult_max_nbr = stack->info.max_nbr - 1;
 	if (stack->a->nbr == stack->info.max_nbr)
 	{
-		if (ft_is_sorted(stack->a->next, DEFAULT))
+		if (ft_is_sorted(stack->a->next, DEFAULT, stack->info.a_size))
 			ft_rotate(RA, ONE_TIME);
 		else if (SORT_FOUR == stack->info.a_size)
 		{
