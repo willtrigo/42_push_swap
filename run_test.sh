@@ -5,29 +5,13 @@ rm -rf test-out.txt
 rm -rf valgrind-out.txt
 > valgrind-out.txt
 
-test_cases=(
-	""
-	"1 2"
-	"2 1"
-	"1 2 3"
-	"1 3 2"
-	"2 1 3"
-	"2 3 1"
-	"3 2 1"
-	"3 1 2"
-	"1 2 6 9"
-	"9 1 2 6"
-	"9 2 1 6"
-	"9 1 6 2"
-	"9 6 1 2"
-	"9 2 6 1"
-	"9 6 2 1"
-	"2 1 6 9"
-	"1 2 9 6"
-	"9 1 6 23 2"
-	"10 9 8 7 6"
-	"10 9 8 7 6 4 2"
-)
+test_cases=()
+while IFS= read -r line; do
+    test_cases+=("$line")
+done < comb_three.txt
+while IFS= read -r line; do
+    test_cases+=("$line")
+done < comb_four.txt
 
 declare -i i=0
 
