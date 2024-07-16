@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/16 17:33:52 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:23:57 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@
 #include "internal/handle/stack/state/ft_peek.h"
 #include "internal/handle/stack/state/ft_state.h"
 
-// static bool	ft_sort_target_max_nbr(t_stacks *stack);
-// static void	ft_push_nbr_back(t_stacks *stack);
-
 void	ft_sort_all(void)
 {
 	t_stacks	*stack;
@@ -41,109 +38,63 @@ void	ft_sort_all(void)
 	count_stack_push = stack->info.a_size - SORT_FOUR;
 	if (!ft_is_ready_to_sorted_reverse())
 	{
-		if (ft_is_sorted(stack->a->next, DEFAULT, stack->info.a_size))
+		if (ft_is_sorted(stack->a->next, DEFAULT, stack->info.a_size - STACK_NODE))
 			ft_rotate(RA, ONE_TIME);
 		else if (ft_is_sorted(stack->a, DEFAULT, stack->info.a_size - STACK_NODE))
 			ft_rotate(RRA, ONE_TIME);
-		else if (count_stack_push <= SORT_FOUR)
+
+
+
+
+		pivot.first = ft_peek(stack->a);
+		pivot.next = stack->a->next->nbr;
+		pivot.last = ft_stacklast(stack->a)->nbr;
+		if (count_stack_push <= SORT_FOUR && !ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 		{
 			if (pivot.first - STACK_NODE == pivot.next && pivot.first != pivot.bigger)
 				ft_swap(SA);
-			if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-			{
-				pivot.first = ft_peek(stack->a);
-				pivot.next = stack->a->next->nbr;
-				pivot.last = ft_stacklast(stack->a)->nbr;
-				if (pivot.first == pivot.smaller || pivot.first == pivot.bigger)
-				{
-					if (ft_is_sorted(stack->a->next, DEFAULT, stack->info.a_size - STACK_NODE))
-						ft_rotate(RA, ONE_TIME);
-					else
-						ft_push(PB, ONE_TIME);
-				}
-				else if (stack->info.a_size != SORT_FOUR && (pivot.last == pivot.smaller || pivot.next == pivot.smaller))
-				{
-					if (pivot.last == pivot.smaller)
-						ft_rotate(RRA, ONE_TIME);
-					else if (pivot.next == pivot.smaller)
-						ft_swap(SA);
-					ft_push(PB, ONE_TIME);
-				}
-				else if (stack->info.a_size != SORT_FOUR && (pivot.last == pivot.bigger || pivot.next == pivot.bigger))
-				{
-					if (pivot.last == pivot.bigger)
-						ft_rotate(RRA, ONE_TIME);
-					else if (pivot.next == pivot.bigger)
-						ft_swap(SA);
-					ft_push(PB, ONE_TIME);
-				}
-			}
-			if (stack->info.a_size <= SORT_FOUR)
-				ft_sort_four(DEFAULT);
-			if (stack->info.b_size)
-				ft_push(PA, stack->info.b_size);
-			if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-				ft_rotate(RA, ONE_TIME);
+
+
+
+
+			pivot.first = ft_peek(stack->a);
+			pivot.next = stack->a->next->nbr;
+			pivot.last = ft_stacklast(stack->a)->nbr;
 			// if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-			// 	ft_sort_all();
+			// {
+			if (pivot.first == pivot.smaller || pivot.first == pivot.bigger)
+			{
+				if (ft_is_sorted(stack->a->next, DEFAULT, stack->info.a_size - STACK_NODE))
+					ft_rotate(RA, ONE_TIME);
+				else
+					ft_push(PB, ONE_TIME);
+			}
+			// }
+			else if (pivot.last == pivot.smaller || pivot.next == pivot.smaller)
+			{
+				if (pivot.last == pivot.smaller)
+					ft_rotate(RRA, ONE_TIME);
+				else if (pivot.next == pivot.smaller)
+					ft_swap(SA);
+				ft_push(PB, ONE_TIME);
+			}
+			else if (pivot.last == pivot.bigger || pivot.next == pivot.bigger)
+			{
+				if (pivot.last == pivot.bigger)
+					ft_rotate(RRA, ONE_TIME);
+				else if (pivot.next == pivot.bigger)
+					ft_swap(SA);
+				ft_push(PB, ONE_TIME);
+			}
+		// 	}
+			// if (stack->info.a_size <= SORT_FOUR)
+			// 	ft_sort_four(DEFAULT);
+		// 	if (stack->info.b_size)
+		// 		ft_push(PA, stack->info.b_size);
+		// 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+		// 		ft_rotate(RA, ONE_TIME);
+		// 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+		// 		ft_sort_all();
 		}
-		// else if (stack->info.a_size <= SORT_FIVE && !ft_sort_target_max_nbr(stack))
-		// 	return ;
 	}
 }
-//
-// static bool	ft_sort_target_max_nbr(t_stacks *stack)
-// {
-// 	int	penult_max_nbr;
-//
-// 	penult_max_nbr = stack->info.max_nbr - 1;
-// 	if (stack->a->nbr == stack->info.max_nbr)
-// 	{
-// 		if (ft_is_sorted(stack->a->next, DEFAULT, stack->info.a_size))
-// 			ft_rotate(RA, ONE_TIME);
-// 		else if (SORT_FOUR == stack->info.a_size)
-// 		{
-// 			ft_rotate(RA, ONE_TIME);
-// 			ft_swap(SA);
-// 			// ft_push_nbr_back(stack);
-// 		}
-// 		else if (stack->a->next->nbr == penult_max_nbr || ft_stacklast(stack->a)->nbr == penult_max_nbr)
-// 		{
-// 			ft_push(PA, ONE_TIME);
-// 			if (ft_stacklast(stack->a)->nbr == penult_max_nbr)
-// 				ft_rotate(RRA, ONE_TIME);
-// 			ft_push(PA, ONE_TIME);
-// 			ft_push_nbr_back(stack);
-// 		}
-// 		return (true);
-// 	}
-// 	else if (ft_stacklast(stack->a)->nbr == stack->info.max_nbr)
-// 	{
-// 		ft_rotate(RRA, ONE_TIME);
-// 		ft_push(PA, ONE_TIME);
-// 		if (SORT_FOUR == stack->info.a_size)
-// 		{
-// 			penult_max_nbr = ft_peek_bigger(stack->a);
-// 			if (ft_stacklast(stack->a)->nbr == penult_max_nbr)
-// 			{
-// 				ft_rotate(RRA, ONE_TIME);
-// 				ft_push(PA, ONE_TIME);
-// 			}
-// 			else if (stack->a->nbr == penult_max_nbr)
-// 				ft_push(PA, ONE_TIME);
-// 		}
-// 		ft_push_nbr_back(stack);
-// 		return (true);
-// 	}
-// 	return (false);
-// }
-//
-// static void	ft_push_nbr_back(t_stacks *stack)
-// {
-// 	ft_sort_three(DEFAULT);
-// 	while (stack->info.b_size)
-// 	{
-// 		ft_push(PB, ONE_TIME);
-// 		ft_rotate(RA, ONE_TIME);
-// 	}
-// }
