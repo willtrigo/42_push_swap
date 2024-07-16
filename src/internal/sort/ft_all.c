@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/16 19:23:57 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:46:11 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ void	ft_sort_all(void)
 				ft_push(PB, ONE_TIME);
 			}
 		// 	}
-			// if (stack->info.a_size <= SORT_FOUR)
-			// 	ft_sort_four(DEFAULT);
-		// 	if (stack->info.b_size)
-		// 		ft_push(PA, stack->info.b_size);
-		// 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-		// 		ft_rotate(RA, ONE_TIME);
-		// 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-		// 		ft_sort_all();
+			if (stack->info.a_size <= SORT_FOUR)
+				ft_sort_four(DEFAULT);
+			if (stack->info.b_size)
+				ft_push(PA, stack->info.b_size);
+			if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+				ft_rotate(RA, ONE_TIME);
+			// if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+			// 	ft_sort_all();
 		}
 	}
 }
