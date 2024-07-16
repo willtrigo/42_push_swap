@@ -5,13 +5,16 @@ rm -rf test-out.txt
 rm -rf valgrind-out.txt
 > valgrind-out.txt
 
-test_cases=()
+test_cases=("")
+# while IFS= read -r line; do
+#     test_cases+=("$line")
+# done < comb_three.txt
+# while IFS= read -r line; do
+#     test_cases+=("$line")
+# done < comb_four.txt
 while IFS= read -r line; do
     test_cases+=("$line")
-done < comb_three.txt
-while IFS= read -r line; do
-    test_cases+=("$line")
-done < comb_four.txt
+done < comb_five.txt
 
 declare -i i=0
 

@@ -6,15 +6,15 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/14 19:58:08 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/16 10:00:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_default.h"
 #include "internal/sort/ft_sort.h"
-#include "internal/sort/ft_sort_three.h"
-#include "internal/sort/ft_sort_four.h"
-#include "internal/sort/ft_sort_all.h"
+#include "internal/sort/ft_three.h"
+#include "internal/sort/four/ft_four.h"
+#include "internal/sort/ft_all.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/state/ft_peek.h"
@@ -40,11 +40,14 @@ void	ft_sort(void)
 		ft_print_stack(STACK_A);
 		ft_print_stack(STACK_B);
 		ft_putendl_fd("\nOperations:", STDERR_FILENO);
+		// ft_push(PB, 4);
+		// ft_sort_three(REVERSE);
+		// ft_sort_four(REVERSE);
 		if (stack->info.a_size <= SORT_THREE)
-			ft_sort_three();
+			ft_sort_three(DEFAULT);
 		else if (stack->info.a_size == SORT_FOUR)
-			ft_sort_four();
-		else if (stack->info.a_size > SORT_THREE)
+			ft_sort_four(DEFAULT);
+		else if (stack->info.a_size > SORT_FOUR)
 			ft_sort_all();
 	}
 	ft_putendl_fd("\nEnd stack A", STDERR_FILENO);
@@ -68,7 +71,7 @@ bool	ft_is_ready_to_sorted_reverse(void)
 			ft_rotate(RRA, ONE_TIME);
 			ft_push(PB, ONE_TIME);
 		}
-		ft_sort_four();
+		ft_sort_four(DEFAULT);
 		ft_push(PA, ft_stack()->info.b_size);
 		return (true);
 	}
