@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_four.h                                     :+:      :+:    :+:   */
+/*   ft_four.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:25 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/12 12:11:01 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/16 08:22:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SORT_FOUR_H
-# define FT_SORT_FOUR_H
+#ifndef FT_FOUR_H
+# define FT_FOUR_H
 
-void	ft_sort_four(void);
+void	ft_sort_four(int type);
 
 #endif

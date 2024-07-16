@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/14 19:57:04 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/16 11:48:39 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS_INTERNAL_DIR               := src/internal/
 SRCS_PARSE_DIR                  := $(SRCS_INTERNAL_DIR)parse/
 SRCS_HANDLE_DIR                 := $(SRCS_INTERNAL_DIR)handle/
 SRCS_SORT_DIR                   := $(SRCS_INTERNAL_DIR)sort/
+SRCS_FOUR_DIR                   := $(SRCS_SORT_DIR)four/
 SRCS_STACK_DIR                  := $(SRCS_HANDLE_DIR)stack/
 SRCS_OPERATION_DIR              := $(SRCS_STACK_DIR)operation/
 SRCS_STATE_DIR                  := $(SRCS_STACK_DIR)state/
@@ -74,10 +75,11 @@ SRCS_FILES                      += $(addprefix $(SRCS_OPERATION_DIR), ft_pop.c \
 								   ft_swap.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_arguments.c)
 SRCS_FILES                      += $(addprefix $(SRCS_SORT_DIR), ft_sort.c \
-								   ft_sort_all.c \
-								   ft_sort_four.c \
-								   ft_sort_three.c \
-								   ft_sort_three_reverse.c)
+								   ft_all.c \
+								   ft_three.c)
+SRCS_FILES                      += $(addprefix $(SRCS_FOUR_DIR), ft_four.c \
+								   ft_targets.c \
+								   ft_targets_reverse.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
