@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/12 12:09:55 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/16 03:49:30 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ struct s_pivots
 	int	bigger;
 	int	mid;
 	int	smaller;
+	int	first;
+	int	last;
+	int	next;
 };
 
 typedef struct s_stacks_info	t_stacks_info;

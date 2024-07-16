@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_three_reverse.h                            :+:      :+:    :+:   */
+/*   ft_three.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 01:09:06 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/14 01:10:14 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/05 11:52:44 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/16 07:49:39 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SORT_THREE_REVERSE_H
-# define FT_SORT_THREE_REVERSE_H
+#ifndef FT_THREE_H
+# define FT_THREE_H
 
-void	ft_sort_three_reverse(void);
+void	ft_sort_three(int type);
 
 #endif
