@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/16 11:48:39 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/16 11:56:33 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -163,7 +163,7 @@ endef
 
 define clean
 	$(RM) $(BUILD_DIR)
-	$(MAKE) fclean -C $(LIBFT_DIR)
+	# $(MAKE) fclean -C $(LIBFT_DIR)
 	$(SLEEP)
 	printf "$(RED)$(CLEAN_MESSAGE)$(RESET)\n"
 endef

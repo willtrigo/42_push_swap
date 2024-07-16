@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 04:11:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/16 08:23:05 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:29:29 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_target_penult(t_pivots pivot)
 		ft_swap(SA);
 		ft_rotate(RA, TWO_TIMES);
 	}
-	if (pivot.next == (pivot.smaller + STACK_NODE))
+	else if (pivot.next == (pivot.smaller + STACK_NODE))
 	{
 		ft_swap(SA);
 		if (pivot.last == pivot.smaller)

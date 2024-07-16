@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/16 11:26:43 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/16 17:33:52 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,45 @@ void	ft_sort_all(void)
 			ft_rotate(RRA, ONE_TIME);
 		else if (count_stack_push <= SORT_FOUR)
 		{
-			while (stack->info.a_size > SORT_FOUR)
+			if (pivot.first - STACK_NODE == pivot.next && pivot.first != pivot.bigger)
+				ft_swap(SA);
+			if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 			{
-				if (pivot.first == pivot.bigger || pivot.first == pivot.smaller \
-				|| pivot.next == pivot.bigger || pivot.next == pivot.smaller \
-				|| pivot.last == pivot.bigger || pivot.last == pivot.smaller)
+				pivot.first = ft_peek(stack->a);
+				pivot.next = stack->a->next->nbr;
+				pivot.last = ft_stacklast(stack->a)->nbr;
+				if (pivot.first == pivot.smaller || pivot.first == pivot.bigger)
 				{
-					if (pivot.next == pivot.bigger || pivot.next == pivot.smaller)
-						ft_swap(SA);
-					else if (pivot.last == pivot.bigger || pivot.last == pivot.smaller)
-						ft_rotate(RRA, ONE_TIME);
-					if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+					if (ft_is_sorted(stack->a->next, DEFAULT, stack->info.a_size - STACK_NODE))
+						ft_rotate(RA, ONE_TIME);
+					else
 						ft_push(PB, ONE_TIME);
 				}
+				else if (stack->info.a_size != SORT_FOUR && (pivot.last == pivot.smaller || pivot.next == pivot.smaller))
+				{
+					if (pivot.last == pivot.smaller)
+						ft_rotate(RRA, ONE_TIME);
+					else if (pivot.next == pivot.smaller)
+						ft_swap(SA);
+					ft_push(PB, ONE_TIME);
+				}
+				else if (stack->info.a_size != SORT_FOUR && (pivot.last == pivot.bigger || pivot.next == pivot.bigger))
+				{
+					if (pivot.last == pivot.bigger)
+						ft_rotate(RRA, ONE_TIME);
+					else if (pivot.next == pivot.bigger)
+						ft_swap(SA);
+					ft_push(PB, ONE_TIME);
+				}
 			}
-			ft_sort_four(DEFAULT);
+			if (stack->info.a_size <= SORT_FOUR)
+				ft_sort_four(DEFAULT);
 			if (stack->info.b_size)
 				ft_push(PA, stack->info.b_size);
 			if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 				ft_rotate(RA, ONE_TIME);
+			// if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+			// 	ft_sort_all();
 		}
 		// else if (stack->info.a_size <= SORT_FIVE && !ft_sort_target_max_nbr(stack))
 		// 	return ;
