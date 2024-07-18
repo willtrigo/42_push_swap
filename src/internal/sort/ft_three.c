@@ -6,13 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/16 07:52:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/18 02:24:28 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_default.h"
 #include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/state/ft_peek.h"
 #include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
@@ -27,21 +26,9 @@ void	ft_sort_three(int type)
 
 	stack = ft_stack();
 	if (type == DEFAULT)
-	{
-		pivot.first = ft_peek(stack->a);
-		pivot.bigger = ft_peek_bigger(stack->a);
-		pivot.smaller = ft_peek_smaller(stack->a);
-		pivot.last = ft_stacklast(stack->a)->nbr;
-		pivot.next = stack->a->next->nbr;
-	}
+		ft_set_pivots(stack->a, &pivot);
 	else
-	{
-		pivot.first = ft_peek(stack->b);
-		pivot.bigger = ft_peek_bigger(stack->b);
-		pivot.smaller = ft_peek_smaller(stack->b);
-		pivot.last = ft_stacklast(stack->b)->nbr;
-		pivot.next = stack->b->next->nbr;
-	}
+		ft_set_pivots(stack->b, &pivot);
 	if (type == DEFAULT)
 		ft_run_sort_three(stack, pivot);
 	else

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/16 10:00:33 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/18 09:31:39 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@
 #include "internal/sort/ft_all.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/ft_normalize.h"
-#include "internal/handle/stack/state/ft_peek.h"
 #include "internal/handle/stack/state/ft_state.h"
-#include "internal/handle/stack/operation/ft_push.h"
-#include "internal/handle/stack/operation/ft_rotate.h"
-
 #include "internal/handle/stack/operation/ft_push.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
+
 #include "ft_non_standard/ft_non_standard.h"
 void	ft_sort(void)
 {
@@ -34,15 +31,10 @@ void	ft_sort(void)
 	ft_stack_normalize();
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 	{
-		stack->info.max_nbr = ft_peek_bigger(stack->a);
-		stack->info.min_nbr = ft_peek_smaller(stack->a);
 		ft_putendl_fd("Init stack A\n", STDERR_FILENO);
 		ft_print_stack(STACK_A);
 		ft_print_stack(STACK_B);
 		ft_putendl_fd("\nOperations:", STDERR_FILENO);
-		// ft_push(PB, 4);
-		// ft_sort_three(REVERSE);
-		// ft_sort_four(REVERSE);
 		if (stack->info.a_size <= SORT_THREE)
 			ft_sort_three(DEFAULT);
 		else if (stack->info.a_size == SORT_FOUR)
@@ -64,14 +56,16 @@ bool	ft_is_ready_to_sorted_reverse(void)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (ft_is_sorted(stack->a, REVERSE, stack->info.a_size))
+	if (ft_is_sorted(stack->a, REVERSE, stack->info.a_size) && !ft_stack()->info.b_size)
 	{
 		while (ft_stack()->info.a_size - STACK_SIZE_FOUR)
 		{
 			ft_rotate(RRA, ONE_TIME);
 			ft_push(PB, ONE_TIME);
 		}
-		ft_sort_four(DEFAULT);
+		ft_swap(SA);
+		ft_rotate(RA, TWO_TIMES);
+		ft_swap(SA);
 		ft_push(PA, ft_stack()->info.b_size);
 		return (true);
 	}
