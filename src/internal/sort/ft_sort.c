@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/18 09:31:39 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:44:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	ft_is_ready_to_sorted_reverse(void)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (ft_is_sorted(stack->a, REVERSE, stack->info.a_size) && !ft_stack()->info.b_size)
+	if (ft_is_sorted(stack->a, REVERSE, stack->info.a_size))
 	{
 		while (ft_stack()->info.a_size - STACK_SIZE_FOUR)
 		{

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/18 10:56:38 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:53:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include "internal/handle/stack/operation/ft_rotate.h"
 #include "internal/handle/stack/operation/ft_push.h"
 
-static void	ft_run_sort_four(t_stacks *stack, t_pivots pivot);
-static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots pivot);
+static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot);
+static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots *pivot);
 static void	ft_one_operation_to_finish(t_stack *stack, int info, int type);
 
 void	ft_sort_four(int type)
@@ -36,50 +36,50 @@ void	ft_sort_four(int type)
 	else
 		ft_set_pivots(stack->b, &pivot);
 	if (type == DEFAULT)
-		ft_run_sort_four(stack, pivot);
+		ft_run_sort_four(stack, &pivot);
 	else
-		ft_run_sort_four_reverse(stack, pivot);
+		ft_run_sort_four_reverse(stack, &pivot);
 }
 
-static void	ft_run_sort_four(t_stacks *stack, t_pivots pivot)
+static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 {
 	if (!ft_is_ready_to_sorted_reverse())
 	{
 		ft_one_operation_to_finish(stack->a, stack->info.a_size, DEFAULT);
 		if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 		{
-			if (pivot.first == pivot.smaller)
+			if (pivot->first == pivot->smaller)
 				ft_push(PB, ONE_TIME);
-			else if (pivot.first == pivot.smaller + STACK_NODE)
+			else if (pivot->first == pivot->smaller + STACK_NODE)
 				ft_target_small_mid(pivot);
-			else if (pivot.first == pivot.bigger - STACK_NODE)
+			else if (pivot->first == pivot->bigger - STACK_NODE)
 				ft_target_penult(pivot);
-			else if (pivot.first == pivot.bigger)
+			else if (pivot->first == pivot->bigger)
 				ft_target_bigger(pivot);
 			if (stack->info.a_size <= SORT_THREE)
 				ft_sort_three(DEFAULT);
-			if (stack->info.b_size)
-				ft_push(PA, stack->info.b_size);
+			if (stack->info.b_size && stack->info.a_size == STACK_SIZE_THREE)
+				ft_push(PA, ONE_TIME);
 		}
 	}
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 		ft_swap(SA);
 }
 
-static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots pivot)
+static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots *pivot)
 {
 	if (!ft_is_ready_to_sorted_reverse())
 	{
 		ft_one_operation_to_finish(stack->a, stack->info.a_size, DEFAULT);
 		if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 		{
-			if (pivot.first == pivot.smaller)
+			if (pivot->first == pivot->smaller)
 				ft_push(PB, ONE_TIME);
-			else if (pivot.first == pivot.smaller + STACK_NODE)
+			else if (pivot->first == pivot->smaller + STACK_NODE)
 				ft_target_small_mid(pivot);
-			else if (pivot.first == pivot.bigger - STACK_NODE)
+			else if (pivot->first == pivot->bigger - STACK_NODE)
 				ft_target_penult(pivot);
-			else if (pivot.first == pivot.bigger)
+			else if (pivot->first == pivot->bigger)
 				ft_target_bigger(pivot);
 			if (stack->info.a_size <= SORT_THREE)
 				ft_sort_three(DEFAULT);

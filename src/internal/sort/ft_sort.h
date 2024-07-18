@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/18 08:13:48 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:36:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ enum e_sort_size
 enum e_stack_size
 {
 	STACK_SIZE_TWO = 2,
-	STACK_SIZE_FOUR = 4,
+	STACK_SIZE_THREE,
+	STACK_SIZE_FOUR,
 };
 
 enum e_stack_node
