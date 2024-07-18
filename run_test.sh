@@ -9,12 +9,9 @@ test_cases=("")
 # while IFS= read -r line; do
 #     test_cases+=("$line")
 # done < comb_three.txt
-# while IFS= read -r line; do
-#     test_cases+=("$line")
-# done < comb_four.txt
-# while IFS= read -r line; do
-#     test_cases+=("$line")
-# done < comb_five_pt1.txt
+while IFS= read -r line; do
+    test_cases+=("$line")
+done < comb_four.txt
 while IFS= read -r line; do
     test_cases+=("$line")
 done < comb_five.txt

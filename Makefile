@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/16 11:56:33 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/18 12:13:28 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,7 @@ FAIL_MESSAGE                    = $(RED)Fail: $(RESET)
 CC                             := cc
 CFLAGS                         = -Wall -Wextra -Werror -Ofast
 CPPFLAGS                       := $(addprefix -I,$(INCS)) -MMD -MP
-DFLAGS                         := -g3
+DFLAGS                         := -Wall -Wextra -Werror -g3
 LFLAGS                         := -march=native
 LDFLAGS                        := $(addprefix -L,$(dir $(LIBS)))
 LDLIBS                         := -lft -ldl
@@ -123,7 +123,7 @@ COMPILE_EXE                    = $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o
 #******************************************************************************#
 
 ifdef WITH_DEBUG
-	CFLAGS                     += $(DFLAGS)
+	CFLAGS                     = $(DFLAGS)
 endif
 
 #******************************************************************************#
@@ -163,7 +163,7 @@ endef
 
 define clean
 	$(RM) $(BUILD_DIR)
-	# $(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 	$(SLEEP)
 	printf "$(RED)$(CLEAN_MESSAGE)$(RESET)\n"
 endef
