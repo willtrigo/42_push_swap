@@ -1,5 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
+/* ************************************************************************** */ /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_stack.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -12,6 +11,7 @@
 
 #include "ft_non_standard/ft_non_standard.h"
 #include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/state/ft_peek.h"
 
 void	ft_print_stack(int target_stack)
 {
@@ -37,4 +37,13 @@ t_stacks	*ft_stack(void)
 	static t_stacks	stack;
 
 	return (&stack);
+}
+
+void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
+{
+	pivot->first = ft_peek(stack);
+	pivot->bigger = ft_peek_bigger(stack);
+	pivot->smaller = ft_peek_smaller(stack);
+	pivot->last = ft_stacklast(stack)->nbr;
+	pivot->next = stack->next->nbr;
 }
