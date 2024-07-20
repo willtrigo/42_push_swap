@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_all.h                                           :+:      :+:    :+:   */
+/*   ft_targets.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/07 05:32:29 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/20 04:52:36 by dande-je         ###   ########.fr       */
+/*   Created: 2024/07/20 01:19:31 by dande-je          #+#    #+#             */
+/*   Updated: 2024/07/20 05:00:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ALL_H
-# define FT_ALL_H
+#ifndef FT_TARGETS_H
+# define FT_TARGETS_H
 
-# include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/ft_stack.h"
 
-void	ft_sort_all(void);
-void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot);
+void	ft_target_is_smaller(t_pivots *pivot);
+void	ft_target_is_first_equal_next(t_stacks *stack, t_pivots *pivot);
+void	ft_target_is_last_equal_first(t_stacks *stack, t_pivots *pivot);
+void	ft_target_default(t_stacks *stack, t_pivots *pivot);
 
 #endif
