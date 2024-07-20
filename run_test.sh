@@ -6,9 +6,9 @@ rm -rf valgrind-out.txt
 > valgrind-out.txt
 
 test_cases=("")
-# while IFS= read -r line; do
-#     test_cases+=("$line")
-# done < comb_three.txt
+while IFS= read -r line; do
+    test_cases+=("$line")
+done < comb_three.txt
 while IFS= read -r line; do
     test_cases+=("$line")
 done < comb_four.txt
