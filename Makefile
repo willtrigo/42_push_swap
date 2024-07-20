@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/18 12:13:28 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/20 01:13:42 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS_PARSE_DIR                  := $(SRCS_INTERNAL_DIR)parse/
 SRCS_HANDLE_DIR                 := $(SRCS_INTERNAL_DIR)handle/
 SRCS_SORT_DIR                   := $(SRCS_INTERNAL_DIR)sort/
 SRCS_FOUR_DIR                   := $(SRCS_SORT_DIR)four/
+SRCS_ALL_DIR                    := $(SRCS_SORT_DIR)all/
 SRCS_STACK_DIR                  := $(SRCS_HANDLE_DIR)stack/
 SRCS_OPERATION_DIR              := $(SRCS_STACK_DIR)operation/
 SRCS_STATE_DIR                  := $(SRCS_STACK_DIR)state/
@@ -75,8 +76,8 @@ SRCS_FILES                      += $(addprefix $(SRCS_OPERATION_DIR), ft_pop.c \
 								   ft_swap.c)
 SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_arguments.c)
 SRCS_FILES                      += $(addprefix $(SRCS_SORT_DIR), ft_sort.c \
-								   ft_all.c \
 								   ft_three.c)
+SRCS_FILES                      += $(addprefix $(SRCS_ALL_DIR), ft_all.c)
 SRCS_FILES                      += $(addprefix $(SRCS_FOUR_DIR), ft_four.c \
 								   ft_targets.c \
 								   ft_targets_reverse.c)

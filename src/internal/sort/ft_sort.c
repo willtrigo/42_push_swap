@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/18 12:44:18 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/20 01:13:07 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/ft_three.h"
 #include "internal/sort/four/ft_four.h"
-#include "internal/sort/ft_all.h"
+#include "internal/sort/all/ft_all.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/state/ft_state.h"
