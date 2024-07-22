@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/21 21:23:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/22 09:33:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	ft_sort_all(void)
 	ft_set_pivots(stack->a, &pivot);
 	if (!ft_is_ready_to_sorted_reverse())
 		ft_run_sort_all(stack, &pivot);
+	if (stack->info.a_size == SORT_FOUR)
+		ft_sort_four(DEFAULT);
+	if (stack->info.b_size)
+		ft_push(PA, stack->info.b_size);
 }
 
 void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
@@ -50,10 +54,6 @@ void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
 			ft_target_is_last_equal_first(stack, pivot);
 		else
 			ft_target_default(stack, pivot);
-		if (stack->info.a_size == SORT_FOUR)
-			ft_sort_four(DEFAULT);
-		if (stack->info.b_size)
-			ft_push(PA, stack->info.b_size);
 	}
 }
 

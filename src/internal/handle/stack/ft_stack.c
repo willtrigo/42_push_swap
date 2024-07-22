@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/21 21:26:14 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/22 10:14:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ t_stacks	*ft_stack(void)
 void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
 {
 	pivot->first = ft_peek(stack);
-	pivot->bigger = ft_peek_bigger(stack);
 	pivot->smaller = ft_peek_smaller(stack);
-	pivot->last = ft_stacklast(stack)->nbr;
+	pivot->bigger = ft_peek_bigger(stack);
+	pivot->mid = pivot->bigger / 2;
 	pivot->next = stack->next->nbr;
+	pivot->last = ft_stacklast(stack)->nbr;
 }
