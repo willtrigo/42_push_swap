@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/20 05:00:58 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/21 21:23:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,15 @@ static void	ft_one_operation_to_finish(t_stacks *stack)
 	int	times;
 
 	times = stack->info.a_size - STACK_SIZE_TWO;
-	if (!stack->info.b_size && !ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+	if (!stack->info.b_size \
+		&& !ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 	{
-		if (ft_is_sorted(stack->a->next->next, DEFAULT, times) && stack->a->nbr - STACK_NODE == stack->a->next->nbr)
+		if (ft_is_sorted(stack->a->next->next, \
+			DEFAULT, times) && stack->a->nbr - STACK_NODE \
+			== stack->a->next->nbr)
 			ft_swap(SA);
-		else if (ft_is_sorted(stack->a, DEFAULT, stack->info.a_size - STACK_NODE))
+		else if (ft_is_sorted(stack->a, DEFAULT, \
+			stack->info.a_size - STACK_NODE))
 			ft_rotate(RRA, ONE_TIME);
 	}
 }

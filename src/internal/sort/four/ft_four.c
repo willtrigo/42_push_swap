@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/18 13:53:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/21 21:20:53 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,32 +87,6 @@ static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots *pivot)
 				ft_push(PA, stack->info.b_size);
 		}
 	}
-
-	//
-	// if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-	// 	ft_swap(SA);
-	// if (ft_is_sorted(stack->a->next, REVERSE, stack->info.b_size))
-	// 	ft_rotate(RB, ONE_TIME);
-	// else if (ft_is_sorted(stack->b, DEFAULT, stack->info.b_size))
-	// {
-	// 	ft_swap(SB);
-	// 	ft_rotate(RB, TWO_TIMES);
-	// }
-	// else
-	// {
-	// 	if (pivot.first == pivot.smaller)
-	// 		ft_target_smaller_reverse(pivot);
-	// 	else if (pivot.next == pivot.smaller)
-	// 		ft_target_next_smaller_reverse(pivot);
-	// 	else if (pivot.first == (pivot.smaller + STACK_NODE))
-	// 		ft_target_penult_reverse(pivot);
-	// 	else if (pivot.first == (pivot.bigger - STACK_NODE))
-	// 		ft_target_next_reverse(pivot);
-	// 	else
-	// 		ft_target_bigger_reverse(pivot);
-	// }
-	// if (!ft_is_sorted(stack->b, REVERSE, stack->info.b_size))
-	// 	ft_swap(SB);
 }
 
 static void	ft_one_operation_to_finish(t_stack *stack, int info, int type)

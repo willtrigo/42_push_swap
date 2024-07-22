@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 01:19:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/20 05:00:35 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/21 21:20:31 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_target_is_last_equal_first(t_stacks *stack, t_pivots *pivot)
 	if (pivot->next - STACK_NODE == pivot->last)
 	{
 		ft_swap(SA);
-		ft_rotate(RA,ONE_TIME);
+		ft_rotate(RA, ONE_TIME);
 	}
 	else
 	{

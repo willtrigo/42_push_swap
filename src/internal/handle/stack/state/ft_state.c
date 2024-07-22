@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 04:41:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/18 02:52:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/21 21:25:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	ft_is_sorted(t_stack *stack, int type, int times)
 	int		is_sorted;
 
 	temp_stack = stack;
-	while  (--times && temp_stack->next)
+	while (--times && temp_stack->next)
 	{
 		is_sorted = temp_stack->nbr;
 		if (type != REVERSE)
