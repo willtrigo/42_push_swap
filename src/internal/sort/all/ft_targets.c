@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 01:19:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/21 21:20:31 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/23 05:29:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,24 @@ void	ft_target_is_smaller(t_pivots *pivot)
 
 void	ft_target_is_first_equal_next(t_stacks *stack, t_pivots *pivot)
 {
+	(void)pivot;
+	(void)stack;
 	ft_swap(SA);
 	ft_rotate(RA, TWO_TIMES);
-	ft_run_sort_all(stack, pivot);
+
+	// (void)pivot;
+	// (void)stack;
+	// if (stack->info.a_size - STACK_SIZE_FOUR < pivot->mid && pivot->first < pivot->mid)
+	// {
+	// 	if (pivot->first + STACK_NODE == pivot->last)
+	// 		ft_swap(SA);
+	// 	ft_push(PB, TWO_TIMES);
+	// }
+	// else
+	// {
+	// 	// ft_swap(SA);
+	// 	ft_rotate(RA, TWO_TIMES);
+	// }
 }
 
 void	ft_target_is_last_equal_first(t_stacks *stack, t_pivots *pivot)
@@ -63,11 +78,7 @@ void	ft_target_is_last_equal_first(t_stacks *stack, t_pivots *pivot)
 		ft_set_pivots(stack->a, pivot);
 		if (pivot->last - STACK_NODE == pivot->first)
 			ft_rotate(RRA, ONE_TIME);
-		ft_set_pivots(stack->a, pivot);
 	}
-	ft_set_pivots(stack->a, pivot);
-	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-		ft_run_sort_all(stack, pivot);
 }
 
 void	ft_target_default(t_stacks *stack, t_pivots *pivot)
@@ -79,7 +90,4 @@ void	ft_target_default(t_stacks *stack, t_pivots *pivot)
 		ft_set_pivots(stack->a, pivot);
 	}
 	ft_rotate(RA, ONE_TIME);
-	ft_set_pivots(stack->a, pivot);
-	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-		ft_run_sort_all(stack, pivot);
 }

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/21 21:20:53 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/23 01:24:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 	if (!ft_is_ready_to_sorted_reverse())
 	{
 		ft_one_operation_to_finish(stack->a, stack->info.a_size, DEFAULT);
+		ft_set_pivots(stack->a, pivot);
 		if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 		{
 			if (pivot->first == pivot->smaller)
@@ -56,6 +57,7 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 				ft_target_penult(pivot);
 			else if (pivot->first == pivot->bigger)
 				ft_target_bigger(pivot);
+			ft_set_pivots(stack->a, pivot);
 			if (stack->info.a_size <= SORT_THREE)
 				ft_sort_three(DEFAULT);
 			if (stack->info.b_size && stack->info.a_size == STACK_SIZE_THREE)
