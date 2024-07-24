@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:23:55 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/14 12:16:49 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/24 05:58:06 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_peek.h"
 
-static void	ft_set_value(int value);
-static void	ft_set_normalize(void);
 static void	ft_normalize_bigger_nbr(int temp_bigger_nbr, int stack_size);
 static void	ft_normalize_others_nbrs(int temp_bigger_nbr, int stack_size);
 
-void	ft_stack_normalize(void)
+void	ft_stack_normalize(int type)
 {
 	ft_set_value(INIT);
 	ft_set_normalize();
-	ft_set_value(DEFAULT);
+	if (type == DEFAULT)
+		ft_set_value(DEFAULT);
 }
 
-static void	ft_set_value(int value)
+void	ft_set_value(int value)
 {
 	t_stack	*temp_stack;
 
@@ -44,12 +43,12 @@ static void	ft_set_value(int value)
 	}
 }
 
-static void	ft_set_normalize(void)
+void	ft_set_normalize(void)
 {
 	int	temp_bigger_nbr;
 	int	stack_size;
 
-	temp_bigger_nbr = ft_peek_bigger(ft_stack()->a);
+	temp_bigger_nbr = ft_peek_bigger(ft_stack()->a, DEFAULT);
 	stack_size = ft_stack()->info.a_size;
 	ft_normalize_bigger_nbr(temp_bigger_nbr, stack_size);
 	ft_normalize_others_nbrs(temp_bigger_nbr, stack_size);

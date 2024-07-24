@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/23 01:24:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/24 05:52:36 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "internal/sort/four/ft_targets.h"
 #include "internal/sort/four/ft_targets_reverse.h"
 #include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
@@ -25,12 +26,18 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot);
 static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots *pivot);
 static void	ft_one_operation_to_finish(t_stack *stack, int info, int type);
 
+#include "ft_non_standard/ft_non_standard.h"
 void	ft_sort_four(int type)
 {
 	t_stacks	*stack;
 	t_pivots	pivot;
 
 	stack = ft_stack();
+	// ft_putendl_fd("before four normalize stack A\n", STDERR_FILENO);
+	// ft_print_stack(STACK_A);
+	ft_stack_normalize(PEEK_INDEX);
+	ft_putendl_fd("four normalize stack A\n", STDERR_FILENO);
+	ft_print_stack(STACK_A);
 	if (type == DEFAULT)
 		ft_set_pivots(stack->a, &pivot);
 	else
@@ -39,6 +46,8 @@ void	ft_sort_four(int type)
 		ft_run_sort_four(stack, &pivot);
 	else
 		ft_run_sort_four_reverse(stack, &pivot);
+	ft_putendl_fd("end normalize stack A\n", STDERR_FILENO);
+	ft_print_stack(STACK_A);
 }
 
 static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
@@ -64,7 +73,7 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 				ft_push(PA, ONE_TIME);
 		}
 	}
-	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size) && !stack->info.b_size)
 		ft_swap(SA);
 }
 

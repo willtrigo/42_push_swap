@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 05:38:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/14 08:43:16 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/24 05:40:57 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_pop(t_stack **stack)
 	t_stack	*temp_stack;
 	int		temp_nbr;
 
-	temp_nbr = (*stack)->index;
+	temp_nbr = (*stack)->nbr;
 	temp_stack = NULL;
 	ft_connect_stack(stack, temp_stack);
 	return (temp_nbr);

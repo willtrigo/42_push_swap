@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/18 10:43:13 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/24 05:25:55 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ enum e_times
 {
 	ONE_TIME = 1,
 	TWO_TIMES,
+};
+
+enum e_peek
+{
+	PEEK_INDEX = 1,
 };
 
 t_stacks	*ft_stack(void);

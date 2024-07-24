@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/20 01:13:07 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/24 05:32:22 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_sort(void)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	ft_stack_normalize();
+	ft_stack_normalize(DEFAULT);
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 	{
 		ft_putendl_fd("Init stack A\n", STDERR_FILENO);
