@@ -6,12 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/24 06:14:38 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:18:59 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "ft_default.h"
+#include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/ft_three.h"
@@ -45,21 +46,24 @@ void	ft_sort_all(void)
 	// 	ft_sort_three(DEFAULT);
 	if (stack->info.b_size)
 		ft_push(PA, stack->info.b_size);
+	ft_stack_normalize(PEEK_INDEX);
+	ft_set_pivots(stack->a, &pivot);
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 		ft_swap(SA);
 }
 
 void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
 {
+	ft_stack_normalize(PEEK_INDEX);
 	ft_set_pivots(stack->a, pivot);
 	ft_one_operation_to_finish(stack);
 	ft_set_pivots(stack->a, pivot);
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size) && stack->info.a_size > STACK_SIZE_FOUR)
 	{
-		// if ((pivot->smaller == pivot->first) \
-		// 	|| (pivot->smaller == pivot->next) \
-		// 	|| (pivot->smaller == pivot->last))
-		// 	ft_target_is_smaller(pivot);
+		/* if ((pivot->smaller == pivot->first) \
+			|| (pivot->smaller == pivot->next) \
+			|| (pivot->smaller == pivot->last))
+			ft_target_is_smaller(pivot);*/
 		if (pivot->first < pivot->mid)
 			ft_push_to_stack_b(stack, pivot);
 		else if (pivot->last < pivot->mid)

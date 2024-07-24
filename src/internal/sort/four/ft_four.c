@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/24 05:52:36 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:55:51 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_sort_four(int type)
 
 static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 {
+	ft_stack_normalize(PEEK_INDEX);
 	if (!ft_is_ready_to_sorted_reverse())
 	{
 		ft_one_operation_to_finish(stack->a, stack->info.a_size, DEFAULT);
@@ -67,13 +68,15 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 			else if (pivot->first == pivot->bigger)
 				ft_target_bigger(pivot);
 			ft_set_pivots(stack->a, pivot);
+			ft_stack_normalize(PEEK_INDEX);
 			if (stack->info.a_size <= SORT_THREE)
 				ft_sort_three(DEFAULT);
 			if (stack->info.b_size && stack->info.a_size == STACK_SIZE_THREE)
 				ft_push(PA, ONE_TIME);
 		}
 	}
-	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size) && !stack->info.b_size)
+	ft_stack_normalize(PEEK_INDEX);
+	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 		ft_swap(SA);
 }
 
