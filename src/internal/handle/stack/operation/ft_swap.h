@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:20:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/05 04:36:22 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/25 04:21:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "internal/handle/stack/ft_stack.h"
 
-void	ft_swap(t_operations operation);
+void	ft_swap_possibilities(t_operations operation);
 
 #endif

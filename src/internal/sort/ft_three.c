@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/25 02:22:54 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/25 04:21:37 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ static void	ft_run_sort_three(t_stacks *stack, t_pivots pivot)
 				ft_rotate(RRA, ONE_TIME);
 			else
 			{
-				ft_swap(SA);
+				ft_swap_possibilities(SA);
 				ft_rotate(RA, ONE_TIME);
 			}
 		}
 	}
 	ft_stack_normalize(PEEK_INDEX);
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 }
 
 static void	ft_run_sort_three_reverse(t_stacks *stack, t_pivots pivot)
@@ -75,11 +75,11 @@ static void	ft_run_sort_three_reverse(t_stacks *stack, t_pivots pivot)
 				ft_rotate(RRB, ONE_TIME);
 			else
 			{
-				ft_swap(SB);
+				ft_swap_possibilities(SB);
 				ft_rotate(RB, ONE_TIME);
 			}
 		}
 	}
 	if (!ft_is_sorted(stack->b, REVERSE, stack->info.b_size))
-		ft_swap(SB);
+		ft_swap_possibilities(SB);
 }

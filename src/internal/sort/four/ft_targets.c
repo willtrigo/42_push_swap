@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 04:11:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/25 03:52:05 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/25 04:24:23 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,24 @@ static void	ft_target_bigger(t_pivots *pivot)
 {
 	if (pivot->next == pivot->smaller)
 	{
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_push(PB, ONE_TIME);
 	}
 	else if (pivot->last == pivot->smaller)
 	{
 		ft_rotate(RRA, ONE_TIME);
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_rotate(RA, ONE_TIME);
 	}
 	else if (pivot->next == pivot->bigger - STACK_NODE)
 	{
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_rotate(RA, TWO_TIMES);
 	}
 	else
 	{
 		ft_rotate(RA, ONE_TIME);
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 	}
 }
 
@@ -71,7 +71,7 @@ static void	ft_target_penult(t_pivots *pivot)
 {
 	if (pivot->next == pivot->smaller)
 	{
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_push(PB, ONE_TIME);
 	}
 	else if (pivot->last == pivot->smaller)
@@ -83,9 +83,9 @@ static void	ft_target_penult(t_pivots *pivot)
 		ft_rotate(RA, TWO_TIMES);
 	else
 	{
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_rotate(RA, TWO_TIMES);
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_rotate(RA, ONE_TIME);
 	}
 }
@@ -94,7 +94,7 @@ static void	ft_target_small_mid(t_pivots *pivot)
 {
 	if (pivot->next == pivot->smaller)
 	{
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_push(PB, ONE_TIME);
 	}
 	else if (pivot->last == pivot->smaller)
@@ -104,13 +104,13 @@ static void	ft_target_small_mid(t_pivots *pivot)
 	}
 	else if (pivot->next == pivot->bigger)
 	{
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_rotate(RA, ONE_TIME);
 	}
 	else
 	{
 		ft_rotate(RA, TWO_TIMES);
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 		ft_rotate(RA, ONE_TIME);
 	}
 }

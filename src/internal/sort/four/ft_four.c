@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/25 03:58:02 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/25 04:24:48 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 	}
 	ft_stack_normalize(PEEK_INDEX);
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 }
 
 static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots *pivot)
@@ -73,7 +73,7 @@ static void	ft_one_operation_to_finish(t_stack *stack, int info, int type)
 			ft_rotate(RA, ONE_TIME);
 		else if (ft_is_sorted(stack->next->next, DEFAULT, times) \
 			&& stack->next->index == DEFAULT)
-			ft_swap(SA);
+			ft_swap_possibilities(SA);
 		else if (ft_is_sorted(stack, DEFAULT, times))
 			ft_rotate(RRA, ONE_TIME);
 	}
@@ -83,7 +83,7 @@ static void	ft_one_operation_to_finish(t_stack *stack, int info, int type)
 			ft_rotate(RA, ONE_TIME);
 		else if (ft_is_sorted(stack->next->next, REVERSE, times) \
 			&& stack->next->index == ft_peek_bigger(ft_stack()->b, PEEK_INDEX))
-			ft_swap(SA);
+			ft_swap_possibilities(SA);
 		else if (ft_is_sorted(stack, REVERSE, times))
 			ft_rotate(RRA, ONE_TIME);
 	}

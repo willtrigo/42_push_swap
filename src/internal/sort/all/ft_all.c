@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/25 04:08:12 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/25 04:25:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_sort_all(void)
 	ft_stack_normalize(PEEK_INDEX);
 	ft_set_pivots(stack->a, &pivot);
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-		ft_swap(SA);
+		ft_swap_possibilities(SA);
 }
 
 void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
@@ -58,7 +58,7 @@ void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
 		else if (pivot->last < pivot->mid)
 			ft_rotate(RRA, ONE_TIME);
 		else if (pivot->next < pivot->mid)
-			ft_swap(SA);
+			ft_swap_possibilities(SA);
 		else if (pivot->first >= pivot->mid)
 			ft_stay_in_the_same_stack(pivot);
 		ft_run_sort_all(stack, pivot);
@@ -76,7 +76,7 @@ static void	ft_one_operation_to_finish(t_stacks *stack)
 		if (ft_is_sorted(stack->a->next->next, \
 			DEFAULT, times) && stack->a->nbr - STACK_NODE \
 			== stack->a->next->nbr)
-			ft_swap(SA);
+			ft_swap_possibilities(SA);
 		else if (ft_is_sorted(stack->a, DEFAULT, \
 			stack->info.a_size - STACK_NODE))
 			ft_rotate(RRA, ONE_TIME);
