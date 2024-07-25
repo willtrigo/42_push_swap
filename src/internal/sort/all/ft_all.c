@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/25 04:25:33 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/25 05:21:31 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
 		if (pivot->first < pivot->mid)
 			ft_push_to_stack_b(stack, pivot);
 		else if (pivot->last < pivot->mid)
-			ft_rotate(RRA, ONE_TIME);
+			ft_rotate_possibilities(RRA, ONE_TIME);
 		else if (pivot->next < pivot->mid)
 			ft_swap_possibilities(SA);
 		else if (pivot->first >= pivot->mid)
@@ -79,6 +79,6 @@ static void	ft_one_operation_to_finish(t_stacks *stack)
 			ft_swap_possibilities(SA);
 		else if (ft_is_sorted(stack->a, DEFAULT, \
 			stack->info.a_size - STACK_NODE))
-			ft_rotate(RRA, ONE_TIME);
+			ft_rotate_possibilities(RRA, ONE_TIME);
 	}
 }

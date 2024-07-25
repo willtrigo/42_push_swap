@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/25 04:24:48 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/25 05:20:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,21 @@ static void	ft_one_operation_to_finish(t_stack *stack, int info, int type)
 	if (type == DEFAULT)
 	{
 		if (ft_is_sorted(stack->next, DEFAULT, times))
-			ft_rotate(RA, ONE_TIME);
+			ft_rotate_possibilities(RA, ONE_TIME);
 		else if (ft_is_sorted(stack->next->next, DEFAULT, times) \
 			&& stack->next->index == DEFAULT)
 			ft_swap_possibilities(SA);
 		else if (ft_is_sorted(stack, DEFAULT, times))
-			ft_rotate(RRA, ONE_TIME);
+			ft_rotate_possibilities(RRA, ONE_TIME);
 	}
 	else
 	{
 		if (ft_is_sorted(stack->next, REVERSE, times))
-			ft_rotate(RA, ONE_TIME);
+			ft_rotate_possibilities(RA, ONE_TIME);
 		else if (ft_is_sorted(stack->next->next, REVERSE, times) \
 			&& stack->next->index == ft_peek_bigger(ft_stack()->b, PEEK_INDEX))
 			ft_swap_possibilities(SA);
 		else if (ft_is_sorted(stack, REVERSE, times))
-			ft_rotate(RRA, ONE_TIME);
+			ft_rotate_possibilities(RRA, ONE_TIME);
 	}
 }
