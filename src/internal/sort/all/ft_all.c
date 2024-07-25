@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/24 18:18:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/25 01:53:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ void	ft_sort_all(void)
 		ft_run_sort_all(stack, &pivot);
 	if (stack->info.a_size == SORT_FOUR)
 		ft_sort_four(DEFAULT);
-	// if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-	// 	ft_swap(SA);
-	// if (stack->info.a_size == SORT_THREE)
-	// 	ft_sort_three(DEFAULT);
 	if (stack->info.b_size)
 		ft_push(PA, stack->info.b_size);
 	ft_stack_normalize(PEEK_INDEX);
@@ -60,22 +56,14 @@ void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
 	ft_set_pivots(stack->a, pivot);
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size) && stack->info.a_size > STACK_SIZE_FOUR)
 	{
-		/* if ((pivot->smaller == pivot->first) \
-			|| (pivot->smaller == pivot->next) \
-			|| (pivot->smaller == pivot->last))
-			ft_target_is_smaller(pivot);*/
 		if (pivot->first < pivot->mid)
 			ft_push_to_stack_b(stack, pivot);
 		else if (pivot->last < pivot->mid)
 			ft_rotate(RRA, ONE_TIME);
+		else if (pivot->next < pivot->mid)
+			ft_swap(SA);
 		else if (pivot->first >= pivot->mid)
 			ft_stay_in_the_same_stack(pivot);
-		// else if (pivot->first - STACK_NODE == pivot->next || pivot->first + STACK_NODE == pivot->next)
-		// 	ft_target_is_first_equal_next(stack, pivot);
-		// else if (pivot->last - STACK_NODE == pivot->first)
-		// 	ft_target_is_last_equal_first(stack, pivot);
-		// else
-		// 	ft_target_default(stack, pivot);
 		ft_run_sort_all(stack, pivot);
 	}
 }
@@ -116,23 +104,29 @@ void	ft_stay_in_the_same_stack(t_pivots *pivot)
 		{
 			ft_rotate(RRA, ONE_TIME);
 			ft_swap(SA);
-			// ft_rotate(RA, ONE_TIME);
-			// ft_swap(SA);
+			ft_rotate(RA, ONE_TIME);
+			ft_swap(SA);
+			ft_rotate(RA, ONE_TIME);
 		}
-		// ft_rotate(RA, ONE_TIME);
+		ft_rotate(RA, ONE_TIME);
+	}
+	else if (pivot->first - STACK_NODE == pivot->next)
+	{
+		if (pivot->next - STACK_NODE == pivot->last)
+		{
+			ft_swap(SA);
+			ft_rotate(RA, TWO_TIMES);
+		}
+		else if (pivot->first + STACK_NODE == pivot->last)
+			ft_rotate(RRA, ONE_TIME);
 	}
 	else if (pivot->first + STACK_NODE == pivot->last)
 	{
 		ft_rotate(RRA, ONE_TIME);
 		ft_swap(SA);
-		// ft_rotate(RA, ONE_TIME);
 	}
-	else if (pivot->first - STACK_NODE == pivot->next)
-	{
-		ft_swap(SA);
-		ft_rotate(RRA, ONE_TIME);
-	}
-	ft_rotate(RA, ONE_TIME);
+	else
+		ft_rotate(RA, ONE_TIME);
 }
 
 static void	ft_one_operation_to_finish(t_stacks *stack)
