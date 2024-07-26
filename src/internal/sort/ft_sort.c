@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/25 05:17:17 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/26 05:04:03 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_sort(void)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	ft_stack_normalize(DEFAULT);
+	ft_stack_normalize(STACK_DEFAULT);
 	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
 	{
 		ft_putendl_fd("Init stack A\n", STDERR_FILENO);
@@ -54,20 +54,23 @@ void	ft_sort(void)
 bool	ft_is_ready_to_sorted_reverse(void)
 {
 	t_stacks	*stack;
+	int			push_size;
 
 	stack = ft_stack();
-	ft_stack_normalize(PEEK_INDEX);
+	ft_stack_normalize(STACK_INDEX);
+	push_size = DEFAULT;
 	if (ft_is_sorted(stack->a, REVERSE, stack->info.a_size))
 	{
 		while (ft_stack()->info.a_size - STACK_SIZE_FOUR)
 		{
 			ft_rotate_possibilities(RRA, ONE_TIME);
 			ft_push(PB, ONE_TIME);
+			push_size++;
 		}
 		ft_swap_possibilities(SA);
 		ft_rotate_possibilities(RA, TWO_TIMES);
 		ft_swap_possibilities(SA);
-		ft_push(PA, ft_stack()->info.b_size);
+		ft_push(PA, push_size);
 		return (true);
 	}
 	return (false);
