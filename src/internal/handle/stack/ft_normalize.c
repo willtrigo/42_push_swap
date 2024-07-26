@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:23:55 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/24 05:58:06 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/26 05:07:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 #include <limits.h>
 #include "ft_default.h"
 #include "internal/handle/stack/ft_normalize.h"
-#include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_peek.h"
 
 static void	ft_normalize_bigger_nbr(int temp_bigger_nbr, int stack_size);
 static void	ft_normalize_others_nbrs(int temp_bigger_nbr, int stack_size);
 
-void	ft_stack_normalize(int type)
+void	ft_stack_normalize(t_type type)
 {
 	ft_set_value(INIT);
 	ft_set_normalize();
-	if (type == DEFAULT)
+	if (type == STACK_DEFAULT)
 		ft_set_value(DEFAULT);
 }
 
