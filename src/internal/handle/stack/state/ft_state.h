@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 04:41:30 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/14 13:24:54 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/27 17:56:17 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ enum e_sorted
 };
 
 bool	ft_is_duplicate(t_stack *stack, int nbr);
-bool	ft_is_sorted(t_stack *stack, int type, int times);
+bool	ft_is_sorted(t_stack *stack, t_type type, int times);
 
 #endif

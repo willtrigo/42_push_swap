@@ -6,12 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 04:41:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/24 16:37:57 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:09:38 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "internal/handle/stack/state/ft_state.h"
+#include "internal/handle/stack/ft_stack.h"
 #include "internal/sort/ft_sort.h"
 
 bool	ft_is_duplicate(t_stack *stack, int nbr)
@@ -30,7 +31,7 @@ bool	ft_is_duplicate(t_stack *stack, int nbr)
 	return (true);
 }
 
-bool	ft_is_sorted(t_stack *stack, int type, int times)
+bool	ft_is_sorted(t_stack *stack, t_type type, int times)
 {
 	t_stack	*temp_stack;
 	int		is_sorted;
@@ -39,16 +40,10 @@ bool	ft_is_sorted(t_stack *stack, int type, int times)
 	while (--times && temp_stack->next)
 	{
 		is_sorted = temp_stack->index;
-		if (type != REVERSE)
-		{
-			if (!((is_sorted + STACK_NODE) == temp_stack->next->index))
+		if (type == STACK_INDEX && !((is_sorted + STACK_NODE) == temp_stack->next->index))
 				return (false);
-		}
-		else
-		{
-			if (!((is_sorted - STACK_NODE) == temp_stack->next->index))
+		else if (type == STACK_INDEX_REVERSE && !((is_sorted - STACK_NODE) == temp_stack->next->index))
 				return (false);
-		}
 		temp_stack = temp_stack->next;
 	}
 	return (true);

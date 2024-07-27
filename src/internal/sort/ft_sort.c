@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/26 05:04:03 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:01:10 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_sort(void)
 
 	stack = ft_stack();
 	ft_stack_normalize(STACK_DEFAULT);
-	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 	{
 		ft_putendl_fd("Init stack A\n", STDERR_FILENO);
 		ft_print_stack(STACK_A);
@@ -45,7 +45,8 @@ void	ft_sort(void)
 	ft_putendl_fd("\nEnd stack A", STDERR_FILENO);
 	ft_print_stack(STACK_A);
 	ft_print_stack(STACK_B);
-	if (ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+	ft_stack_normalize(STACK_DEFAULT);
+	if (ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 		ft_putendl_fd("\nsorted.", STDERR_FILENO);
 	else
 		ft_putendl_fd("\nnot sorted.", STDERR_FILENO);
@@ -59,7 +60,7 @@ bool	ft_is_ready_to_sorted_reverse(void)
 	stack = ft_stack();
 	ft_stack_normalize(STACK_INDEX);
 	push_size = DEFAULT;
-	if (ft_is_sorted(stack->a, REVERSE, stack->info.a_size))
+	if (ft_is_sorted(stack->a, STACK_INDEX_REVERSE, stack->info.a_size))
 	{
 		while (ft_stack()->info.a_size - STACK_SIZE_FOUR)
 		{

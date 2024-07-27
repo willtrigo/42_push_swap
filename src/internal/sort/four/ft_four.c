@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/26 05:05:29 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:04:28 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 	{
 		ft_one_operation_to_finish(stack->a, stack->info.a_size, DEFAULT);
 		ft_set_pivots(stack->a, pivot);
-		if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+		if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 			ft_targets(pivot);
 	}
 	ft_stack_normalize(STACK_INDEX);
-	if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 		ft_swap_possibilities(SA);
 }
 
@@ -69,22 +69,22 @@ static void	ft_one_operation_to_finish(t_stack *stack, int info, int type)
 	times = info - STACK_NODE;
 	if (type == DEFAULT)
 	{
-		if (ft_is_sorted(stack->next, DEFAULT, times))
+		if (ft_is_sorted(stack->next, STACK_INDEX, times))
 			ft_rotate_possibilities(RA, ONE_TIME);
-		else if (ft_is_sorted(stack->next->next, DEFAULT, times) \
+		else if (ft_is_sorted(stack->next->next, STACK_INDEX, times) \
 			&& stack->next->index == DEFAULT)
 			ft_swap_possibilities(SA);
-		else if (ft_is_sorted(stack, DEFAULT, times))
+		else if (ft_is_sorted(stack, STACK_INDEX, times))
 			ft_rotate_possibilities(RRA, ONE_TIME);
 	}
 	else
 	{
-		if (ft_is_sorted(stack->next, REVERSE, times))
+		if (ft_is_sorted(stack->next, STACK_INDEX_REVERSE, times))
 			ft_rotate_possibilities(RA, ONE_TIME);
-		else if (ft_is_sorted(stack->next->next, REVERSE, times) \
+		else if (ft_is_sorted(stack->next->next, STACK_INDEX_REVERSE, times) \
 			&& stack->next->index == ft_peek_bigger(ft_stack()->b, STACK_INDEX))
 			ft_swap_possibilities(SA);
-		else if (ft_is_sorted(stack, REVERSE, times))
+		else if (ft_is_sorted(stack, STACK_INDEX_REVERSE, times))
 			ft_rotate_possibilities(RRA, ONE_TIME);
 	}
 }
