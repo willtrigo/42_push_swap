@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/27 17:58:39 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/27 20:07:31 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,17 @@ void	ft_sort_all(void)
 	ft_set_pivots(stack->a, &pivot);
 	if (!ft_is_ready_to_sorted_reverse())
 		ft_run_sort_all(stack, &pivot);
+	// if (stack->info.a_size == SORT_FIVE)
+	// 	ft_push(PB, ONE_TIME);
 	if (stack->info.a_size == SORT_FOUR)
 		ft_sort_four(DEFAULT);
 	ft_stack_normalize(STACK_INDEX);
 	ft_set_pivots(stack->a, &pivot);
-	if (stack->info.b_size && stack->a->nbr + STACK_NODE < stack->a->next->nbr)
-	// if (stack->info.b_size && !ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
+	if (stack->info.b_size && !(stack->a->nbr + STACK_SIZE_TWO == stack->a->next->nbr || stack->a->nbr + STACK_NODE == stack->a->next->nbr))
 		ft_push(PB, ONE_TIME);
 	ft_return_sorted_all(stack);
+	// if (stack->info.a_size == 20)
+	// 	ft_return_sorted_all(stack);
 	// if (stack->info.b_size)
 	// 	ft_push(PA, stack->info.b_size);
 	// ft_stack_normalize(PEEK_INDEX);

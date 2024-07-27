@@ -6,22 +6,22 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:48:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/24 05:57:41 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/27 20:01:44 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/stack/state/ft_peek.h"
-#include "ft_default.h"
+#include "internal/handle/stack/ft_stack.h"
 
-int	ft_peek(t_stack *stack, int type)
+int	ft_peek(t_stack *stack, t_type type)
 {
-	if (type == DEFAULT)
+	if (type == STACK_NBR)
 		return (stack->nbr);
 	else
 		return (stack->index);
 }
 
-int	ft_peek_bigger(t_stack *stack, int type)
+int	ft_peek_bigger(t_stack *stack, t_type type)
 {
 	t_stack	*temp_stack;
 	int		bigger;
@@ -39,7 +39,7 @@ int	ft_peek_bigger(t_stack *stack, int type)
 	return (bigger);
 }
 
-int	ft_peek_smaller(t_stack *stack, int type)
+int	ft_peek_smaller(t_stack *stack, t_type type)
 {
 	t_stack	*temp_stack;
 	int		smaller;
