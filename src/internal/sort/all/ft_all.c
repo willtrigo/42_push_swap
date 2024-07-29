@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/27 20:07:31 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:31:30 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	ft_sort_all(void)
 	ft_set_pivots(stack->a, &pivot);
 	if (!ft_is_ready_to_sorted_reverse())
 		ft_run_sort_all(stack, &pivot);
-	// if (stack->info.a_size == SORT_FIVE)
-	// 	ft_push(PB, ONE_TIME);
 	if (stack->info.a_size == SORT_FOUR)
 		ft_sort_four(DEFAULT);
 	ft_stack_normalize(STACK_INDEX);
@@ -45,14 +43,6 @@ void	ft_sort_all(void)
 	if (stack->info.b_size && !(stack->a->nbr + STACK_SIZE_TWO == stack->a->next->nbr || stack->a->nbr + STACK_NODE == stack->a->next->nbr))
 		ft_push(PB, ONE_TIME);
 	ft_return_sorted_all(stack);
-	// if (stack->info.a_size == 20)
-	// 	ft_return_sorted_all(stack);
-	// if (stack->info.b_size)
-	// 	ft_push(PA, stack->info.b_size);
-	// ft_stack_normalize(PEEK_INDEX);
-	// ft_set_pivots(stack->a, &pivot);
-	// if (!ft_is_sorted(stack->a, DEFAULT, stack->info.a_size))
-	// 	ft_swap_possibilities(SA);
 }
 
 void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
@@ -66,7 +56,7 @@ void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
 	{
 		if (pivot->first < pivot->mid)
 			ft_push_to_stack_b(stack, pivot);
-		else if (pivot->last < pivot->mid)
+		else if (pivot->last < pivot->mid && pivot->last < pivot->next)
 			ft_rotate_possibilities(RRA, ONE_TIME);
 		else if (pivot->next < pivot->mid)
 			ft_swap_possibilities(SA);
