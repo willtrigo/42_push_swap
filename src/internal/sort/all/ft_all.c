@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 00:06:41 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 01:38:39 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,18 +111,19 @@ static void	ft_return_nbr_between(t_stacks *stack, int value, t_pivots *pivot)
 
 	cost = ft_get_cost(value);
 	cost_reverse = stack->info.b_size - ft_get_cost(value);
-	if (cost <= cost_reverse)
+	if (cost > DEFAULT && cost <= cost_reverse)
 	{
-		while (!(ft_stack()->b->nbr == value))
-			ft_rotate_possibilities(RB, ONE_TIME);
+		ft_rotate_possibilities(RB, ONE_TIME);
 	}
 	else if (cost > cost_reverse)
 	{
-		while (!(ft_stack()->b->nbr == value))
-			ft_rotate_possibilities(RRB, ONE_TIME);
+		ft_rotate_possibilities(RRB, ONE_TIME);
 	}
-	ft_push(PA, ONE_TIME);
-	ft_swap_possibilities(SA);
+	else
+	{
+		ft_push(PA, ONE_TIME);
+		ft_swap_possibilities(SA);
+	}
 	// ft_stack_normalize(STACK_INDEX);
 	// ft_set_pivots(stack->a, pivot);
 	ft_return_sorted_all(stack, pivot);
@@ -135,19 +136,18 @@ static void	ft_return_nbr(t_stacks *stack, int value, t_pivots *pivot)
 
 	cost = ft_get_cost(value);
 	cost_reverse = stack->info.b_size - ft_get_cost(value);
-	if (cost <= cost_reverse)
+	if (cost > DEFAULT && cost <= cost_reverse)
 	{
-		if (cost > 2)
-			ft_rotate_possibilities(RB, cost);
+		ft_rotate_possibilities(RB, ONE_TIME);
 		// while (stack->b->nbr + STACK_NODE != stack->a->nbr)
 		// 	ft_rotate_possibilities(RB, ONE_TIME);
 	}
 	else if (cost > cost_reverse)
 	{
-		while (cost_reverse--)
-			ft_rotate_possibilities(RRB, ONE_TIME);
+		ft_rotate_possibilities(RRB, ONE_TIME);
 	}
-	ft_push(PA, ONE_TIME);
+	else
+		ft_push(PA, ONE_TIME);
 	// if (cost <= cost_reverse && cost != DEFAULT)
 	// 	ft_rotate_possibilities(RB, ONE_TIME);
 	// else if (cost > cost_reverse)
