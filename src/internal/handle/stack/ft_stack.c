@@ -6,11 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 02:47:52 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 03:41:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/state/ft_peek.h"
 
 t_stacks	*ft_stack(void)
@@ -22,6 +23,7 @@ t_stacks	*ft_stack(void)
 
 void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
 {
+	ft_stack_normalize(STACK_INDEX);
 	pivot->first = ft_peek(stack, STACK_INDEX);
 	pivot->smaller = ft_peek_smaller(stack, STACK_INDEX);
 	pivot->bigger = ft_peek_bigger(stack, STACK_INDEX);

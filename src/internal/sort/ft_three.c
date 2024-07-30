@@ -6,11 +6,10 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 02:44:10 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 04:47:43 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_swap.h"
@@ -24,7 +23,6 @@ void	ft_sort_three(void)
 	t_pivots	pivot;
 
 	stack = ft_stack();
-	ft_stack_normalize(STACK_INDEX);
 	ft_set_pivots(stack->a, &pivot);
 	ft_run_sort_three(stack, pivot);
 }
@@ -48,7 +46,7 @@ static void	ft_run_sort_three(t_stacks *stack, t_pivots pivot)
 			}
 		}
 	}
-	ft_stack_normalize(STACK_INDEX);
+	ft_set_pivots(stack->a, &pivot);
 	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 		ft_swap_possibilities(SA);
 }

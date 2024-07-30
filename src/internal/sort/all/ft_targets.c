@@ -6,12 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 01:19:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 02:57:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 04:46:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_state.h"
 #include "internal/sort/ft_sort.h"
@@ -30,7 +29,6 @@ void	ft_push_to_stack_b(t_stacks *stack, t_pivots *pivot)
 		ft_swap_possibilities(SA);
 	else if (pivot->first > pivot->next && pivot->next > pivot->last)
 		ft_rotate_possibilities(RRA, ONE_TIME);
-	ft_stack_normalize(STACK_INDEX);
 	ft_set_pivots(stack->a, pivot);
 	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 	{
