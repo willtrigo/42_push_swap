@@ -6,13 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:20:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/25 04:57:58 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 01:48:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/ft_output.h"
 #include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/operation/ft_pop.h"
 #include "internal/sort/ft_sort.h"
 
 static void	ft_swap(t_operations operation);
@@ -57,6 +56,7 @@ static void	ft_swap_stack(t_stack **stack)
 	temp_stack = (*stack);
 	if (!temp_stack || !temp_stack->next)
 		return ;
-	temp_nbr = ft_pop(&(*stack));
-	ft_stackadd_front(&(*stack)->next, ft_stacknew(temp_nbr));
+	temp_nbr = (*stack)->nbr;
+	(*stack)->nbr = (*stack)->next->nbr;
+	(*stack)->next->nbr = temp_nbr;
 }
