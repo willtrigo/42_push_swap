@@ -6,16 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:23:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 01:17:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:27:38 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "internal/handle/ft_output.h"
-#include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/operation/ft_pop.h"
-#include "internal/handle/stack/state/ft_peek.h"
 #include "internal/sort/ft_sort.h"
+#include "internal/handle/ft_output.h"
+#include "internal/handle/stack/operation/ft_rotate.h"
 
 static void	ft_rotate(t_operations operation);
 static void	ft_rotate_stack(t_stack **stack);
@@ -85,11 +83,4 @@ static void	ft_reverse_rotate_stack(t_stack **stack)
 	temp_stack->prev = NULL;
 	*stack = temp_stack;
 	temp_stack->next->prev = temp_stack;
-
-	// last_node = find_last_node(*head);
-	// last_node->prev->next = NULL;
-	// last_node->next = *head;
-	// last_node->prev = NULL;
-	// *head = last_node;
-	// last_node->next->prev = last_node;
 }

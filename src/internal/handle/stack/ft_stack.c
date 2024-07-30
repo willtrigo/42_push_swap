@@ -6,15 +6,33 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/26 05:08:20 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:47:52 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_non_standard/ft_non_standard.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_peek.h"
-#include <unistd.h>
 
+t_stacks	*ft_stack(void)
+{
+	static t_stacks	stack;
+
+	return (&stack);
+}
+
+void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
+{
+	pivot->first = ft_peek(stack, STACK_INDEX);
+	pivot->smaller = ft_peek_smaller(stack, STACK_INDEX);
+	pivot->bigger = ft_peek_bigger(stack, STACK_INDEX);
+	pivot->mid = pivot->bigger / 2;
+	if (stack->next)
+		pivot->next = stack->next->index;
+	pivot->last = ft_stacklast(stack)->index;
+}
+
+#include "ft_non_standard/ft_non_standard.h"
+#include <unistd.h>
 void	ft_print_stack(int target_stack)
 {
 	t_stack	*temp_stack;
@@ -34,22 +52,4 @@ void	ft_print_stack(int target_stack)
 			ft_putendl_fd(" -> stack b", STDERR_FILENO);
 		temp_stack = temp_stack->next;
 	}
-}
-
-t_stacks	*ft_stack(void)
-{
-	static t_stacks	stack;
-
-	return (&stack);
-}
-
-void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
-{
-	pivot->first = ft_peek(stack, STACK_INDEX);
-	pivot->smaller = ft_peek_smaller(stack, STACK_INDEX);
-	pivot->bigger = ft_peek_bigger(stack, STACK_INDEX);
-	pivot->mid = pivot->bigger / 2;
-	if (stack->next)
-		pivot->next = stack->next->index;
-	pivot->last = ft_stacklast(stack)->index;
 }

@@ -6,13 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 05:38:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/24 05:40:57 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:18:04 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "internal/handle/stack/operation/ft_pop.h"
-#include "internal/handle/stack/ft_stack.h"
 
 static void	ft_connect_stack(t_stack **stack, t_stack *temp_stack);
 

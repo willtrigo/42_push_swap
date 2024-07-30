@@ -6,12 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:48:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/27 20:01:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:30:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/stack/state/ft_peek.h"
-#include "internal/handle/stack/ft_stack.h"
 
 int	ft_peek(t_stack *stack, t_type type)
 {

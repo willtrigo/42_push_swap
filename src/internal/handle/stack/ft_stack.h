@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/26 05:03:19 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:50:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ enum e_times
 	TWO_TIMES,
 };
 
-typedef enum e_type			t_type;
+typedef enum e_type				t_type;
 enum e_type
 {
 	STACK_DEFAULT,

@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/07/20 05:05:17 by dande-je         ###   ########.fr        #
+#    Updated: 2024/07/30 03:16:23 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,7 @@ SRCS_FILES                      += $(addprefix $(SRCS_SORT_DIR), ft_sort.c \
 SRCS_FILES                      += $(addprefix $(SRCS_ALL_DIR), ft_all.c \
 								   ft_targets.c)
 SRCS_FILES                      += $(addprefix $(SRCS_FOUR_DIR), ft_four.c \
-								   ft_targets.c \
-								   ft_targets_reverse.c)
+								   ft_targets.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)

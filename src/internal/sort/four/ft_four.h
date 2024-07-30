@@ -6,13 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:25 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/16 08:22:51 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:36:45 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_FOUR_H
 # define FT_FOUR_H
 
-void	ft_sort_four(int type);
+void	ft_sort_four(void);
 
 #endif

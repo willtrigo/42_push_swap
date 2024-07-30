@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/27 18:04:28 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:44:31 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,17 @@
 #include "internal/handle/stack/operation/ft_rotate.h"
 
 static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot);
-static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots *pivot);
 static void	ft_one_operation_to_finish(t_stack *stack, int info, int type);
 
-void	ft_sort_four(int type)
+void	ft_sort_four(void)
 {
 	t_stacks	*stack;
 	t_pivots	pivot;
 
 	stack = ft_stack();
 	ft_stack_normalize(STACK_INDEX);
-	if (type == DEFAULT)
-		ft_set_pivots(stack->a, &pivot);
-	else
-		ft_set_pivots(stack->b, &pivot);
-	if (type == DEFAULT)
-		ft_run_sort_four(stack, &pivot);
-	else
-		ft_run_sort_four_reverse(stack, &pivot);
+	ft_set_pivots(stack->a, &pivot);
+	ft_run_sort_four(stack, &pivot);
 }
 
 static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
@@ -54,12 +47,6 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 	ft_stack_normalize(STACK_INDEX);
 	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 		ft_swap_possibilities(SA);
-}
-
-static void	ft_run_sort_four_reverse(t_stacks *stack, t_pivots *pivot)
-{
-	(void)stack;
-	(void)pivot;
 }
 
 static void	ft_one_operation_to_finish(t_stack *stack, int info, int type)

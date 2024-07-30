@@ -6,12 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:22:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/12 10:41:13 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:18:26 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/ft_output.h"
-#include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/operation/ft_push.h"
 #include "internal/handle/stack/operation/ft_pop.h"
 

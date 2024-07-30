@@ -6,13 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:44 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/16 07:49:39 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:36:36 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_THREE_H
 # define FT_THREE_H
 
-void	ft_sort_three(int type);
+void	ft_sort_three(void);
 
 #endif

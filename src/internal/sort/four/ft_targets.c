@@ -6,11 +6,10 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 04:11:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/26 05:05:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/30 02:38:52 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_default.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/ft_normalize.h"
 #include "internal/sort/ft_three.h"
@@ -37,7 +36,7 @@ void	ft_targets(t_pivots *pivot)
 	ft_set_pivots(ft_stack()->a, pivot);
 	ft_stack_normalize(STACK_INDEX);
 	if (ft_stack()->info.a_size <= SORT_THREE)
-		ft_sort_three(DEFAULT);
+		ft_sort_three();
 	if (ft_stack()->info.b_size && ft_stack()->info.a_size == STACK_SIZE_THREE)
 		ft_push(PA, ONE_TIME);
 }
