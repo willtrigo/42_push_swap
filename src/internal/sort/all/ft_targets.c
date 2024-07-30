@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 01:19:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/29 11:34:54 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:40:53 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,9 @@ void	ft_push_to_stack_b(t_stacks *stack, t_pivots *pivot)
 
 static void	ft_best_position_after_push_to_stack_b(t_stacks *stack, t_pivots *pivot)
 {
-	int	next_b;
-	int	first_b;
-
-	next_b = stack->b->next->nbr;
-	first_b = stack->b->nbr;
-	if (first_b < pivot->mid)
+	if (stack->b->nbr < pivot->mid)
 		ft_rotate_possibilities(RB, ONE_TIME);
-	else if (first_b < next_b)
+	if (stack->b->nbr < stack->b->next->nbr)
 		ft_swap_possibilities(SB);
 }
 
