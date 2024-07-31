@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:24:09 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 02:54:41 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/31 05:44:23 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,5 @@
 # include "internal/handle/stack/ft_stack.h"
 
 void	ft_stack_normalize(t_type type);
-void	ft_set_normalize(void);
-void	ft_set_value(int value);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 02:50:40 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/31 02:37:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ struct s_stacks_info
 {
 	int	a_size;
 	int	b_size;
-	int	max_nbr;
-	int	min_nbr;
+	// int	max_nbr;
+	// int	min_nbr;
 };
 
 typedef struct s_stack			t_stack;

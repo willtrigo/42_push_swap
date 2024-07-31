@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:40 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/18 13:36:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/31 05:18:56 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ enum e_stack_size
 	STACK_SIZE_TWO = 2,
 	STACK_SIZE_THREE,
 	STACK_SIZE_FOUR,
+	STACK_SIZE_FIVE,
+	STACK_SIZE_TEN = 10,
+	STACK_SIZE_HUNDRED = 100,
 };
 
 enum e_stack_node

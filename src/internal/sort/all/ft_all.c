@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 04:48:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/31 05:21:41 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_sort_all(void)
 	if (stack->info.a_size == SORT_FOUR)
 		ft_sort_four();
 	ft_set_pivots(stack->a, &pivot);
-	// if (stack->info.a_size > SORT_FOUR)
 	if (stack->info.b_size)
 	{
 		while (!(stack->a->nbr + STACK_SIZE_TWO == stack->a->next->nbr || stack->a->nbr + STACK_NODE == stack->a->next->nbr))
@@ -115,6 +114,8 @@ static void	ft_return_nbr_between(t_stacks *stack, int value, t_pivots *pivot)
 	else if (cost > cost_reverse)
 	{
 		ft_rotate_possibilities(RRB, ONE_TIME);
+		if (stack->b->nbr < stack->b->next->nbr)
+			ft_swap_possibilities(SB);
 	}
 	else
 	{
@@ -138,6 +139,8 @@ static void	ft_return_nbr(t_stacks *stack, int value, t_pivots *pivot)
 	else if (cost > cost_reverse)
 	{
 		ft_rotate_possibilities(RRB, ONE_TIME);
+		if (stack->b->nbr < stack->b->next->nbr)
+			ft_swap_possibilities(SB);
 	}
 	else
 		ft_push(PA, ONE_TIME);

@@ -6,13 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 03:41:18 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/07/31 05:53:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/state/ft_peek.h"
+#include "internal/sort/ft_sort.h"
 
 t_stacks	*ft_stack(void)
 {
@@ -27,7 +28,12 @@ void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
 	pivot->first = ft_peek(stack, STACK_INDEX);
 	pivot->smaller = ft_peek_smaller(stack, STACK_INDEX);
 	pivot->bigger = ft_peek_bigger(stack, STACK_INDEX);
-	pivot->mid = pivot->bigger / 2;
+	if (pivot->bigger + STACK_NODE == STACK_SIZE_FIVE)
+		pivot->mid = pivot->bigger / STACK_SIZE_TWO;
+	else if (pivot->bigger >= STACK_SIZE_HUNDRED)
+		pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_TEN;
+	else
+		pivot->mid = pivot->bigger / STACK_SIZE_FOUR;
 	if (stack->next)
 		pivot->next = stack->next->index;
 	pivot->last = ft_stacklast(stack)->index;
