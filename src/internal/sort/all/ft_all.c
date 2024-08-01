@@ -6,21 +6,19 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/31 05:21:41 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:58:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include "ft_default.h"
-#include "internal/handle/stack/ft_stack.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/four/ft_four.h"
 #include "internal/sort/all/ft_all.h"
 #include "internal/sort/all/ft_targets.h"
+#include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_push.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
-#include "internal/handle/stack/state/ft_state.h"
 
 static void	ft_return_sorted_all(t_stacks *stack, t_pivots *pivot);
 static void	ft_one_operation_to_finish(t_stacks *stack);
@@ -42,7 +40,8 @@ void	ft_sort_all(void)
 	ft_set_pivots(stack->a, &pivot);
 	if (stack->info.b_size)
 	{
-		while (!(stack->a->nbr + STACK_SIZE_TWO == stack->a->next->nbr || stack->a->nbr + STACK_NODE == stack->a->next->nbr))
+		while (!(stack->a->nbr + STACK_SIZE_TWO == stack->a->next->nbr \
+			|| stack->a->nbr + STACK_NODE == stack->a->next->nbr))
 		{
 			ft_push(PB, ONE_TIME);
 			if (stack->b->nbr < pivot.mid)
@@ -94,9 +93,11 @@ static void	ft_one_operation_to_finish(t_stacks *stack)
 
 static void	ft_return_sorted_all(t_stacks *stack, t_pivots *pivot)
 {
-	if (stack->info.b_size && stack->a->nbr + STACK_SIZE_TWO == stack->a->next->nbr)
+	if (stack->info.b_size && stack->a->nbr + STACK_SIZE_TWO \
+		== stack->a->next->nbr)
 		ft_return_nbr_between(stack, stack->a->nbr + STACK_NODE, pivot);
-	else if (stack->info.b_size && stack->a->nbr + STACK_NODE == stack->a->next->nbr)
+	else if (stack->info.b_size && stack->a->nbr + STACK_NODE \
+		== stack->a->next->nbr)
 		ft_return_nbr(stack, stack->a->nbr - STACK_NODE, pivot);
 }
 
@@ -157,9 +158,9 @@ static int	ft_get_cost(int value)
 	while (temp_stack->next)
 	{
 		if (temp_stack->nbr == value)
-			break;
+			break ;
 		cost++;
 		temp_stack = temp_stack->next;
 	}
-	return cost;
+	return (cost);
 }

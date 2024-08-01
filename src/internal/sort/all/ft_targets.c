@@ -6,15 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 01:19:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/31 05:47:40 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:56:44 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include "internal/handle/stack/ft_stack.h"
-#include "internal/handle/stack/state/ft_state.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/all/ft_targets.h"
+#include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_push.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
@@ -41,7 +39,6 @@ void	ft_push_to_stack_b(t_stacks *stack, t_pivots *pivot)
 static void	ft_best_position_after_push_to_stack_b(t_stacks *stack, \
 				t_pivots *pivot)
 {
-	// if (stack->b->nbr < pivot->mid && !ft_is_sorted(stack->b, STACK_NBR_REVERSE, stack->info.b_size))
 	if (stack->b->nbr < pivot->mid)
 		ft_rotate_possibilities(RB, ONE_TIME);
 	if (stack->b->nbr < stack->b->next->nbr)

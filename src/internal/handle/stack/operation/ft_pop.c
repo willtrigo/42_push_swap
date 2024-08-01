@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 05:38:10 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 02:18:04 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 02:17:28 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@ static void	ft_connect_stack(t_stack **stack, t_stack *temp_stack)
 	{
 		(*stack)->prev->next = NULL;
 		free(*stack);
-	}
-	else if ((*stack)->next && (*stack)->prev)
-	{
-		temp_stack = (*stack)->next;
-		free(*stack);
-		*stack = temp_stack;
-		(*stack)->prev = NULL;
 	}
 	else
 	{

@@ -6,14 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/31 05:53:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 02:00:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "internal/sort/ft_sort.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/state/ft_peek.h"
-#include "internal/sort/ft_sort.h"
 
 t_stacks	*ft_stack(void)
 {

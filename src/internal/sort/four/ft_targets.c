@@ -6,17 +6,15 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 04:11:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/30 04:47:56 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:52:01 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal/handle/stack/ft_stack.h"
-#include "internal/sort/ft_three.h"
+#include "internal/sort/ft_sort.h"
 #include "internal/sort/four/ft_targets.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_push.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
-#include "internal/sort/ft_sort.h"
 
 static void	ft_target_bigger(t_pivots *pivot);
 static void	ft_target_penult(t_pivots *pivot);
@@ -32,11 +30,6 @@ void	ft_targets(t_pivots *pivot)
 		ft_target_penult(pivot);
 	else if (pivot->first == pivot->bigger)
 		ft_target_bigger(pivot);
-	ft_set_pivots(ft_stack()->a, pivot);
-	if (ft_stack()->info.a_size <= SORT_THREE)
-		ft_sort_three();
-	if (ft_stack()->info.b_size && ft_stack()->info.a_size == STACK_SIZE_THREE)
-		ft_push(PA, ONE_TIME);
 }
 
 static void	ft_target_bigger(t_pivots *pivot)
