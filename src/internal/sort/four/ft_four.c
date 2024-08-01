@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 01:54:41 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:39:54 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static void	ft_run_sort_four(t_stacks *stack, t_pivots *pivot)
 			ft_set_pivots(ft_stack()->a, pivot);
 			if (ft_stack()->info.a_size <= SORT_THREE)
 				ft_sort_three();
-			if (ft_stack()->info.b_size && ft_stack()->info.a_size == STACK_SIZE_THREE)
+			if (ft_stack()->info.b_size && ft_stack()->info.a_size \
+				== STACK_SIZE_THREE)
 				ft_push(PA, ONE_TIME);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:26 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 01:24:39 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:33:57 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ void		ft_stackadd_back(t_stack **stack, t_stack *node_new);
 void		ft_stackadd_front(t_stack **stack, t_stack *node_new);
 t_stack		*ft_stacknew(int nbr);
 void		ft_set_pivots(t_stack *stack, t_pivots *pivot);
-void		ft_print_stack(int target_stack);
+void		ft_stack_normalize(t_type type);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 01:19:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 01:56:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:43:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/sort/ft_sort.h"
+#include "internal/sort/all/ft_all.h"
 #include "internal/sort/all/ft_targets.h"
 #include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_push.h"
@@ -20,6 +21,26 @@
 static void	ft_best_position_after_push_to_stack_b(t_stacks *stack, \
 				t_pivots *pivot);
 static void	ft_stay_in_the_same_stack_first_equal_next(t_pivots *pivot);
+
+void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
+{
+	ft_set_pivots(stack->a, pivot);
+	ft_one_operation_to_finish(stack);
+	ft_set_pivots(stack->a, pivot);
+	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size) \
+		&& stack->info.a_size > STACK_SIZE_FOUR)
+	{
+		if (pivot->first < pivot->mid)
+			ft_push_to_stack_b(stack, pivot);
+		else if (pivot->last < pivot->mid && pivot->last < pivot->next)
+			ft_rotate_possibilities(RRA, ONE_TIME);
+		else if (pivot->next < pivot->mid)
+			ft_swap_possibilities(SA);
+		else if (pivot->first >= pivot->mid)
+			ft_stay_in_the_same_stack(pivot);
+		ft_run_sort_all(stack, pivot);
+	}
+}
 
 void	ft_push_to_stack_b(t_stacks *stack, t_pivots *pivot)
 {

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 01:58:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:50:08 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,11 @@
 #include "internal/sort/four/ft_four.h"
 #include "internal/sort/all/ft_all.h"
 #include "internal/sort/all/ft_targets.h"
+#include "internal/sort/all/ft_return_nbrs.h"
 #include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_push.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
-
-static void	ft_return_sorted_all(t_stacks *stack, t_pivots *pivot);
-static void	ft_one_operation_to_finish(t_stacks *stack);
-static void	ft_return_nbr_between(t_stacks *stack, int value, t_pivots *pivot);
-static void	ft_return_nbr(t_stacks *stack, int value, t_pivots *pivot);
-static int	ft_get_cost(int value);
 
 void	ft_sort_all(void)
 {
@@ -53,27 +48,7 @@ void	ft_sort_all(void)
 	ft_return_sorted_all(stack, &pivot);
 }
 
-void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
-{
-	ft_set_pivots(stack->a, pivot);
-	ft_one_operation_to_finish(stack);
-	ft_set_pivots(stack->a, pivot);
-	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size) \
-		&& stack->info.a_size > STACK_SIZE_FOUR)
-	{
-		if (pivot->first < pivot->mid)
-			ft_push_to_stack_b(stack, pivot);
-		else if (pivot->last < pivot->mid && pivot->last < pivot->next)
-			ft_rotate_possibilities(RRA, ONE_TIME);
-		else if (pivot->next < pivot->mid)
-			ft_swap_possibilities(SA);
-		else if (pivot->first >= pivot->mid)
-			ft_stay_in_the_same_stack(pivot);
-		ft_run_sort_all(stack, pivot);
-	}
-}
-
-static void	ft_one_operation_to_finish(t_stacks *stack)
+void	ft_one_operation_to_finish(t_stacks *stack)
 {
 	int	times;
 
@@ -91,64 +66,7 @@ static void	ft_one_operation_to_finish(t_stacks *stack)
 	}
 }
 
-static void	ft_return_sorted_all(t_stacks *stack, t_pivots *pivot)
-{
-	if (stack->info.b_size && stack->a->nbr + STACK_SIZE_TWO \
-		== stack->a->next->nbr)
-		ft_return_nbr_between(stack, stack->a->nbr + STACK_NODE, pivot);
-	else if (stack->info.b_size && stack->a->nbr + STACK_NODE \
-		== stack->a->next->nbr)
-		ft_return_nbr(stack, stack->a->nbr - STACK_NODE, pivot);
-}
-
-static void	ft_return_nbr_between(t_stacks *stack, int value, t_pivots *pivot)
-{
-	int	cost;
-	int	cost_reverse;
-
-	cost = ft_get_cost(value);
-	cost_reverse = stack->info.b_size - ft_get_cost(value);
-	if (cost > DEFAULT && cost <= cost_reverse)
-	{
-		ft_rotate_possibilities(RB, ONE_TIME);
-	}
-	else if (cost > cost_reverse)
-	{
-		ft_rotate_possibilities(RRB, ONE_TIME);
-		if (stack->b->nbr < stack->b->next->nbr)
-			ft_swap_possibilities(SB);
-	}
-	else
-	{
-		ft_push(PA, ONE_TIME);
-		ft_swap_possibilities(SA);
-	}
-	ft_return_sorted_all(stack, pivot);
-}
-
-static void	ft_return_nbr(t_stacks *stack, int value, t_pivots *pivot)
-{
-	int	cost;
-	int	cost_reverse;
-
-	cost = ft_get_cost(value);
-	cost_reverse = stack->info.b_size - ft_get_cost(value);
-	if (cost > DEFAULT && cost <= cost_reverse)
-	{
-		ft_rotate_possibilities(RB, ONE_TIME);
-	}
-	else if (cost > cost_reverse)
-	{
-		ft_rotate_possibilities(RRB, ONE_TIME);
-		if (stack->b->nbr < stack->b->next->nbr)
-			ft_swap_possibilities(SB);
-	}
-	else
-		ft_push(PA, ONE_TIME);
-	ft_return_sorted_all(stack, pivot);
-}
-
-static int	ft_get_cost(int value)
+int	ft_get_cost(int value)
 {
 	t_stack	*temp_stack;
 	int		cost;

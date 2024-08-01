@@ -6,14 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:23:55 by dande-je          #+#    #+#             */
-/*   Updated: 2024/07/31 05:45:12 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:34:43 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <limits.h>
 #include "ft_default.h"
-#include "internal/handle/stack/ft_normalize.h"
 #include "internal/handle/stack/state/ft_peek.h"
 
 static void	ft_set_value(int value);
