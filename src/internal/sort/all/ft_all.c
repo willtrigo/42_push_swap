@@ -6,11 +6,10 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 04:50:08 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/02 00:25:38 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_default.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/four/ft_four.h"
 #include "internal/sort/all/ft_all.h"
@@ -64,21 +63,4 @@ void	ft_one_operation_to_finish(t_stacks *stack)
 			stack->info.a_size - STACK_NODE))
 			ft_rotate_possibilities(RRA, ONE_TIME);
 	}
-}
-
-int	ft_get_cost(int value)
-{
-	t_stack	*temp_stack;
-	int		cost;
-
-	cost = DEFAULT;
-	temp_stack = ft_stack()->b;
-	while (temp_stack->next)
-	{
-		if (temp_stack->nbr == value)
-			break ;
-		cost++;
-		temp_stack = temp_stack->next;
-	}
-	return (cost);
 }
