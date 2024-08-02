@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/08/01 04:52:12 by dande-je         ###   ########.fr        #
+#    Updated: 2024/08/02 04:43:01 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SRCS_FILES                      += $(addprefix $(SRCS_PARSE_DIR), ft_parse_argum
 SRCS_FILES                      += $(addprefix $(SRCS_SORT_DIR), ft_sort.c \
 								   ft_three.c)
 SRCS_FILES                      += $(addprefix $(SRCS_ALL_DIR), ft_all.c \
+								   ft_cost.c \
 								   ft_return_nbrs.c \
 								   ft_targets.c)
 SRCS_FILES                      += $(addprefix $(SRCS_FOUR_DIR), ft_four.c \
