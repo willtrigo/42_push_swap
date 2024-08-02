@@ -6,10 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 04:34:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/02 04:35:59 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_default.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_peek.h"
@@ -27,12 +28,15 @@ void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
 	pivot->first = ft_peek(stack, STACK_INDEX);
 	pivot->smaller = ft_peek_smaller(stack, STACK_INDEX);
 	pivot->bigger = ft_peek_bigger(stack, STACK_INDEX);
-	if (pivot->bigger + STACK_NODE == STACK_SIZE_FIVE)
-		pivot->mid = pivot->bigger / STACK_SIZE_TWO;
-	else if (pivot->bigger >= STACK_SIZE_HUNDRED)
-		pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_TEN;
-	else
-		pivot->mid = pivot->bigger / STACK_SIZE_FOUR;
+	if (pivot->mid == INIT)
+	{
+		if (pivot->bigger + STACK_NODE == STACK_SIZE_FIVE)
+			pivot->mid = pivot->bigger / STACK_SIZE_TWO;
+		else if (pivot->bigger >= STACK_SIZE_HUNDRED)
+			pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_TEN;
+		else
+			pivot->mid = pivot->bigger / STACK_SIZE_FOUR;
+	}
 	if (stack->next)
 		pivot->next = stack->next->index;
 	pivot->last = ft_stacklast(stack)->index;
