@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 04:44:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/02 03:53:10 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/03 03:53:37 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_return_nbr_between(t_stacks *stack, int value, t_pivots *pivot)
 {
 	t_cost	direction;
 
-	direction = ft_return_best_cost(value, STACK_B, false, stack->info.b_size);
+	direction = ft_return_best_cost(value, STACK_B, false);
 	if (stack->b->nbr == value)
 	{
 		ft_push(PA, ONE_TIME);
@@ -55,7 +55,7 @@ void	ft_return_nbr(t_stacks *stack, int value, t_pivots *pivot)
 {
 	t_cost	direction;
 
-	direction = ft_return_best_cost(value, STACK_B, true, stack->info.b_size);
+	direction = ft_return_best_cost(value, STACK_B, true);
 	if (stack->b->nbr == value || stack->b->nbr == value - STACK_NODE)
 		ft_push(PA, ONE_TIME);
 	else if (direction == TOP)

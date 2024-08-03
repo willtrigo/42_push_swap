@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 01:19:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 04:43:15 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:33:20 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	ft_stay_in_the_same_stack_first_equal_next(t_pivots *pivot);
 
 void	ft_run_sort_all(t_stacks *stack, t_pivots *pivot)
 {
+	return ;
 	ft_set_pivots(stack->a, pivot);
 	ft_one_operation_to_finish(stack);
 	ft_set_pivots(stack->a, pivot);
@@ -52,6 +53,7 @@ void	ft_push_to_stack_b(t_stacks *stack, t_pivots *pivot)
 	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 	{
 		ft_push(PB, ONE_TIME);
+		pivot->mid--;
 		if (stack->info.b_size >= STACK_SIZE_THREE)
 			ft_best_position_after_push_to_stack_b(stack, pivot);
 	}

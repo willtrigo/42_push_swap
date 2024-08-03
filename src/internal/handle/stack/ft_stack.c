@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/02 04:35:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/03 03:46:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,17 @@ void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
 	pivot->first = ft_peek(stack, STACK_INDEX);
 	pivot->smaller = ft_peek_smaller(stack, STACK_INDEX);
 	pivot->bigger = ft_peek_bigger(stack, STACK_INDEX);
-	if (pivot->mid == INIT)
+	if (pivot->mid == DEFAULT)
 	{
 		if (pivot->bigger + STACK_NODE == STACK_SIZE_FIVE)
 			pivot->mid = pivot->bigger / STACK_SIZE_TWO;
-		else if (pivot->bigger >= STACK_SIZE_HUNDRED)
-			pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_TEN;
+		else if (pivot->bigger >= 400)
+			// pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_TEN;
+			// pivot->mid = STACK_SIZE_FORTY;
+			pivot->mid = 75;
+		else if (pivot->bigger + STACK_NODE >= STACK_SIZE_HUNDRED)
+			// pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_TEN;
+			pivot->mid = 25;
 		else
 			pivot->mid = pivot->bigger / STACK_SIZE_FOUR;
 	}

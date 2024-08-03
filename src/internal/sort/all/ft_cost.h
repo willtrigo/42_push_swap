@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 00:23:58 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/02 03:51:30 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/03 00:28:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ enum e_cost
 	BOT,
 };
 
-t_cost	ft_return_best_cost(int value, t_stack_targets target, \
-			bool is_between, int stack_size);
+t_cost	ft_return_best_cost(int value, t_stack_targets target, bool is_between);
 
 #endif
