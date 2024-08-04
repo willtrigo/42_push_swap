@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/03 03:46:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/04 05:20:45 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
 		if (pivot->bigger + STACK_NODE == STACK_SIZE_FIVE)
 			pivot->mid = pivot->bigger / STACK_SIZE_TWO;
 		else if (pivot->bigger >= 400)
-			// pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_TEN;
-			// pivot->mid = STACK_SIZE_FORTY;
-			pivot->mid = 75;
+			pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_SEVEN;
 		else if (pivot->bigger + STACK_NODE >= STACK_SIZE_HUNDRED)
-			// pivot->mid = (pivot->bigger + STACK_NODE) / STACK_SIZE_TEN;
-			pivot->mid = 25;
+			pivot->mid = STACK_SIZE_THIRTYFOUR;
 		else
 			pivot->mid = pivot->bigger / STACK_SIZE_FOUR;
 	}

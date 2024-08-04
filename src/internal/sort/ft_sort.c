@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 04:36:39 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/04 05:13:56 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
 
-#include "ft_delete_aux.h"
 void	ft_sort(void)
 {
 	t_stacks	*stack;
@@ -30,7 +29,6 @@ void	ft_sort(void)
 	ft_stack_normalize(STACK_DEFAULT);
 	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size))
 	{
-		ft_pt1();
 		if (stack->info.a_size <= SORT_THREE)
 			ft_sort_three();
 		else if (stack->info.a_size == SORT_FOUR)
@@ -38,7 +36,6 @@ void	ft_sort(void)
 		else if (stack->info.a_size > SORT_FOUR)
 			ft_sort_all();
 	}
-	ft_pt2();
 }
 
 bool	ft_is_ready_to_sorted_reverse(void)

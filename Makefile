@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/08/02 04:43:01 by dande-je         ###   ########.fr        #
+#    Updated: 2024/08/04 05:22:13 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ LIBS                            := ./lib/42_libft/libft.a
 
 NAME                            = push_swap
 
-SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c ft_delete_aux.c)
+SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_STACK_DIR), ft_build.c \
 								   ft_destroy.c \
 								   ft_normalize.c \
@@ -79,8 +79,7 @@ SRCS_FILES                      += $(addprefix $(SRCS_SORT_DIR), ft_sort.c \
 								   ft_three.c)
 SRCS_FILES                      += $(addprefix $(SRCS_ALL_DIR), ft_all.c \
 								   ft_cost.c \
-								   ft_return_nbrs.c \
-								   ft_targets.c)
+								   ft_return_nbrs.c)
 SRCS_FILES                      += $(addprefix $(SRCS_FOUR_DIR), ft_four.c \
 								   ft_targets.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
