@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 04:39:54 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:17:21 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ static void	ft_one_operation_to_finish(t_stack *stack, int info)
 	int	times;
 
 	times = info - STACK_NODE;
-	if (ft_is_sorted(stack->next, STACK_INDEX, times))
-		ft_rotate_possibilities(RA, ONE_TIME);
-	else if (ft_is_sorted(stack->next->next, STACK_INDEX, times) \
+	if (ft_is_sorted(stack->next, STACK_NBR, times))
+		ft_rotate_possibilities(RA, ONE_TIME, false);
+	else if (ft_is_sorted(stack->next->next, STACK_NBR, times) \
 		&& stack->next->index == DEFAULT)
 		ft_swap_possibilities(SA);
-	else if (ft_is_sorted(stack, STACK_INDEX, times))
-		ft_rotate_possibilities(RRA, ONE_TIME);
+	else if (ft_is_sorted(stack, STACK_NBR, times))
+		ft_rotate_possibilities(RRA, ONE_TIME, false);
 }

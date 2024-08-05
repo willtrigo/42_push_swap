@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 00:23:34 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/03 00:28:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:48:53 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_cost	ft_return_best_cost(int value, t_stack_targets target, bool is_between)
 	cost = ft_get_nbr_cost(value, target);
 	cost_reverse = ft_get_nbr_cost_reverse(value, target);
 	if (target == STACK_B && cost != DEFAULT && is_between \
-		&& ft_stack()->info.b_size > STACK_SIZE_TEN)
+		&& ft_stack()->info.b_size > STACK_SIZE_TWO)
 	{
 		cost_next = ft_get_nbr_cost(value - STACK_NODE, target);
 		cost_next_reverse = ft_get_nbr_cost_reverse(value - STACK_NODE, target);
@@ -56,7 +56,7 @@ static int	ft_get_nbr_cost(int value, t_stack_targets target)
 		temp_stack = ft_stack()->b;
 	while (temp_stack->next)
 	{
-		if (target == STACK_A && temp_stack->index < value)
+		if (target == STACK_A && temp_stack->nbr < value)
 			break ;
 		else if (target == STACK_B && temp_stack->nbr == value)
 			break ;
@@ -78,7 +78,7 @@ static int	ft_get_nbr_cost_reverse(int value, t_stack_targets target)
 		temp_stack = ft_stacklast(ft_stack()->b);
 	while (temp_stack->prev)
 	{
-		if (target == STACK_A && temp_stack->index < value)
+		if (target == STACK_A && temp_stack->nbr < value)
 			break ;
 		else if (target == STACK_B && temp_stack->nbr == value)
 			break ;

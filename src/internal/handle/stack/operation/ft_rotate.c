@@ -6,35 +6,31 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:23:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 02:03:50 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:44:19 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "internal/sort/ft_sort.h"
 #include "internal/handle/ft_output.h"
+#include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
 
 static void	ft_rotate(t_operations operation);
 static void	ft_rotate_stack(t_stack **stack);
 static void	ft_reverse_rotate_stack(t_stack **stack);
 
-void	ft_rotate_possibilities(t_operations operation, int times)
+void	ft_rotate_possibilities(t_operations operation, int times, \
+			bool active_bonus)
 {
 	t_stacks	*stack;
 
 	stack = ft_stack();
 	while (times--)
 	{
-		if (operation == RA && stack->info.b_size >= STACK_SIZE_TWO \
-			&& stack->b->nbr < ft_stacklast(stack->b)->nbr)
+		if (active_bonus && operation == RB && stack->a->nbr \
+			> ft_stacklast(stack->a)->nbr)
 			operation = RR;
-		else if (operation == RB && stack->a->nbr > ft_stacklast(stack->a)->nbr)
-			operation = RR;
-		else if (operation == RRA && stack->info.b_size >= STACK_SIZE_TWO \
-			&& ft_stacklast(stack->b)->nbr > stack->b->nbr)
-			operation = RRR;
-		else if (operation == RRB \
+		else if (active_bonus && operation == RRB \
 			&& ft_stacklast(stack->a)->nbr < stack->a->nbr)
 			operation = RRR;
 		ft_rotate(operation);

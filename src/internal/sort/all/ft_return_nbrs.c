@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 04:44:17 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/04 00:49:15 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:17:48 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	ft_return_nbr_between(t_stacks *stack, int value, t_pivots *pivot)
 		ft_swap_possibilities(SA);
 	}
 	else if (direction == TOP)
-		ft_rotate_possibilities(RB, ONE_TIME);
+		ft_rotate_possibilities(RB, ONE_TIME, false);
 	else if (direction == BOT)
-		ft_rotate_possibilities(RRB, ONE_TIME);
+		ft_rotate_possibilities(RRB, ONE_TIME, false);
 	ft_return_sorted_all(stack, pivot);
 }
 
@@ -53,8 +53,8 @@ void	ft_return_nbr(t_stacks *stack, int value, t_pivots *pivot)
 	if (stack->b->nbr == value || stack->b->nbr == value - STACK_NODE)
 		ft_push(PA, ONE_TIME);
 	else if (direction == TOP)
-		ft_rotate_possibilities(RB, ONE_TIME);
+		ft_rotate_possibilities(RB, ONE_TIME, false);
 	else if (direction == BOT)
-		ft_rotate_possibilities(RRB, ONE_TIME);
+		ft_rotate_possibilities(RRB, ONE_TIME, false);
 	ft_return_sorted_all(stack, pivot);
 }

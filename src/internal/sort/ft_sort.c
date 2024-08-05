@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:06:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/04 05:13:56 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:19:01 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ bool	ft_is_ready_to_sorted_reverse(void)
 	{
 		while (ft_stack()->info.a_size - STACK_SIZE_FOUR)
 		{
-			ft_rotate_possibilities(RRA, ONE_TIME);
+			ft_rotate_possibilities(RRA, ONE_TIME, false);
 			ft_push(PB, ONE_TIME);
 			push_size++;
 		}
 		ft_swap_possibilities(SA);
-		ft_rotate_possibilities(RA, TWO_TIMES);
+		ft_rotate_possibilities(RA, TWO_TIMES, false);
 		ft_swap_possibilities(SA);
 		ft_push(PA, push_size);
 		return (true);
