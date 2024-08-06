@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/08/06 10:44:56 by dande-je         ###   ########.fr        #
+#    Updated: 2024/08/06 18:49:37 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS_OPERATION_DIR              := $(SRCS_STACK_DIR)operation/
 SRCS_STATE_DIR                  := $(SRCS_STACK_DIR)state/
 SRCS_MAIN_BONUS_DIR             := bonus/
 SRCS_INTERNAL_BONUS_DIR         := bonus/internal/
+SRCS_PARSE_BONUS_DIR            := $(SRCS_INTERNAL_BONUS_DIR)parse/
 INCS                            := src/ bonus/ lib/42_libft/include/
 BUILD_DIR                       := build/
 LIBFT_DIR                       := lib/42_libft/
@@ -88,6 +89,7 @@ SRCS_FILES                      += $(addprefix $(SRCS_FOUR_DIR), ft_four.c \
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
 
 SRCS_BONUS_FILES                += $(addprefix $(SRCS_MAIN_BONUS_DIR), main.c)
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_PARSE_BONUS_DIR), ft_parse_arguments_bonus.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 OBJS_BONUS                      += $(SRCS_BONUS_FILES:%.c=$(BUILD_DIR)%.o)
@@ -190,7 +192,7 @@ define clean
 endef
 
 define fclean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_BONUS)
 	$(SLEEP)
 	printf "$(RED)$(FCLEAN_MESSAGE)$(RESET)\n"
 endef

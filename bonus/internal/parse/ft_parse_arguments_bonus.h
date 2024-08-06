@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_parse_arguments_bonus.h                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 10:35:53 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/06 12:41:28 by dande-je         ###   ########.fr       */
+/*   Created: 2024/08/06 11:05:10 by dande-je          #+#    #+#             */
+/*   Updated: 2024/08/06 12:35:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "internal/parse/ft_parse_arguments_bonus.h"
+#ifndef FT_PARSE_ARGUMENTS_BONUS_H
+# define FT_PARSE_ARGUMENTS_BONUS_H
 
-int	main(int argc, char **argv)
+enum e_arguments
 {
-	ft_parse_arguments(--argc, ++argv);
-	exit(EXIT_SUCCESS);
-}
+	SINGLE_ARGURMENT = 1,
+};
+
+void	ft_parse_arguments(int argc, char **argv);
+
+#endif
