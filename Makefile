@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/08/04 05:22:13 by dande-je         ###   ########.fr        #
+#    Updated: 2024/08/06 10:44:56 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,9 @@ SRCS_ALL_DIR                    := $(SRCS_SORT_DIR)all/
 SRCS_STACK_DIR                  := $(SRCS_HANDLE_DIR)stack/
 SRCS_OPERATION_DIR              := $(SRCS_STACK_DIR)operation/
 SRCS_STATE_DIR                  := $(SRCS_STACK_DIR)state/
-INCS                            := src/ lib/42_libft/include/
+SRCS_MAIN_BONUS_DIR             := bonus/
+SRCS_INTERNAL_BONUS_DIR         := bonus/internal/
+INCS                            := src/ bonus/ lib/42_libft/include/
 BUILD_DIR                       := build/
 LIBFT_DIR                       := lib/42_libft/
 
@@ -62,6 +64,7 @@ LIBFT                           = $(addprefix $(LIBFT_DIR), libft.a)
 LIBS                            := ./lib/42_libft/libft.a
 
 NAME                            = push_swap
+NAME_BONUS                      = checker
 
 SRCS_FILES                      += $(addprefix $(SRCS_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_STACK_DIR), ft_build.c \
@@ -84,7 +87,10 @@ SRCS_FILES                      += $(addprefix $(SRCS_FOUR_DIR), ft_four.c \
 								   ft_targets.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
 
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_MAIN_BONUS_DIR), main.c)
+
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
+OBJS_BONUS                      += $(SRCS_BONUS_FILES:%.c=$(BUILD_DIR)%.o)
 
 DEPS                            += $(OBJS:.o=.d)
 
@@ -100,7 +106,9 @@ MATH                            = 0
 CLEAN_MESSAGE                   := Push swap objects deleted
 FCLEAN_MESSAGE                  := Push swap deleted
 EXE_MESSAGE                     = $(RESET)[100%%] $(GREEN)Built target push_swap
+EXE_BONUS_MESSAGE               = [100%%] $(GREEN)Built target checker
 COMP_MESSAGE                    = Building C object
+COMP_BONUS_MESSAGE              = $(CYAN)[BONUS]$(RESET) $(YELLOW)Building C object
 TEST_INIT_MESSAGE               = Running tests
 TEST_FINISHED_MESSAGE           = Completed tests
 SUCESS_MESSAGE                  = $(GREEN)Success: $(RESET)
@@ -126,6 +134,13 @@ COMPILE_EXE                    = $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o
 
 ifdef WITH_DEBUG
 	CFLAGS                     = $(DFLAGS)
+endif
+
+ifdef WITH_BONUS
+	NAME                       = $(NAME_BONUS)
+	OBJS                       = $(OBJS_BONUS)
+	COMP_MESSAGE               = $(COMP_BONUS_MESSAGE)
+	EXE_MESSAGE                = $(EXE_BONUS_MESSAGE)
 endif
 
 #******************************************************************************#
@@ -155,6 +170,10 @@ define comp_objs
 	$(eval MATH=$(shell expr "$(COUNT)" \* 100 \/ "$(OBJS_COUNT)"))
 	$(eval MATH=$(shell if [ $(COUNT) -lt 1 ]; then echo $(shell expr "$(MATH)" + 100) ; else echo $(MATH) ; fi))
 	printf "[%3d%%] $(YELLOW)$(COMP_MESSAGE) $@ \r$(RESET)\n" $$(echo $(MATH))
+endef
+
+define bonus
+	$(MAKE) WITH_BONUS=TRUE
 endef
 
 define comp_exe
@@ -225,6 +244,9 @@ $(NAME): $(LIBFT) $(call reset_count, -$(words $(OBJS))) $(OBJS)
 $(LIBFT):
 	$(call submodule_update_libft)
 
+bonus:
+	$(call bonus)
+
 clean:
 	$(call clean)
 
@@ -244,7 +266,7 @@ test_run:
 test_output:
 	$(call test_output)
 
-.PHONY: all clean fclean re debug test test_run test_output
+.PHONY: all clean fclean re debug test test_run test_output bonus
 .DEFAULT_GOAL := all
 .SILENT:
 
