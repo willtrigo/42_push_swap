@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 03:27:46 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 03:30:21 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/07 06:00:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,4 @@ int	ft_peek_bigger(t_stack *stack, t_type type)
 		temp_stack = temp_stack->next;
 	}
 	return (bigger);
-}
-
-int	ft_peek_smaller(t_stack *stack, t_type type)
-{
-	t_stack	*temp_stack;
-	int		smaller;
-	int		next_value;
-
-	temp_stack = stack;
-	smaller = ft_peek(temp_stack, type);
-	while (temp_stack->next)
-	{
-		next_value = ft_peek(temp_stack->next, type);
-		if (smaller > next_value)
-			smaller = next_value;
-		temp_stack = temp_stack->next;
-	}
-	return (smaller);
 }

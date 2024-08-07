@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 00:40:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 03:53:31 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/07 06:00:02 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,27 @@ typedef enum e_stack_targets	t_stack_targets;
 enum e_stack_targets
 {
 	STACK_A,
-	STACK_B,
 };
 
 enum e_times
 {
 	ONE_TIME = 1,
-	TWO_TIMES,
 };
 
 typedef enum e_type				t_type;
 enum e_type
 {
-	STACK_DEFAULT,
-	STACK_INDEX,
-	STACK_INDEX_REVERSE,
 	STACK_NBR,
-	STACK_NBR_REVERSE,
 };
 
 enum e_stack_node
 {
 	STACK_NODE = 1,
+};
+
+enum e_stack_size
+{
+	STACK_SIZE_TWO = 2,
 };
 
 t_stacks	*ft_stack(void);

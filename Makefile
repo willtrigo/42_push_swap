@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 02:06:14 by dande-je          #+#    #+#              #
-#    Updated: 2024/08/06 18:49:37 by dande-je         ###   ########.fr        #
+#    Updated: 2024/08/07 06:03:06 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,14 @@ SRCS_ALL_DIR                    := $(SRCS_SORT_DIR)all/
 SRCS_STACK_DIR                  := $(SRCS_HANDLE_DIR)stack/
 SRCS_OPERATION_DIR              := $(SRCS_STACK_DIR)operation/
 SRCS_STATE_DIR                  := $(SRCS_STACK_DIR)state/
-SRCS_MAIN_BONUS_DIR             := bonus/
+SRCS_BONUS_DIR                  := bonus/
 SRCS_INTERNAL_BONUS_DIR         := bonus/internal/
 SRCS_PARSE_BONUS_DIR            := $(SRCS_INTERNAL_BONUS_DIR)parse/
+SRCS_HANDLE_BONUS_DIR           := $(SRCS_INTERNAL_BONUS_DIR)handle/
+SRCS_CHECKER_BONUS_DIR          := $(SRCS_INTERNAL_BONUS_DIR)check/
+SRCS_STACK_BONUS_DIR            := $(SRCS_HANDLE_BONUS_DIR)stack/
+SRCS_OPERATION_BONUS_DIR        := $(SRCS_STACK_BONUS_DIR)operation/
+SRCS_STATE_BONUS_DIR            := $(SRCS_STACK_BONUS_DIR)state/
 INCS                            := src/ bonus/ lib/42_libft/include/
 BUILD_DIR                       := build/
 LIBFT_DIR                       := lib/42_libft/
@@ -88,8 +93,20 @@ SRCS_FILES                      += $(addprefix $(SRCS_FOUR_DIR), ft_four.c \
 								   ft_targets.c)
 SRCS_FILES                      += $(addprefix $(SRCS_HANDLE_DIR), ft_output.c)
 
-SRCS_BONUS_FILES                += $(addprefix $(SRCS_MAIN_BONUS_DIR), main.c)
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_BONUS_DIR), main.c)
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_STACK_BONUS_DIR), ft_build_bonus.c \
+								   ft_destroy_bonus.c \
+								   ft_normalize_bonus.c \
+								   ft_stack_bonus.c)
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_STATE_BONUS_DIR), ft_peek_bonus.c \
+								   ft_state_bonus.c)
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_OPERATION_BONUS_DIR), ft_pop_bonus.c \
+								   ft_push_bonus.c \
+								   ft_rotate_bonus.c \
+								   ft_swap_bonus.c)
 SRCS_BONUS_FILES                += $(addprefix $(SRCS_PARSE_BONUS_DIR), ft_parse_arguments_bonus.c)
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_CHECKER_BONUS_DIR), ft_checker_bonus.c)
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_HANDLE_BONUS_DIR), ft_output_bonus.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 OBJS_BONUS                      += $(SRCS_BONUS_FILES:%.c=$(BUILD_DIR)%.o)
