@@ -6,16 +6,19 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:04:56 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/06 12:42:53 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/07 03:28:06 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include "ft_stdlib.h"
 #include "ft_default.h"
 #include "ft_non_standard/ft_non_standard.h"
 #include "internal/parse/ft_parse_arguments_bonus.h"
+#include "internal/handle/ft_output_bonus.h"
+#include "internal/handle/stack/ft_stack_bonus.h"
+#include "internal/handle/stack/state/ft_state_bonus.h"
 
 static int	ft_parse_single_argument(char **argv);
 static int	ft_parse_list_arguments(char **list);
@@ -33,8 +36,7 @@ void	ft_parse_arguments(int argc, char **argv)
 	else
 		valid_parse = ft_parse_list_arguments(argv);
 	if (valid_parse == FAIL)
-		return ;
-	// 	ft_output_error();
+		ft_output_error();
 }
 
 static int	ft_parse_single_argument(char **argv)
@@ -90,32 +92,28 @@ static void	ft_parse_arguments_with_space(char *arg)
 		free(*list_arguments++);
 	free(list_arguments_temp);
 	if (valid_parse == FAIL)
-		return ;
-		// ft_output_error();
+		ft_output_error();
 }
 
 static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack)
 {
-	(void)str_nbr;
-	(void)nbr;
-	(void)add_stack;
-	// t_stacks	*stack;
-	//
-	// stack = ft_stack();
-	// if ((nbr * 1.0) == ft_atof(str_nbr) && add_stack)
-	// {
-	// 	stack->info.a_size++;
-	// 	if (!stack->a)
-	// 		ft_stackadd_back(&stack->a, ft_stacknew(nbr));
-	// 	else
-	// 	{
-	// 		if (ft_is_duplicate(stack->a, nbr))
-	// 			ft_stackadd_back(&stack->a, ft_stacknew(nbr));
-	// 		else
-	// 			return (FAIL);
-	// 	}
-	// }
-	// else if ((nbr * 1.0) != ft_atof(str_nbr))
-	// 	return (FAIL);
+	t_stacks	*stack;
+
+	stack = ft_stack();
+	if ((nbr * 1.0) == ft_atof(str_nbr) && add_stack)
+	{
+		stack->info.a_size++;
+		if (!stack->a)
+			ft_stackadd_back(&stack->a, ft_stacknew(nbr));
+		else
+		{
+			if (ft_is_duplicate(stack->a, nbr))
+				ft_stackadd_back(&stack->a, ft_stacknew(nbr));
+			else
+				return (FAIL);
+		}
+	}
+	else if ((nbr * 1.0) != ft_atof(str_nbr))
+		return (FAIL);
 	return (true);
 }

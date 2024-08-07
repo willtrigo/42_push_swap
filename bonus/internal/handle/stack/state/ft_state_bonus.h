@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_state_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 10:35:53 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 03:43:46 by dande-je         ###   ########.fr       */
+/*   Created: 2024/08/07 01:10:28 by dande-je          #+#    #+#             */
+/*   Updated: 2024/08/07 03:23:19 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "internal/parse/ft_parse_arguments_bonus.h"
-#include "internal/check/ft_checker_bonus.h"
-#include "internal/handle/stack/ft_stack_bonus.h"
+#ifndef FT_STATE_BONUS_H
+# define FT_STATE_BONUS_H
 
-int	main(int argc, char **argv)
-{
-	ft_parse_arguments(--argc, ++argv);
-	ft_checker();
-	ft_stacks_destroy();
-	exit(EXIT_SUCCESS);
-}
+# include <stdbool.h>
+# include "internal/handle/stack/ft_stack_bonus.h"
+
+bool	ft_is_duplicate(t_stack *stack, int nbr);
+bool	ft_is_sorted(t_stack *stack, int times);
+
+#endif
