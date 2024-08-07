@@ -6,15 +6,16 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:52:31 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/05 16:17:06 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/07 08:16:58 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
+#include "ft_default.h"
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_state.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 #include "internal/handle/stack/operation/ft_rotate.h"
-#include <stdbool.h>
 
 static void	ft_run_sort_three(t_stacks *stack, t_pivots pivot);
 
@@ -24,6 +25,7 @@ void	ft_sort_three(void)
 	t_pivots	pivot;
 
 	stack = ft_stack();
+	pivot.mid = INIT;
 	ft_set_pivots(stack->a, &pivot);
 	ft_run_sort_three(stack, pivot);
 }
