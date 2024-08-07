@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/05 16:53:11 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/07 10:19:21 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,16 @@ void	ft_set_pivots(t_stack *stack, t_pivots *pivot)
 	{
 		if (temp_bigger == STACK_SIZE_FIVE)
 			pivot->mid = temp_bigger / STACK_SIZE_TWO;
-		else if (temp_bigger >= STACK_SIZE_FOURHUNDRED)
+		else if (temp_bigger == STACK_SIZE_FIVEHUNDRED)
 			pivot->mid = ((pivot->bigger + STACK_NODE) - STACK_SIZE_FOUR) \
 				/ STACK_SIZE_EIGHT;
-		else if (temp_bigger >= STACK_SIZE_HUNDRED)
+		else if (temp_bigger == STACK_SIZE_HUNDRED)
 			pivot->mid = ((pivot->bigger + STACK_NODE) - STACK_SIZE_FOUR) \
-				/ STACK_SIZE_FOUR;
+				/ STACK_SIZE_TWO;
 		else
-			pivot->mid = temp_bigger / STACK_SIZE_TWO;
+			pivot->mid = (((temp_bigger + STACK_NODE) - STACK_SIZE_FOUR) \
+				/ STACK_SIZE_THREE) + (((temp_bigger + STACK_NODE) \
+				- STACK_SIZE_FOUR) % STACK_SIZE_THREE);
 	}
 	if (stack->next)
 		pivot->next = stack->next->index;
