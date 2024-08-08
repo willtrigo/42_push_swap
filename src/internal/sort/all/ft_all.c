@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/05 16:58:25 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/08 09:50:02 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_sort_all(void)
 	stack = ft_stack();
 	pivot.mid = INIT;
 	pivot.mid_time = DEFAULT;
+	pivot.mid_static = INIT;
 	ft_set_pivots(stack->a, &pivot);
 	pivot.mid_static = pivot.mid;
 	if (!ft_is_ready_to_sorted_reverse())
@@ -48,7 +49,8 @@ void	ft_sort_all(void)
 
 static void	ft_after_push_numbers_to_stack_b(t_stacks *stack, t_pivots *pivot)
 {
-	while (stack->info.a_size > STACK_SIZE_FOUR && stack->info.b_size \
+	while (pivot->bigger + STACK_NODE > STACK_SIZE_FIVE \
+		&& stack->info.a_size > STACK_SIZE_FOUR && stack->info.b_size \
 		&& !(stack->a->nbr + STACK_SIZE_TWO \
 		== stack->a->next->nbr || stack->a->nbr + STACK_NODE \
 		== stack->a->next->nbr))
@@ -56,11 +58,12 @@ static void	ft_after_push_numbers_to_stack_b(t_stacks *stack, t_pivots *pivot)
 	if (stack->info.a_size <= SORT_FOUR)
 		ft_sort_four();
 	ft_set_pivots(stack->a, pivot);
-	while (stack->info.a_size > STACK_SIZE_THREE && stack->info.b_size \
-		&& !(stack->a->nbr + STACK_SIZE_TWO \
-		== stack->a->next->nbr || stack->a->nbr + STACK_NODE \
-		== stack->a->next->nbr))
-		ft_push(PB, ONE_TIME);
+	if (pivot->bigger + STACK_NODE > STACK_SIZE_FIVE)
+	{
+		while (stack->info.a_size > STACK_SIZE_TWO && stack->info.b_size \
+			&& !(ft_is_sorted(stack->a, STACK_NBR, stack->info.a_size)))
+			ft_push(PB, ONE_TIME);
+	}
 }
 
 static void	ft_one_operation_to_finish(t_stacks *stack)
@@ -90,7 +93,7 @@ static void	ft_finder_push_number_to_b(t_stacks *stack, t_pivots *pivot, \
 	direction = ft_return_best_cost(pivot->mid, STACK_A, false);
 	ft_one_operation_to_finish(stack);
 	ft_set_pivots(stack->a, pivot);
-	if (!ft_is_sorted(stack->a, STACK_NBR, stack->info.a_size) \
+	if (!ft_is_sorted(stack->a, STACK_INDEX, stack->info.a_size) \
 		&& stack->info.a_size > STACK_SIZE_FOUR)
 	{
 		if (stack->a->nbr < pivot->mid_static + (pivot->mid_static \
@@ -118,5 +121,6 @@ static void	ft_push_number_to_b(t_stacks *stack, t_pivots *pivot)
 		while (--pivot->mid)
 			ft_rotate_possibilities(RRB, ONE_TIME, true);
 		pivot->mid_time++;
+		pivot->mid = INIT;
 	}
 }

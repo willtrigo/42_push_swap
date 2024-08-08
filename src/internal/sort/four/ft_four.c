@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 07:23:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 08:17:48 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:48:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_sort_four(void)
 
 	stack = ft_stack();
 	pivot.mid = INIT;
+	pivot.mid_static = INIT;
 	ft_set_pivots(stack->a, &pivot);
 	ft_run_sort_four(stack, &pivot);
 }
