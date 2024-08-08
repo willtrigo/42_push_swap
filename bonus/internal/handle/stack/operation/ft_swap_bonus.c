@@ -6,11 +6,10 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 05:05:44 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 05:31:30 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:25:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal/handle/ft_output_bonus.h"
 #include "internal/handle/stack/operation/ft_swap_bonus.h"
 
 static void	ft_swap_stack(t_stack **stack);
@@ -24,7 +23,6 @@ void	ft_swap(t_operations operation)
 		ft_swap_stack(&stack->a);
 	if (operation == SB || operation == SS)
 		ft_swap_stack(&stack->b);
-	ft_output_operation(operation);
 }
 
 static void	ft_swap_stack(t_stack **stack)

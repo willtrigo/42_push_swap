@@ -6,12 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 05:05:14 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 05:30:38 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:25:28 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "internal/handle/ft_output_bonus.h"
 #include "internal/handle/stack/ft_stack_bonus.h"
 #include "internal/handle/stack/operation/ft_rotate_bonus.h"
 
@@ -31,7 +30,6 @@ void	ft_rotate(t_operations operation)
 		ft_reverse_rotate_stack(&stack->a);
 	if (operation == RRB || operation == RRR)
 		ft_reverse_rotate_stack(&stack->b);
-	ft_output_operation(operation);
 }
 
 static void	ft_rotate_stack(t_stack **stack)

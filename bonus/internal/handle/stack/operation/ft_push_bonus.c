@@ -6,11 +6,10 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 05:04:21 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 05:07:57 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:25:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal/handle/ft_output_bonus.h"
 #include "internal/handle/stack/operation/ft_push_bonus.h"
 #include "internal/handle/stack/operation/ft_pop_bonus.h"
 
@@ -35,7 +34,6 @@ void	ft_push(t_operations operation, int times)
 			stack->info.a_size++;
 			stack->info.b_size--;
 		}
-		ft_output_operation(operation);
 	}
 }
 
