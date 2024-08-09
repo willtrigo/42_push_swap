@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:04:56 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 03:28:06 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:31:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "ft_default.h"
 #include "ft_non_standard/ft_non_standard.h"
 #include "internal/parse/ft_parse_arguments_bonus.h"
+#include "ft_string.h"
 #include "internal/handle/ft_output_bonus.h"
 #include "internal/handle/stack/ft_stack_bonus.h"
 #include "internal/handle/stack/state/ft_state_bonus.h"
@@ -63,6 +64,8 @@ static int	ft_parse_list_arguments(char **list)
 	valid_parse = true;
 	while (*list)
 	{
+		if (!ft_strncmp(*list, " ", ft_strlen(*list)))
+			return (FAIL);
 		nbr = ft_strtoi(*list, &nbr_endptr);
 		if (!*nbr_endptr)
 			valid_parse = ft_parse_nbr(*list, nbr, true);

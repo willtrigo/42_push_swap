@@ -6,13 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/08 17:37:50 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:32:44 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdbool.h>
 #include "ft_stdlib.h"
+#include "ft_string.h"
 #include "ft_default.h"
 #include "ft_non_standard/ft_non_standard.h"
 #include "internal/parse/ft_parse_arguments.h"
@@ -62,11 +63,15 @@ static int	ft_parse_list_arguments(char **list)
 	valid_parse = true;
 	while (*list)
 	{
+		if (!ft_strncmp(*list, " ", ft_strlen(*list)))
+			return (FAIL);
 		nbr = ft_strtoi(*list, &nbr_endptr);
 		if (!*nbr_endptr)
 			valid_parse = ft_parse_nbr(*list, nbr, true);
 		else if (*nbr_endptr == ' ')
+		{
 			ft_parse_arguments_with_space(*list);
+		}
 		else
 			valid_parse = FAIL;
 		if (valid_parse == FAIL)

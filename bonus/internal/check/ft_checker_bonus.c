@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 03:39:20 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/07 05:47:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:30:36 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	ft_command(char *command)
 	else if (!ft_strncmp(command, "rb\n", ft_strlen("rb\n")))
 		ft_rotate(RB);
 	else if (!ft_strncmp(command, "rr\n", ft_strlen("rr\n")))
-		ft_rotate(RB);
+		ft_rotate(RR);
 	else if (!ft_strncmp(command, "rra\n", ft_strlen("rra\n")))
 		ft_rotate(RRA);
 	else if (!ft_strncmp(command, "rrb\n", ft_strlen("rrb\n")))
