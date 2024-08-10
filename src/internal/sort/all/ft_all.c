@@ -6,12 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/08 09:50:02 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/10 08:10:41 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_default.h"
 #include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/state/ft_peek.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/four/ft_four.h"
 #include "internal/sort/all/ft_all.h"
@@ -49,7 +50,7 @@ void	ft_sort_all(void)
 
 static void	ft_after_push_numbers_to_stack_b(t_stacks *stack, t_pivots *pivot)
 {
-	while (pivot->bigger + STACK_NODE > STACK_SIZE_FIVE \
+	while (ft_peek_bigger(stack->a, STACK_NBR) + STACK_NODE > STACK_SIZE_FIVE \
 		&& stack->info.a_size > STACK_SIZE_FOUR && stack->info.b_size \
 		&& !(stack->a->nbr + STACK_SIZE_TWO \
 		== stack->a->next->nbr || stack->a->nbr + STACK_NODE \

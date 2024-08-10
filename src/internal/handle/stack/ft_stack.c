@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 01:42:13 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/08 09:49:16 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/10 08:01:38 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	ft_set_mid(t_pivots *pivot, int temp_bigger, int divisor)
 	else if (temp_bigger == STACK_SIZE_FIVEHUNDRED)
 		pivot->mid = (temp_bigger - STACK_SIZE_FOUR) / STACK_SIZE_EIGHT;
 	else if (temp_bigger == STACK_SIZE_HUNDRED)
-		pivot->mid = (temp_bigger - STACK_SIZE_FOUR) / STACK_SIZE_FOUR;
+		pivot->mid = (temp_bigger - STACK_SIZE_FOUR) / STACK_SIZE_THREE;
 	else if (temp_bigger < 100)
 	{
 		pivot->mid = ((temp_bigger - STACK_SIZE_FOUR) / STACK_SIZE_TWO) \
