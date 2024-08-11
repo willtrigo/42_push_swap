@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:04:56 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/11 16:06:20 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 16:47:08 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,13 @@ static int	ft_parse_single_argument(char **argv)
 
 	argv_trim = ft_strtrim(*argv, " ");
 	nbr = ft_strtoi(argv_trim, &nbr_endptr);
-	if (nbr == DEFAULT && !nbr_endptr)
+	if (nbr == DEFAULT && !*nbr_endptr)
 	{
 		free(argv_trim);
-		exit(EXIT_SUCCESS);
+		ft_output_error();
 	}
 	else if (!*nbr_endptr)
-	{
-		free(argv_trim);
-		return (FAIL);
-	}
+		ft_parse_nbr(*argv, nbr, true);
 	else if (*nbr_endptr == ' ')
 		ft_parse_arguments_with_space(*argv);
 	else
