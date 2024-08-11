@@ -6,23 +6,24 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:04:56 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/09 15:31:18 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 00:07:59 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
+#include "ft_ctype.h"
 #include "ft_stdlib.h"
 #include "ft_default.h"
 #include "ft_non_standard/ft_non_standard.h"
 #include "internal/parse/ft_parse_arguments_bonus.h"
-#include "ft_string.h"
 #include "internal/handle/ft_output_bonus.h"
 #include "internal/handle/stack/ft_stack_bonus.h"
 #include "internal/handle/stack/state/ft_state_bonus.h"
 
 static int	ft_parse_single_argument(char **argv);
-static int	ft_parse_list_arguments(char **list);
+static int	ft_parse_list_arguments(char **list, int nbr, int valid_parse, \
+				char *nbr_endptr);
 static void	ft_parse_arguments_with_space(char *arg);
 static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack);
 
@@ -35,37 +36,49 @@ void	ft_parse_arguments(int argc, char **argv)
 	else if (argc == SINGLE_ARGURMENT)
 		valid_parse = ft_parse_single_argument(argv);
 	else
-		valid_parse = ft_parse_list_arguments(argv);
+		valid_parse = ft_parse_list_arguments(argv, DEFAULT, true, NULL);
 	if (valid_parse == FAIL)
 		ft_output_error();
 }
 
 static int	ft_parse_single_argument(char **argv)
 {
-	int		nbr;
 	char	*nbr_endptr;
+	char	*argv_trim;
 
-	nbr = ft_strtoi(*argv, &nbr_endptr);
+	argv_trim = ft_strtrim(*argv, " ");
+	if (!ft_isdigit(*argv_trim))
+	{
+		free(argv_trim);
+		ft_output_error();
+	}
+	ft_strtoi(argv_trim, &nbr_endptr);
 	if (!*nbr_endptr)
-		return (ft_parse_nbr(*argv, nbr, false));
+	{
+		free(argv_trim);
+		exit(EXIT_SUCCESS);
+	}
 	else if (*nbr_endptr == ' ')
 		ft_parse_arguments_with_space(*argv);
 	else
 		return (FAIL);
+	free(argv_trim);
 	return (true);
 }
 
-static int	ft_parse_list_arguments(char **list)
+static int	ft_parse_list_arguments(char **list, int nbr, int valid_parse, \
+				char *nbr_endptr)
 {
-	int		nbr;
-	int		valid_parse;
-	char	*nbr_endptr;
+	char	*list_trim;
 
-	valid_parse = true;
 	while (*list)
 	{
-		if (!ft_strncmp(*list, " ", ft_strlen(*list)))
-			return (FAIL);
+		list_trim = ft_strtrim(*list, " ");
+		if (!ft_isdigit(*list_trim))
+		{
+			free(list_trim);
+			ft_output_error();
+		}
 		nbr = ft_strtoi(*list, &nbr_endptr);
 		if (!*nbr_endptr)
 			valid_parse = ft_parse_nbr(*list, nbr, true);
@@ -76,10 +89,11 @@ static int	ft_parse_list_arguments(char **list)
 		if (valid_parse == FAIL)
 			break ;
 		list++;
+		free(list_trim);
 	}
 	if (valid_parse == FAIL)
-		return (FAIL);
-	return (true);
+		free(list_trim);
+	return (valid_parse);
 }
 
 static void	ft_parse_arguments_with_space(char *arg)
@@ -87,13 +101,21 @@ static void	ft_parse_arguments_with_space(char *arg)
 	int		valid_parse;
 	char	**list_arguments;
 	char	**list_arguments_temp;
+	char	*arg_trim;
 
-	list_arguments = ft_split(arg, ' ');
+	arg_trim = ft_strtrim(arg, " ");
+	if (!ft_isdigit(*arg_trim))
+	{
+		free(arg_trim);
+		ft_output_error();
+	}
+	list_arguments = ft_split(arg_trim, ' ');
 	list_arguments_temp = list_arguments;
-	valid_parse = ft_parse_list_arguments(list_arguments);
+	valid_parse = ft_parse_list_arguments(list_arguments, DEFAULT, true, NULL);
 	while (*list_arguments)
 		free(*list_arguments++);
 	free(list_arguments_temp);
+	free(arg_trim);
 	if (valid_parse == FAIL)
 		ft_output_error();
 }
