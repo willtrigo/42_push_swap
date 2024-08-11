@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 04:23:55 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/02 00:06:29 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 16:09:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static void	ft_normalize_others_nbrs(int temp_bigger_nbr, int stack_size, \
 		while (temp_stack)
 		{
 			if (temp_stack->index == INIT && temp_check_bigger_nbr \
-				< temp_stack->nbr && temp_stack->nbr < temp_bigger_nbr)
+				<= temp_stack->nbr && temp_stack->nbr <= temp_bigger_nbr)
 			{
 				temp_check_bigger_nbr = temp_stack->nbr;
 				temp_stack_bigger = temp_stack;

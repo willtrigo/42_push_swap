@@ -6,10 +6,11 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/11 00:23:34 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 16:10:10 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "ft_stdlib.h"
@@ -44,13 +45,19 @@ static int	ft_parse_single_argument(char **argv)
 {
 	char	*nbr_endptr;
 	char	*argv_trim;
+	int		nbr;
 
 	argv_trim = ft_strtrim(*argv, " ");
-	ft_strtoi(argv_trim, &nbr_endptr);
-	if (!*nbr_endptr)
+	nbr = ft_strtoi(argv_trim, &nbr_endptr);
+	if (nbr == DEFAULT && !nbr_endptr)
 	{
 		free(argv_trim);
 		exit(EXIT_SUCCESS);
+	}
+	else if (!*nbr_endptr)
+	{
+		free(argv_trim);
+		return (FAIL);
 	}
 	else if (*nbr_endptr == ' ')
 		ft_parse_arguments_with_space(*argv);
@@ -68,12 +75,14 @@ static int	ft_parse_list_arguments(char **list, int nbr, int valid_parse, \
 	while (*list)
 	{
 		list_trim = ft_strtrim(*list, " ");
-		nbr = ft_strtoi(*list, &nbr_endptr);
+		nbr = ft_strtoi(list_trim, &nbr_endptr);
 		if (!*nbr_endptr)
 			valid_parse = ft_parse_nbr(*list, nbr, true);
 		else if (*nbr_endptr == ' ')
 			ft_parse_arguments_with_space(*list);
 		else
+			valid_parse = FAIL;
+		if (!*list_trim)
 			valid_parse = FAIL;
 		if (valid_parse == FAIL)
 			break ;
@@ -109,7 +118,8 @@ static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if ((nbr * 1.0) == ft_atof(str_nbr) && add_stack)
+	if ((nbr * 1.0) == ft_atof(str_nbr) && (ft_atof(str_nbr) \
+		>= INT_MIN && ft_atof(str_nbr) <= INT_MAX) && add_stack)
 	{
 		stack->info.a_size++;
 		if (!stack->a)
@@ -122,7 +132,7 @@ static int	ft_parse_nbr(char *str_nbr, int nbr, int add_stack)
 				return (FAIL);
 		}
 	}
-	else if ((nbr * 1.0) != ft_atof(str_nbr))
+	else
 		return (FAIL);
 	return (true);
 }
