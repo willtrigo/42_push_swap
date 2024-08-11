@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:23:23 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/05 16:44:19 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 01:25:00 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,11 @@ static void	ft_reverse_rotate_stack(t_stack **stack);
 void	ft_rotate_possibilities(t_operations operation, int times, \
 			bool active_bonus)
 {
-	t_stacks	*stack;
-
-	stack = ft_stack();
 	while (times--)
 	{
-		if (active_bonus && operation == RB && stack->a->nbr \
-			> ft_stacklast(stack->a)->nbr)
+		if (active_bonus && operation == RB)
 			operation = RR;
-		else if (active_bonus && operation == RRB \
-			&& ft_stacklast(stack->a)->nbr < stack->a->nbr)
+		else if (active_bonus && operation == RRB)
 			operation = RRR;
 		ft_rotate(operation);
 	}

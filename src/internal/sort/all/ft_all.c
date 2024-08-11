@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 05:32:15 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/10 08:10:41 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 02:32:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ static void	ft_finder_push_number_to_b(t_stacks *stack, t_pivots *pivot, \
 			* pivot->mid_time))
 			ft_push_number_to_b(stack, pivot);
 		else if (direction == TOP)
-			ft_rotate_possibilities(RA, ONE_TIME, true);
+			ft_rotate_possibilities(RA, ONE_TIME, false);
 		else if (direction == BOT)
-			ft_rotate_possibilities(RRA, ONE_TIME, true);
+			ft_rotate_possibilities(RRA, ONE_TIME, false);
 		ft_finder_push_number_to_b(stack, pivot, smaller_stack_b);
 	}
 }
@@ -114,13 +114,13 @@ static void	ft_push_number_to_b(t_stacks *stack, t_pivots *pivot)
 	if (stack->info.b_size > STACK_SIZE_TWO && stack->b->nbr \
 		> (pivot->mid_static / STACK_SIZE_TWO) + (pivot->mid_static \
 		* pivot->mid_time))
-		ft_rotate_possibilities(RB, ONE_TIME, true);
+		ft_push_number_to_b_top(stack, pivot);
 	if (stack->info.b_size == (pivot->mid_static + (pivot->mid_static \
 		* pivot->mid_time)))
 	{
 		pivot->mid = (pivot->mid_static / STACK_SIZE_TWO);
 		while (--pivot->mid)
-			ft_rotate_possibilities(RRB, ONE_TIME, true);
+			ft_push_number_to_b_bot(stack, pivot);
 		pivot->mid_time++;
 		pivot->mid = INIT;
 	}

@@ -6,12 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 00:23:34 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/05 16:48:53 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 02:33:16 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_default.h"
 #include "internal/handle/stack/ft_stack.h"
+#include "internal/handle/stack/operation/ft_rotate.h"
 #include "internal/sort/ft_sort.h"
 #include "internal/sort/all/ft_cost.h"
 
@@ -42,6 +43,32 @@ t_cost	ft_return_best_cost(int value, t_stack_targets target, bool is_between)
 	if (cost > cost_reverse)
 		return (BOT);
 	return (TOP);
+}
+
+void	ft_push_number_to_b_top(t_stacks *stack, t_pivots *pivot)
+{
+	t_cost	direction;
+
+	direction = ft_return_best_cost(pivot->mid_static \
+		+ (pivot->mid_static * pivot->mid_time), STACK_A, false);
+	if (direction == TOP && stack->a->nbr > pivot->mid_static \
+		+ (pivot->mid_static * pivot->mid_time))
+		ft_rotate_possibilities(RB, ONE_TIME, true);
+	else
+		ft_rotate_possibilities(RB, ONE_TIME, false);
+}
+
+void	ft_push_number_to_b_bot(t_stacks *stack, t_pivots *pivot)
+{
+	t_cost	direction;
+
+	direction = ft_return_best_cost(pivot->mid_static \
+		+ (pivot->mid_static * pivot->mid_time), STACK_A, false);
+	if (direction == BOT && stack->a->nbr > pivot->mid_static \
+		+ (pivot->mid_static * pivot->mid_time))
+		ft_rotate_possibilities(RRB, ONE_TIME, true);
+	else
+		ft_rotate_possibilities(RRB, ONE_TIME, false);
 }
 
 static int	ft_get_nbr_cost(int value, t_stack_targets target)

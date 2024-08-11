@@ -6,11 +6,10 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 02:20:16 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/01 02:03:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 02:16:50 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal/sort/ft_sort.h"
 #include "internal/handle/ft_output.h"
 #include "internal/handle/stack/operation/ft_swap.h"
 
@@ -22,13 +21,7 @@ void	ft_swap_possibilities(t_operations operation)
 	t_stacks	*stack;
 
 	stack = ft_stack();
-	if (operation == SA)
-	{
-		if (stack->info.b_size >= STACK_SIZE_TWO \
-			&& stack->b->nbr < stack->b->next->nbr)
-			operation = SS;
-	}
-	else if (operation == SB)
+	if (operation == SB)
 	{
 		if (stack->a->nbr > stack->a->next->nbr)
 			operation = SS;
