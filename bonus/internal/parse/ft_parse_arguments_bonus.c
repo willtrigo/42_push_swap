@@ -6,13 +6,12 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:04:56 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/11 00:07:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 00:22:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
-#include "ft_ctype.h"
 #include "ft_stdlib.h"
 #include "ft_default.h"
 #include "ft_non_standard/ft_non_standard.h"
@@ -47,11 +46,6 @@ static int	ft_parse_single_argument(char **argv)
 	char	*argv_trim;
 
 	argv_trim = ft_strtrim(*argv, " ");
-	if (!ft_isdigit(*argv_trim))
-	{
-		free(argv_trim);
-		ft_output_error();
-	}
 	ft_strtoi(argv_trim, &nbr_endptr);
 	if (!*nbr_endptr)
 	{
@@ -74,11 +68,6 @@ static int	ft_parse_list_arguments(char **list, int nbr, int valid_parse, \
 	while (*list)
 	{
 		list_trim = ft_strtrim(*list, " ");
-		if (!ft_isdigit(*list_trim))
-		{
-			free(list_trim);
-			ft_output_error();
-		}
 		nbr = ft_strtoi(*list, &nbr_endptr);
 		if (!*nbr_endptr)
 			valid_parse = ft_parse_nbr(*list, nbr, true);
@@ -104,11 +93,6 @@ static void	ft_parse_arguments_with_space(char *arg)
 	char	*arg_trim;
 
 	arg_trim = ft_strtrim(arg, " ");
-	if (!ft_isdigit(*arg_trim))
-	{
-		free(arg_trim);
-		ft_output_error();
-	}
 	list_arguments = ft_split(arg_trim, ' ');
 	list_arguments_temp = list_arguments;
 	valid_parse = ft_parse_list_arguments(list_arguments, DEFAULT, true, NULL);
