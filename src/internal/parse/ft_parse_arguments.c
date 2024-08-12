@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:42:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/08/11 16:43:06 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/08/11 21:16:02 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "internal/handle/stack/ft_stack.h"
 #include "internal/handle/stack/state/ft_state.h"
 
-static int	ft_parse_single_argument(char **argv);
+static int	ft_parse_single_argument(char **argv, int valid_parse);
 static int	ft_parse_list_arguments(char **list, int nbr, int valid_parse, \
 				char *nbr_endptr);
 static void	ft_parse_arguments_with_space(char *arg);
@@ -34,14 +34,14 @@ void	ft_parse_arguments(int argc, char **argv)
 	if (argc == DEFAULT)
 		exit(EXIT_SUCCESS);
 	else if (argc == SINGLE_ARGURMENT)
-		valid_parse = ft_parse_single_argument(argv);
+		valid_parse = ft_parse_single_argument(argv, true);
 	else
 		valid_parse = ft_parse_list_arguments(argv, DEFAULT, true, NULL);
 	if (valid_parse == FAIL)
 		ft_output_error();
 }
 
-static int	ft_parse_single_argument(char **argv)
+static int	ft_parse_single_argument(char **argv, int valid_parse)
 {
 	char	*nbr_endptr;
 	char	*argv_trim;
@@ -55,16 +55,13 @@ static int	ft_parse_single_argument(char **argv)
 		ft_output_error();
 	}
 	else if (!*nbr_endptr)
-	{
-		free(argv_trim);
-		exit(EXIT_SUCCESS);
-	}
+		valid_parse = ft_parse_nbr(*argv, nbr, true);
 	else if (*nbr_endptr == ' ')
 		ft_parse_arguments_with_space(*argv);
 	else
 		return (FAIL);
 	free(argv_trim);
-	return (true);
+	return (valid_parse);
 }
 
 static int	ft_parse_list_arguments(char **list, int nbr, int valid_parse, \
